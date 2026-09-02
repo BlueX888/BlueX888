@@ -118,6 +118,12 @@
 
   <!-- 由 .github/workflows/activity.yml 定时更新 -->
   <!--START_SECTION:activity-->
+1. 💪 Opened PR [#255](https://github.com/OpenBMB/StaffDeck/pull/255) in [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)
+2. 💪 Opened PR [#539](https://github.com/OpenBMB/PilotDeck/pull/539) in [OpenBMB/PilotDeck](https://github.com/OpenBMB/PilotDeck)
+3. 💪 Opened PR [#538](https://github.com/OpenBMB/PilotDeck/pull/538) in [OpenBMB/PilotDeck](https://github.com/OpenBMB/PilotDeck)
+4. 💪 Opened PR [#671](https://github.com/OpenBMB/ChatDev/pull/671) in [OpenBMB/ChatDev](https://github.com/OpenBMB/ChatDev)
+5. 💪 Opened PR [#254](https://github.com/OpenBMB/StaffDeck/pull/254) in [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)
+6. 💪 Opened PR [#9887](https://github.com/agno-agi/agno/pull/9887) in [agno-agi/agno](https://github.com/agno-agi/agno)
   <!--END_SECTION:activity-->
 
 </details>
