@@ -5,7 +5,7 @@
 
 <!-- 打字机动画标题 -->
 <a href="https://github.com/BlueX888">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=26&duration=3000&pause=800&color=A78BFA&center=true&vCenter=true&width=700&lines=Hi+there%2C+I'm+%E5%93%88%E5%9F%BA%E7%B1%B3+BlueX888+%F0%9F%91%8B;From+1000-line+agents+to+durable+swarm+kernels;LLM+%7C+Multi-Agent+%7C+Full-Stack+Developer;Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=3000&pause=800&color=A78BFA&center=true&vCenter=true&width=700&lines=Hi+there%2C+I'm+%E5%93%88%E5%9F%BA%E7%B1%B3+BlueX888+%F0%9F%91%8B;From+1000-line+agents+to+durable+swarm+kernels;LLM+%7C+Multi-Agent+%7C+Full-Stack+Developer;Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG" />
 </a>
 
 <!-- 访客计数 + 关注徽章 -->
@@ -39,24 +39,6 @@
 | 🔨 [**forge-code**](https://github.com/BlueX888/forge-code) | 面向本地工程的个人 AI 编程助手 | 跨会话项目记忆 · Skill 自进化（人工审核后沉淀）· 长任务上下文压缩 · 本地权限沙箱 |
 | 🏥 [**Medical-Agent-Swarm**](https://github.com/BlueX888/Medical-Agent-Swarm) | 基于 LangGraph 的医疗问答多智能体原型 | Orchestrator–Worker 编排 · 确定性安全层（代码而非 LLM 兜底）· 技能白名单 · 隐私脱敏 API |
 | ⚙️ [**SwarmCore**](https://github.com/BlueX888/SwarmCore) | 企业级多租户、可持久化的智能体执行内核 | Temporal 持久化编排 · 不可变执行计划 · PostgreSQL 单一事实源 · OPA/Vault 安全治理 · 能力包机制 |
-
-<div align="center">
-
-<a href="https://github.com/BlueX888/nanoteam">
-  <img height="140" src="https://github-readme-stats.vercel.app/api/pin/?username=BlueX888&repo=nanoteam&theme=tokyonight&hide_border=true&bg_color=00000000" alt="nanoteam"/>
-</a>
-<a href="https://github.com/BlueX888/forge-code">
-  <img height="140" src="https://github-readme-stats.vercel.app/api/pin/?username=BlueX888&repo=forge-code&theme=tokyonight&hide_border=true&bg_color=00000000" alt="forge-code"/>
-</a>
-<br/>
-<a href="https://github.com/BlueX888/Medical-Agent-Swarm">
-  <img height="140" src="https://github-readme-stats.vercel.app/api/pin/?username=BlueX888&repo=Medical-Agent-Swarm&theme=tokyonight&hide_border=true&bg_color=00000000" alt="Medical-Agent-Swarm"/>
-</a>
-<a href="https://github.com/BlueX888/SwarmCore">
-  <img height="140" src="https://github-readme-stats.vercel.app/api/pin/?username=BlueX888&repo=SwarmCore&theme=tokyonight&hide_border=true&bg_color=00000000" alt="SwarmCore"/>
-</a>
-
-</div>
 
 <details>
 <summary>🧪 更多实验项目</summary>
@@ -103,28 +85,16 @@
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=BlueX888&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&count_private=true" alt="GitHub 统计"/>
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=BlueX888&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&langs_count=8" alt="常用语言"/>
-
-<br/>
-
 <img src="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans" alt="连续贡献"/>
 
-</div>
+<br/><br/>
 
-## 🏆 Trophy Wall
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=BlueX888&theme=tokyonight&no-frame=true&column=7&margin-w=8" alt="奖杯墙"/>
-
-</div>
-
-## 📈 Activity Graph
-
-<div align="center">
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=BlueX888&theme=tokyo-night&hide_border=true&bg_color=00000000&area=true" width="95%" alt="活动曲线"/>
+<a href="https://github.com/BlueX888?tab=repositories">
+  <img src="https://img.shields.io/github/stars/BlueX888?style=for-the-badge&logo=github&logoColor=white&label=Total%20Stars&color=8E2DE2" alt="Total Stars"/>
+</a>
+<a href="https://github.com/BlueX888/SwarmCore">
+  <img src="https://img.shields.io/github/commit-activity/y/BlueX888/SwarmCore?style=for-the-badge&logo=git&logoColor=white&label=SwarmCore%20Commits%2Fyear&color=4A00E0" alt="SwarmCore 年提交"/>
+</a>
 
 </div>
 
