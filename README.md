@@ -85,6 +85,12 @@
 
 <div align="center">
 
+<!-- 以下两张卡片由本仓库 Actions 每日自动生成（.github/workflows/stats.yml），不依赖第三方公共实例 -->
+<img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats.svg" alt="GitHub 统计"/>
+<img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs.svg" alt="常用语言"/>
+
+<br/>
+
 <img src="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans" alt="连续贡献"/>
 
 <br/><br/>
