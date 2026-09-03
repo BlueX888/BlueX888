@@ -18,19 +18,39 @@
   <img alt="profile views" src="https://komarev.com/ghpvc/?username=BlueX888&label=Profile%20Views&color=8E2DE2&style=for-the-badge"/>
 </p>
 
+<p>
+  <img alt="Intern at ModelBest" src="https://img.shields.io/badge/💼_面壁智能_%2F_OpenBMB-Agent_方向实习中-4A00E0?style=flat-square"/>
+  <img alt="BJUT" src="https://img.shields.io/badge/🎓_北京工业大学-研二在读-8E2DE2?style=flat-square"/>
+  <img alt="Focus" src="https://img.shields.io/badge/🧪_方向-LLM_Agent_编排_%2F_持久化执行_%2F_多智能体安全-A78BFA?style=flat-square"/>
+</p>
+
 </div>
 
 ## 🎯 About Me
+
+<table border="0">
+<tr>
+<td width="62%" valign="top">
 
 我做多智能体系统。从 174 行就能读完的 deep-research 团队，到跑在 Temporal 上、有租户隔离和审计的企业级执行内核，我想搞清楚同一件事：**让一群模型可靠地协作，到底需要什么样的工程。**
 
 **我信什么？** 模型负责判断，代码负责搬运。安全边界、状态机、可审计性这些东西应该由确定性代码兜底，而不是寄希望于 prompt。
 
-- 🎓 **研究生：** 北京工业大学（211）· 计算机科学与技术 · 2025.09 – 2028.06
-- 🎓 **本科：** 河南大学（双一流）· 计算机科学与技术 · 2021.09 – 2025.06
-- 🧪 **方向：** LLM Agent 编排、持久化执行、多智能体安全治理
-- 💼 **实习：** 面壁智能（ModelBest / OpenBMB）· Agent 方向 · 2026.08 至今
-- 📍 **状态：** 研二在读
+<table>
+  <tr><td>🎓 <b>研究生</b></td><td>北京工业大学（211）· 计算机科学与技术 · 2025.09 – 2028.06</td></tr>
+  <tr><td>🎓 <b>本科</b></td><td>河南大学（双一流）· 计算机科学与技术 · 2021.09 – 2025.06</td></tr>
+  <tr><td>💼 <b>实习</b></td><td>面壁智能（ModelBest / OpenBMB）· Agent 方向 · 2026.08 至今</td></tr>
+  <tr><td>🧪 <b>方向</b></td><td>LLM Agent 编排 · 持久化执行 · 多智能体安全治理</td></tr>
+</table>
+
+</td>
+<td width="38%" align="center" valign="middle">
+
+<img src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" width="100%" alt="coding"/>
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -46,12 +66,50 @@
 
 ## 📘 Projects
 
-| 项目 | 简介 |
-|---|---|
-| 🐜 [**nanoteam**](https://github.com/BlueX888/nanoteam) | 1000 行以内的 deep-research 多智能体团队，Leader–Worker 架构，CI 强制行数上限 |
-| 🔨 [**forge-code**](https://github.com/BlueX888/forge-code) | 本地 AI 编程助手：跨会话项目记忆、Skill 自进化、权限沙箱 |
-| 🏥 [**Medical-Agent-Swarm**](https://github.com/BlueX888/Medical-Agent-Swarm) | LangGraph 医疗问答多智能体原型，Orchestrator–Worker + 确定性安全层 |
-| ⚙️ [**SwarmCore**](https://github.com/BlueX888/SwarmCore) | 企业级多租户智能体执行内核：Temporal 持久化编排、PostgreSQL 单一事实源、OPA/Vault 治理 |
+> 一条完整的多智能体谱系：**看得懂 → 用得上 → 跑得稳**
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🐜 [nanoteam](https://github.com/BlueX888/nanoteam)
+
+1000 行以内的 deep-research 多智能体团队，一天就能读完的"可运行教科书"。Leader–Worker 架构，可预测的 N+2 次模型调用，CI 强制行数上限。
+
+<img src="https://img.shields.io/badge/-Leader–Worker-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-CI_行数上限-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-单一依赖-1C3C3C?style=flat-square"/>
+
+</td>
+<td width="50%" valign="top">
+
+### 🔨 [forge-code](https://github.com/BlueX888/forge-code)
+
+面向本地工程的个人 AI 编程助手。跨会话项目记忆，Skill 自进化（人工审核后沉淀），长任务上下文压缩，本地权限沙箱。
+
+<img src="https://img.shields.io/badge/-项目记忆-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-Skill_自进化-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-权限沙箱-1C3C3C?style=flat-square"/>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🏥 [Medical-Agent-Swarm](https://github.com/BlueX888/Medical-Agent-Swarm)
+
+基于 LangGraph 的医疗问答多智能体原型。Orchestrator–Worker 编排，确定性安全层由代码而非 LLM 兜底，技能白名单 + 隐私脱敏 API。
+
+<img src="https://img.shields.io/badge/-LangGraph-1C3C3C?style=flat-square&logo=langchain&logoColor=white"/> <img src="https://img.shields.io/badge/-确定性安全层-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-隐私脱敏-1C3C3C?style=flat-square"/>
+
+</td>
+<td width="50%" valign="top">
+
+### ⚙️ [SwarmCore](https://github.com/BlueX888/SwarmCore)
+
+企业级多租户、可持久化的智能体执行内核。Temporal 持久化编排，不可变执行计划，PostgreSQL 单一事实源，OPA/Vault 安全治理。
+
+<img src="https://img.shields.io/badge/-Temporal-1C3C3C?style=flat-square&logo=temporal&logoColor=white"/> <img src="https://img.shields.io/badge/-PostgreSQL-1C3C3C?style=flat-square&logo=postgresql&logoColor=white"/> <img src="https://img.shields.io/badge/-OPA_%2F_Vault-1C3C3C?style=flat-square"/>
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -66,31 +124,42 @@
 
 自己审代码发现、带无网络最小复现报出的缺陷（PR 合并后会自动进上一栏）：
 
-- [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k — [OpenAIResponsesModel 在 function call 被 max_output_tokens 截断时报 tool_use 而非 max_tokens，截断的工具调用被直接执行](https://github.com/strands-agents/harness-sdk/issues/4135) `2026-09-03` · 已被打上 `bug`，修复待认领
-- [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)（实习所在团队的项目）— [报销额度查询对不存在的员工返回"成功"结果](https://github.com/OpenBMB/StaffDeck/issues/257) `2026-09-02` · 修复 [#258](https://github.com/OpenBMB/StaffDeck/pull/258) 已提交
+| 仓库 | 问题 | 状态 |
+|:--|:--|:--|
+| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [OpenAIResponsesModel 在 function call 被 max_output_tokens 截断时报 tool_use 而非 max_tokens，截断的工具调用被直接执行](https://github.com/strands-agents/harness-sdk/issues/4135) `2026-09-03` | 🟡 已标 `bug`，修复待认领 |
+| [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)（实习团队项目） | [报销额度查询对不存在的员工返回"成功"结果](https://github.com/OpenBMB/StaffDeck/issues/257) `2026-09-02` | 🟢 修复 [#258](https://github.com/OpenBMB/StaffDeck/pull/258) 已提交 |
 
 ---
 
 ## 🛠️ Technical Arsenal
 
-### 语言
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+<div align="center">
 
-### Agent & AI
-![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
-![Temporal](https://img.shields.io/badge/Temporal-000000?style=for-the-badge&logo=temporal&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-5A45FF?style=for-the-badge&logoColor=white)
+<table border="0">
+<tr>
+<td align="right"><b>语言</b></td>
+<td>
+<a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,ts,cpp,bash&theme=dark" alt="languages"/></a>
+</td>
+</tr>
+<tr>
+<td align="right"><b>Agent & AI</b></td>
+<td>
+<img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangGraph"/>
+<img src="https://img.shields.io/badge/Temporal-000000?style=for-the-badge&logo=temporal&logoColor=white" alt="Temporal"/>
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"/>
+<img src="https://img.shields.io/badge/MCP-5A45FF?style=for-the-badge&logoColor=white" alt="MCP"/>
+</td>
+</tr>
+<tr>
+<td align="right"><b>后端 & 基础设施</b></td>
+<td>
+<a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=fastapi,postgres,redis,docker,react,linux,git,githubactions&theme=dark" alt="infra"/></a>
+</td>
+</tr>
+</table>
 
-### 后端与基础设施
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![NATS](https://img.shields.io/badge/NATS-27AAE1?style=for-the-badge&logo=natsdotio&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+</div>
 
 ---
 
@@ -101,7 +170,11 @@
 <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats.svg" alt="GitHub 统计"/>
 <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs.svg" alt="常用语言"/>
 
+<br/>
+
 <img src="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans" alt="连续贡献"/>
+
+<br/><br/>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/output/github-contribution-grid-snake-dark.svg"/>
@@ -130,7 +203,7 @@
 ### 💭 "Talk is cheap. Show me the code."
 *— Linus Torvalds*
 
----
+<br/>
 
 ### 🌟 感谢来访！如果觉得这些项目有意思，给个 ⭐ 是最好的鼓励。
 
