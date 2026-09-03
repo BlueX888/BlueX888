@@ -29,14 +29,16 @@
 - 🎓 **研究生：** 北京工业大学（211）· 计算机科学与技术 · 2025.09 – 2028.06
 - 🎓 **本科：** 河南大学（双一流）· 计算机科学与技术 · 2021.09 – 2025.06
 - 🧪 **方向：** LLM Agent 编排、持久化执行、多智能体安全治理
-- 💼 **状态：** 研二在读，**正在寻找 AI / Agent 方向实习**，欢迎联系
+- 💼 **实习：** 面壁智能（ModelBest / OpenBMB）· Agent 方向 · 2026.08 至今
+- 📍 **状态：** 研二在读
 
 ---
 
 ## 🔬 Current Work
 
 - ⚙️ **SwarmCore** 正在冲 M5 里程碑（v1 候选基线）：Temporal 持久化编排 + PostgreSQL 单一事实源 + OPA/Vault 治理
-- 🔧 给上游 Agent 框架修 bug、提特性：OpenBMB（ChatDev / StaffDeck / PilotDeck）、Hugging Face smolagents、Agno、OpenHands
+- 💼 在面壁智能实习，参与 OpenBMB 的 Agent 产品（ChatDev / StaffDeck / PilotDeck）开发
+- 🔧 给上游 Agent 框架修 bug、提特性：Hugging Face smolagents、Agno、OpenHands、Strands Agents
 - 🔍 审 Agent 框架的核心模块（provider 适配层、streaming 聚合、tool 调用）主动找缺陷，带最小复现报 issue，再自己修
 - 📖 维护 **nanoteam**，把多智能体的最小可用形态写成一本能跑的教科书
 
@@ -64,7 +66,7 @@
 自己审代码发现、带无网络最小复现报出的缺陷（PR 合并后会自动进上一栏）：
 
 - [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k — [OpenAIResponsesModel 在 function call 被 max_output_tokens 截断时报 tool_use 而非 max_tokens，截断的工具调用被直接执行](https://github.com/strands-agents/harness-sdk/issues/4135) `2026-09-03` · 已被打上 `bug`，修复待认领
-- [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck) — [报销额度查询对不存在的员工返回"成功"结果](https://github.com/OpenBMB/StaffDeck/issues/257) `2026-09-02` · 修复 [#258](https://github.com/OpenBMB/StaffDeck/pull/258) 已提交
+- [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)（实习所在团队的项目）— [报销额度查询对不存在的员工返回"成功"结果](https://github.com/OpenBMB/StaffDeck/issues/257) `2026-09-02` · 修复 [#258](https://github.com/OpenBMB/StaffDeck/pull/258) 已提交
 
 ---
 
@@ -116,7 +118,7 @@
 
 [![Email](https://img.shields.io/badge/Email-li__chaoran8888%40163.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:li_chaoran8888@163.com)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueX888)
-[![Open to Internship](https://img.shields.io/badge/Open%20to-Internship-4A00E0?style=for-the-badge&logo=briefcase&logoColor=white)](mailto:li_chaoran8888@163.com?subject=%5B%E5%AE%9E%E4%B9%A0%5D)
+[![ModelBest](https://img.shields.io/badge/Intern%20%40-ModelBest%20%2F%20OpenBMB-4A00E0?style=for-the-badge&logo=briefcase&logoColor=white)](https://github.com/OpenBMB)
 
 </div>
 
