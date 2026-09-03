@@ -26,9 +26,10 @@
 
 **我信什么？** 模型负责判断，代码负责搬运。安全边界、状态机、可审计性这些东西应该由确定性代码兜底，而不是寄希望于 prompt。
 
-- 🎓 **在读：** 北京工业大学 · 计算机科学与技术
+- 🎓 **研究生：** 北京工业大学（211）· 计算机科学与技术 · 2025.09 – 2028.06
+- 🎓 **本科：** 河南大学（双一流）· 计算机科学与技术 · 2021.09 – 2025.06
 - 🧪 **方向：** LLM Agent 编排、持久化执行、多智能体安全治理
-- 📍 **状态：** `Focusing` —— 少说，多写 Agent
+- 💼 **状态：** 研一在读，**正在寻找 AI / Agent 方向实习**，欢迎联系
 
 ---
 
@@ -105,9 +106,9 @@
 
 <div align="center">
 
+[![Email](https://img.shields.io/badge/Email-li__chaoran8888%40163.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:li_chaoran8888@163.com)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueX888)
-[![Issues](https://img.shields.io/badge/留言-Issues-8E2DE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueX888/BlueX888/issues)
-[![Open to Collaborate](https://img.shields.io/badge/Open%20to-Collaborate-4A00E0?style=for-the-badge&logo=handshake&logoColor=white)](https://github.com/BlueX888/BlueX888/issues/new)
+[![Open to Internship](https://img.shields.io/badge/Open%20to-Internship-4A00E0?style=for-the-badge&logo=briefcase&logoColor=white)](mailto:li_chaoran8888@163.com?subject=%5B%E5%AE%9E%E4%B9%A0%5D)
 
 </div>
 
