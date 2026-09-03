@@ -54,7 +54,7 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
-- [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42,015 — [[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg](https://github.com/agno-agi/agno/pull/9887) `2026-09-02`
+- [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg](https://github.com/agno-agi/agno/pull/9887) `2026-09-02`
 <!--END_SECTION:contributions-->
 
 ---

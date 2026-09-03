@@ -42,6 +42,11 @@ def fetch():
     return [n for n in data["data"]["search"]["nodes"] if n]
 
 
+def fmt_stars(n):
+    # 粗粒度，避免 star 数微小波动导致每次运行都产生提交
+    return f"{n / 1000:.0f}k" if n >= 1000 else str(n)
+
+
 def render(prs):
     if not prs:
         return "_暂无_"
@@ -50,7 +55,7 @@ def render(prs):
     for p in prs:
         repo = p["repository"]
         lines.append(
-            f"- [{repo['nameWithOwner']}]({repo['url']}) ⭐{repo['stargazerCount']:,} — "
+            f"- [{repo['nameWithOwner']}]({repo['url']}) ⭐{fmt_stars(repo['stargazerCount'])} — "
             f"[{p['title']}]({p['url']}) `{p['mergedAt'][:10]}`"
         )
     return "\n".join(lines)
