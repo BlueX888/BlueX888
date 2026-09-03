@@ -36,7 +36,8 @@
 ## 🔬 Current Work
 
 - ⚙️ **SwarmCore** 正在冲 M5 里程碑（v1 候选基线）：Temporal 持久化编排 + PostgreSQL 单一事实源 + OPA/Vault 治理
-- 🔧 给上游多智能体框架修 bug、提特性：OpenBMB（ChatDev / StaffDeck / PilotDeck）、Hugging Face smolagents、Agno
+- 🔧 给上游 Agent 框架修 bug、提特性：OpenBMB（ChatDev / StaffDeck / PilotDeck）、Hugging Face smolagents、Agno、OpenHands
+- 🔍 审 Agent 框架的核心模块（provider 适配层、streaming 聚合、tool 调用）主动找缺陷，带最小复现报 issue，再自己修
 - 📖 维护 **nanoteam**，把多智能体的最小可用形态写成一本能跑的教科书
 
 ---
@@ -57,6 +58,13 @@
 <!--START_SECTION:contributions-->
 - [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg](https://github.com/agno-agi/agno/pull/9887) `2026-09-02`
 <!--END_SECTION:contributions-->
+
+## 🔍 Upstream Bugs Found
+
+自己审代码发现、带无网络最小复现报出的缺陷（PR 合并后会自动进上一栏）：
+
+- [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k — [OpenAIResponsesModel 在 function call 被 max_output_tokens 截断时报 tool_use 而非 max_tokens，截断的工具调用被直接执行](https://github.com/strands-agents/harness-sdk/issues/4135) `2026-09-03` · 已被打上 `bug`，修复待认领
+- [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck) — [报销额度查询对不存在的员工返回"成功"结果](https://github.com/OpenBMB/StaffDeck/issues/257) `2026-09-02` · 修复 [#258](https://github.com/OpenBMB/StaffDeck/pull/258) 已提交
 
 ---
 
