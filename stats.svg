@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="195" viewBox="0 0 300 195" fill="none" role="img">
+  <style>
+    text { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif; }
+    .title { font-size: 18px; font-weight: 600; fill: #A78BFA; }
+    .label { font-size: 14px; fill: #C0CAF5; }
+    .value { font-size: 14px; font-weight: 600; fill: #A78BFA; }
+    .icon  { font-size: 14px; }
+    .pct   { font-size: 12px; fill: #565F89; }
+    /* 默认可见；支持 CSS 动画的环境才做淡入（backwards 让 delay 期间应用 from 状态） */
+    .fade  { animation: fadein 0.5s ease-in-out backwards; }
+    @keyframes fadein { from { opacity: 0; } }
+  </style>
+  <text x="25" y="33" class="title fade">BlueX888 的 GitHub 统计</text>
+  <g class="fade" style="animation-delay:150ms">
+    <text x="25" y="62" class="icon">🗓</text>
+    <text x="50" y="62" class="label">过去一年贡献:</text>
+    <text x="240" y="62" class="value">198</text>
+  </g>
+  <g class="fade" style="animation-delay:250ms">
+    <text x="25" y="88" class="icon">⚡</text>
+    <text x="50" y="88" class="label">提交 Commits（近一年）:</text>
+    <text x="240" y="88" class="value">154</text>
+  </g>
+  <g class="fade" style="animation-delay:350ms">
+    <text x="25" y="114" class="icon">⭐</text>
+    <text x="50" y="114" class="label">获得 Stars:</text>
+    <text x="240" y="114" class="value">2</text>
+  </g>
+  <g class="fade" style="animation-delay:450ms">
+    <text x="25" y="140" class="icon">🔀</text>
+    <text x="50" y="140" class="label">Pull Requests:</text>
+    <text x="240" y="140" class="value">17</text>
+  </g>
+  <g class="fade" style="animation-delay:550ms">
+    <text x="25" y="166" class="icon">🐛</text>
+    <text x="50" y="166" class="label">Issues:</text>
+    <text x="240" y="166" class="value">8</text>
+  </g>
+</svg>
