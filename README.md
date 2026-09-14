@@ -130,7 +130,10 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k | [Human Input Card 的回执被 MCP 路由自动提升忽略：`is_real_user_message` 对这类隐藏消息没有 carve-out，路由关键词只出现在用户澄清回答里时延迟 MCP 工具永不提升](https://github.com/bytedance/deer-flow/issues/5425) `2026-09-14` | 🟡 修复 [#5426](https://github.com/bytedance/deer-flow/pull/5426) 已提交，等待 review |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [OpenAIModel（Responses，TypeScript）在 function call 被 max_output_tokens 截断时报 toolUse 而非 maxTokens，Python 侧同款缺陷的 TS 版](https://github.com/strands-agents/harness-sdk/issues/4158) `2026-09-04` | 🟡 修复 [#4159](https://github.com/strands-agents/harness-sdk/pull/4159) 已提交，等待 review |
+| [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k | [同步工具执行路径把 `0` / `False` / `[]` 这类有意义的假值结果当成空结果发给模型，异步路径却会发 `"0"`](https://github.com/agno-agi/agno/issues/9947) `2026-09-04` | 🟡 修复 [#9948](https://github.com/agno-agi/agno/pull/9948) 已提交，等待 review |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k | [MindIE 工具模式下的异步流式丢 token usage](https://github.com/bytedance/deer-flow/issues/5192) `2026-09-04` | 🟢 社区 PR [#5195](https://github.com/bytedance/deer-flow/pull/5195) 已修复 |
 | [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) ⭐31k | [AnthropicChatModel 流式解析把一次响应里的多个 thinking block 合并成一个，只保留最后一个 signature](https://github.com/agentscope-ai/agentscope/issues/2494) `2026-09-03` | 🟡 社区 PR [#2495](https://github.com/agentscope-ai/agentscope/pull/2495) 修复中，已用我的复现脚本验证 |
 | [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) ⭐20k | [MistralModel 流式模式下注册了 output tool 时，模型回复纯文本会抛裸 ValueError 或丢文本](https://github.com/pydantic/pydantic-ai/issues/8039) `2026-09-03` | 🟡 维护者已认领修复 |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [OpenAIResponsesModel 在 function call 被 max_output_tokens 截断时报 tool_use 而非 max_tokens，截断的工具调用被直接执行](https://github.com/strands-agents/harness-sdk/issues/4135) `2026-09-03` | 🟢 修复 [#4139](https://github.com/strands-agents/harness-sdk/pull/4139) 已合并 |
