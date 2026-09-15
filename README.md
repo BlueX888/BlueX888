@@ -116,6 +116,8 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
+- [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k — [fix(local-provider): apply transforms in get_tasks](https://github.com/PrefectHQ/fastmcp/pull/5117) `2026-09-15`
+- [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k — [fix(azure): key streamed tool calls by wire index](https://github.com/crewAIInc/crewAI/pull/7487) `2026-09-15`
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k — [fix(mcp): treat a Human Input Card reply as the current user request](https://github.com/bytedance/deer-flow/pull/5426) `2026-09-14`
   - HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词（与 summarization / tool_receipt 中间件一致），并补回归测试。
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k — [fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools](https://github.com/bytedance/deer-flow/pull/5164) `2026-09-04`
