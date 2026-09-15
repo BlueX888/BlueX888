@@ -48,7 +48,7 @@ QUERY = """
 """ % (USER, USER)
 
 
-def fetch():
+def fetch_once():
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": QUERY}).encode(),
@@ -60,8 +60,27 @@ def fetch():
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = json.loads(resp.read())
     if "errors" in data:
-        raise SystemExit("GraphQL errors: %s" % data["errors"])
+        raise RuntimeError("GraphQL errors: %s" % data["errors"])
     return [n for n in data["data"]["search"]["nodes"] if n]
+
+
+def fetch(attempts=4):
+    """GitHub 的 search 索引是最终一致的：同一条查询连着跑会返回不同的子集
+    （实测 4 条 → 2 条 → 1 条）。多打几次、取条数最多的那次，别拿残缺结果去覆盖。"""
+    best = []
+    for i in range(attempts):
+        try:
+            got = fetch_once()
+        except Exception as exc:
+            print("fetch attempt %d/%d failed: %s" % (i + 1, attempts, exc), file=sys.stderr)
+            continue
+        if len(got) > len(best):
+            best = got
+        if len(got) == len(best) and len(best) >= 50:
+            break
+    if not best:
+        raise SystemExit("search 连续 %d 次都没返回结果，拒绝覆盖" % attempts)
+    return best
 
 
 def fmt_stars(n):
@@ -86,12 +105,26 @@ def render(prs):
     return "\n".join(lines)
 
 
+def count_entries(section):
+    return sum(1 for line in section.splitlines() if line.startswith("- ["))
+
+
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else "README.md"
     text = open(path, encoding="utf-8").read()
     if START not in text or END not in text:
         raise SystemExit("README 缺少 contributions 标记")
+    span = re.search(re.escape(START) + r"(.*?)" + re.escape(END), text, flags=re.S)
+    old_count = count_entries(span.group(1))
     body = render(fetch())
+    # 这个区块是整段替换的：抓到一半就等于把真实存在的已合并 PR 从主页删掉。
+    # 宁可本次不更新、让 CI 失败得看得见，也不要静默缩水。
+    new_count = count_entries(body)
+    if new_count < old_count:
+        raise SystemExit(
+            "拒绝写入：本次抓到 %d 条，现有区块有 %d 条。"
+            "多半是 GitHub search 返回了不完整结果，重跑即可。" % (new_count, old_count)
+        )
     new = re.sub(
         re.escape(START) + r".*?" + re.escape(END),
         f"{START}\n{body}\n{END}",
