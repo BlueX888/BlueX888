@@ -58,7 +58,7 @@
 
 - ⚙️ **SwarmCore** 正在冲 M5 里程碑（v1 候选基线）：Temporal 持久化编排 + PostgreSQL 单一事实源 + OPA/Vault 治理
 - 💼 在面壁智能实习，参与 OpenBMB 的 Agent 产品（ChatDev / StaffDeck / PilotDeck）开发
-- 🔧 给上游 Agent 框架修 bug、提特性：Strands Agents、Agno、deer-flow、Hugging Face smolagents、OpenHands
+- 🔧 给上游 Agent 框架修 bug、提特性：Strands Agents、Agno、deer-flow、Hugging Face smolagents、OpenHands、crewAI、CAMEL、LangGraph / DeepAgents、mem0、RAGAS、DeepEval、FastMCP、mcp-use、MCP Servers、OpenAI Agents SDK（Python / TS）、Mastra
 - 🔍 审 Agent 框架的核心模块（provider 适配层、streaming 聚合、tool 调用）主动找缺陷：写无网络最小复现 → 按仓库模板报 issue → 允许直接 PR 的仓库当天带回归测试提修复，issue-first 的仓库等维护者确认后再修
 - 📖 维护 **nanoteam**，把多智能体的最小可用形态写成一本能跑的教科书
 
@@ -132,8 +132,23 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
+| [camel-ai/camel](https://github.com/camel-ai/camel) ⭐18k | [同步流式 ChatAgent 在流式工具调用超过 `tool_execution_timeout` 时抛未捕获的 `TimeoutError` 中止整个 step，而不是按契约降级](https://github.com/camel-ai/camel/issues/4336) `2026-09-15` | 🟡 已提交，等待确认 |
+| [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k | [`CrewStructuredTool.ainvoke()` 在 func 是异步工具的同步包装时返回未 await 的协程，异步 agent 把 `<coroutine object ...>` 当成工具结果喂给 LLM](https://github.com/crewAIInc/crewAI/issues/7474) `2026-09-15` | 🟡 已提交，等待确认 |
+| [mcp-use/mcp-use](https://github.com/mcp-use/mcp-use) ⭐11k | [OpenAI Responses 流式按 `call_id` 索引工具调用缓冲，但事件携带 `item_id`，导致工具调用事件永不发出、`stream()` 零 step](https://github.com/mcp-use/mcp-use/issues/2550) `2026-09-15` | 🟢 修复 [#2551](https://github.com/mcp-use/mcp-use/pull/2551) 已提交 |
+| [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) ⭐29k | [`compact_conversation` 跳过 `_offload_inline_media`，摘要时内联图片从存档中丢失，而自动摘要路径会保留](https://github.com/langchain-ai/deepagents/issues/6312) `2026-09-15` | ⚪ 该仓库禁止程序化提交，issue 被自动关闭（未重开） |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`LocalProvider.get_tasks()` 跳过 provider 自身的 transform，`add_transform(Namespace(...))` 会让后台任务注册失效](https://github.com/PrefectHQ/fastmcp/issues/5114) `2026-09-15` | 🟡 已提交，等待确认 |
+| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) ⭐42k | [ToolNode 拒绝合法的 `list[Command]` 返回：终止用的 ToolMessage 是 dict 形式或包在 list 形式的 `Command.update` 里时校验不通过](https://github.com/langchain-ai/langgraph/issues/8924) `2026-09-15` | 🟡 已提交，等待确认 |
+| [mastra-ai/mastra](https://github.com/mastra-ai/mastra) ⭐28k | [顶层数组结构化输出对基元数组恒返回 `[]`，静默丢结果](https://github.com/mastra-ai/mastra/issues/23980) `2026-09-15` | 🟡 已提交，等待确认 |
+| [confident-ai/deepeval](https://github.com/confident-ai/deepeval) ⭐18k | [`KimiModel.__init__` 在所选模型没有登记定价时抛 `TypeError: float(None)`，模型根本无法实例化](https://github.com/confident-ai/deepeval/issues/3287) `2026-09-15` | 🟢 修复 [#3288](https://github.com/confident-ai/deepeval/pull/3288) 已提交 |
+| [mem0ai/mem0](https://github.com/mem0ai/mem0) ⭐65k | [AWS Bedrock 旧版 Titan 响应恒解析为空字符串：`_parse_response` 读 Titan 从不返回的 `completion` 字段](https://github.com/mem0ai/mem0/issues/7336) `2026-09-15` | 🟡 已提交，等待确认 |
+| [openai/openai-agents-python](https://github.com/openai/openai-agents-python) ⭐29k | [Chat Completions 流式中迟到的 reasoning item 复用 `output_index 0`，与 `response.completed.output` 的索引脱节](https://github.com/openai/openai-agents-python/issues/5041) `2026-09-15` | 🟡 社区 PR [#5042](https://github.com/openai/openai-agents-python/pull/5042) 修复中 |
+| [vibrantlabsai/ragas](https://github.com/vibrantlabsai/ragas) ⭐16k | [AG-UI 的 MessagesSnapshot 转换丢掉每个 tool call 的 name 与 arguments，回读成 `ToolCall(name='unknown_tool', args={})`](https://github.com/vibrantlabsai/ragas/issues/3010) `2026-09-15` | 🟢 修复 [#3011](https://github.com/vibrantlabsai/ragas/pull/3011) 已提交 |
+| [huggingface/smolagents](https://github.com/huggingface/smolagents) ⭐29k | [`Model.to_dict()` 丢 `custom_role_conversions`（属性名少个 s，`hasattr` 恒假）与 `client_kwargs` 里的端点配置，保存的 agent 重新加载后连回默认端点](https://github.com/huggingface/smolagents/issues/2799) `2026-09-15` | 🟡 已提交，等待确认 |
+| [langchain-ai/langchain](https://github.com/langchain-ai/langchain) ⭐146k | [`Runnable.as_tool()` 重建 TypedDict schema 时把所有键标成必填，工具因此拒收 runnable 本身接受的输入](https://github.com/langchain-ai/langchain/issues/40455) `2026-09-15` | ⚪ 该仓库禁止程序化提交，issue 被自动关闭（未重开） |
+| [openai/openai-agents-js](https://github.com/openai/openai-agents-js) ⭐3.8k | [`getAllMcpTools` 只拦截跨 server 的重名工具，同一 server 内归一化后同名的两个工具会一起返回](https://github.com/openai/openai-agents-js/issues/1934) `2026-09-15` | 🟢 修复 [#1935](https://github.com/openai/openai-agents-js/pull/1935) 已提交 |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐90k | [两个会话使用同名文件时，后注册的资源会把前一个会话的资源驱逐](https://github.com/modelcontextprotocol/servers/issues/4808) `2026-09-15` | 🟡 社区 PR [#4809](https://github.com/modelcontextprotocol/servers/pull/4809) 修复中 |
 | [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k | [Human Input Card 的回执被 MCP 路由自动提升忽略：`is_real_user_message` 对这类隐藏消息没有 carve-out，路由关键词只出现在用户澄清回答里时延迟 MCP 工具永不提升](https://github.com/bytedance/deer-flow/issues/5425) `2026-09-14` | 🟢 修复 [#5426](https://github.com/bytedance/deer-flow/pull/5426) 已合并 |
-| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [OpenAIModel（Responses，TypeScript）在 function call 被 max_output_tokens 截断时报 toolUse 而非 maxTokens，Python 侧同款缺陷的 TS 版](https://github.com/strands-agents/harness-sdk/issues/4158) `2026-09-04` | 🟡 修复 [#4159](https://github.com/strands-agents/harness-sdk/pull/4159) 已提交，等待 review |
+| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [OpenAIModel（Responses，TypeScript）在 function call 被 max_output_tokens 截断时报 toolUse 而非 maxTokens，Python 侧同款缺陷的 TS 版](https://github.com/strands-agents/harness-sdk/issues/4158) `2026-09-04` | 🟡 修复 [#4159](https://github.com/strands-agents/harness-sdk/pull/4159) 已获维护者 approve，仍卡首次贡献者 CI 审批门禁 |
 | [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k | [同步工具执行路径把 `0` / `False` / `[]` 这类有意义的假值结果当成空结果发给模型，异步路径却会发 `"0"`](https://github.com/agno-agi/agno/issues/9947) `2026-09-04` | 🟡 修复 [#9948](https://github.com/agno-agi/agno/pull/9948) 已提交，等待 review |
 | [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k | [MindIE 工具模式下的异步流式丢 token usage](https://github.com/bytedance/deer-flow/issues/5192) `2026-09-04` | 🟢 社区 PR [#5195](https://github.com/bytedance/deer-flow/pull/5195) 已修复 |
 | [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) ⭐31k | [AnthropicChatModel 流式解析把一次响应里的多个 thinking block 合并成一个，只保留最后一个 signature](https://github.com/agentscope-ai/agentscope/issues/2494) `2026-09-03` | 🟡 社区 PR [#2495](https://github.com/agentscope-ai/agentscope/pull/2495) 修复中，已用我的复现脚本验证 |
