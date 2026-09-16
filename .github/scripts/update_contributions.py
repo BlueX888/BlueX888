@@ -15,6 +15,16 @@ START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contribution
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 只渲染标题行。
 NOTES = {
+    "PrefectHQ/fastmcp#5117": (
+        "MCP 本地 Provider：`LocalProvider.get_tasks()` 直接返回原始组件键，绕过了 Provider 基类的 transform 管线，"
+        "于是 `add_transform(Namespace(...))` 之后后台任务注册到的名字与工具/资源不一致，按命名空间调用会找不到任务。"
+        "改为在 `get_tasks` 里同样应用 transforms，并补回归测试。"
+    ),
+    "crewAIInc/crewAI#7487": (
+        "Azure 流式补全：tool call 的增量按数组位置归并，但后续 chunk 会重排顺序，"
+        "导致首个 chunk 的 `id` 配上最后一个 chunk 的 `name`、参数被拼到错误的调用上。"
+        "改为按 wire index 归并，并补回归测试。"
+    ),
     "bytedance/deer-flow#5426": (
         "HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，"
         "用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词"

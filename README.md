@@ -117,10 +117,12 @@
 
 <!--START_SECTION:contributions-->
 - [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k — [fix(local-provider): apply transforms in get_tasks](https://github.com/PrefectHQ/fastmcp/pull/5117) `2026-09-15`
+  - MCP 本地 Provider：`LocalProvider.get_tasks()` 直接返回原始组件键，绕过了 Provider 基类的 transform 管线，于是 `add_transform(Namespace(...))` 之后后台任务注册到的名字与工具/资源不一致，按命名空间调用会找不到任务。改为在 `get_tasks` 里同样应用 transforms，并补回归测试。
 - [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k — [fix(azure): key streamed tool calls by wire index](https://github.com/crewAIInc/crewAI/pull/7487) `2026-09-15`
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k — [fix(mcp): treat a Human Input Card reply as the current user request](https://github.com/bytedance/deer-flow/pull/5426) `2026-09-14`
+  - Azure 流式补全：tool call 的增量按数组位置归并，但后续 chunk 会重排顺序，导致首个 chunk 的 `id` 配上最后一个 chunk 的 `name`、参数被拼到错误的调用上。改为按 wire index 归并，并补回归测试。
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): treat a Human Input Card reply as the current user request](https://github.com/bytedance/deer-flow/pull/5426) `2026-09-14`
   - HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词（与 summarization / tool_receipt 中间件一致），并补回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐82k — [fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools](https://github.com/bytedance/deer-flow/pull/5164) `2026-09-04`
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools](https://github.com/bytedance/deer-flow/pull/5164) `2026-09-04`
   - MCP 工具调用：同步包装的 MCP 工具在 PEP 563 延迟注解下丢失 `ToolRuntime` 注入，工具拿不到会话上下文。修复后注入在两种注解模式下都生效，按 maintainer review 补了契约说明和测试。
 - [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k — [fix(openai): report max_tokens when a Responses function call is cut off](https://github.com/strands-agents/harness-sdk/pull/4139) `2026-09-03`
   - OpenAI Responses 流式解析：function call 被 `max_output_tokens` 截断时 `stop_reason` 仍报 `tool_use`，Agent 会拿残缺参数直接执行工具。修正判定优先级，截断时如实报 `max_tokens`，并补回归测试。
@@ -134,11 +136,12 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
-| [camel-ai/camel](https://github.com/camel-ai/camel) ⭐18k | [同步流式 ChatAgent 在流式工具调用超过 `tool_execution_timeout` 时抛未捕获的 `TimeoutError` 中止整个 step，而不是按契约降级](https://github.com/camel-ai/camel/issues/4336) `2026-09-15` | 🟡 已提交，等待确认 |
-| [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k | [`CrewStructuredTool.ainvoke()` 在 func 是异步工具的同步包装时返回未 await 的协程，异步 agent 把 `<coroutine object ...>` 当成工具结果喂给 LLM](https://github.com/crewAIInc/crewAI/issues/7474) `2026-09-15` | 🟡 已提交，等待确认 |
+| [camel-ai/camel](https://github.com/camel-ai/camel) ⭐18k | [同步流式 ChatAgent 在流式工具调用超过 `tool_execution_timeout` 时抛未捕获的 `TimeoutError` 中止整个 step，而不是按契约降级](https://github.com/camel-ai/camel/issues/4336) `2026-09-15` | 🟢 修复 [#4337](https://github.com/camel-ai/camel/pull/4337) 已提交 |
+| [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k | [`CrewStructuredTool.ainvoke()` 在 func 是异步工具的同步包装时返回未 await 的协程，异步 agent 把 `<coroutine object ...>` 当成工具结果喂给 LLM](https://github.com/crewAIInc/crewAI/issues/7474) `2026-09-15` | 🟡 社区 PR [#7475](https://github.com/crewAIInc/crewAI/pull/7475) / [#7481](https://github.com/crewAIInc/crewAI/pull/7481) 修复中 |
+| [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k | [Azure 流式补全把并行 tool call 的增量按数组位置归并，首个 chunk 的 id 会配到最后一个 chunk 的 name 上、参数拼错](https://github.com/crewAIInc/crewAI/issues/7486) `2026-09-15` | 🟢 修复 [#7487](https://github.com/crewAIInc/crewAI/pull/7487) 已合并 |
 | [mcp-use/mcp-use](https://github.com/mcp-use/mcp-use) ⭐11k | [OpenAI Responses 流式按 `call_id` 索引工具调用缓冲，但事件携带 `item_id`，导致工具调用事件永不发出、`stream()` 零 step](https://github.com/mcp-use/mcp-use/issues/2550) `2026-09-15` | 🟢 修复 [#2551](https://github.com/mcp-use/mcp-use/pull/2551) 已提交 |
 | [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) ⭐29k | [`compact_conversation` 跳过 `_offload_inline_media`，摘要时内联图片从存档中丢失，而自动摘要路径会保留](https://github.com/langchain-ai/deepagents/issues/6312) `2026-09-15` | ⚪ 该仓库禁止程序化提交，issue 被自动关闭（未重开） |
-| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`LocalProvider.get_tasks()` 跳过 provider 自身的 transform，`add_transform(Namespace(...))` 会让后台任务注册失效](https://github.com/PrefectHQ/fastmcp/issues/5114) `2026-09-15` | 🟡 已提交，等待确认 |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`LocalProvider.get_tasks()` 跳过 provider 自身的 transform，`add_transform(Namespace(...))` 会让后台任务注册失效](https://github.com/PrefectHQ/fastmcp/issues/5114) `2026-09-15` | 🟢 修复 [#5117](https://github.com/PrefectHQ/fastmcp/pull/5117) 已合并 |
 | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) ⭐42k | [ToolNode 拒绝合法的 `list[Command]` 返回：终止用的 ToolMessage 是 dict 形式或包在 list 形式的 `Command.update` 里时校验不通过](https://github.com/langchain-ai/langgraph/issues/8924) `2026-09-15` | 🟡 已提交，等待确认 |
 | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) ⭐28k | [顶层数组结构化输出对基元数组恒返回 `[]`，静默丢结果](https://github.com/mastra-ai/mastra/issues/23980) `2026-09-15` | 🟡 已提交，等待确认 |
 | [confident-ai/deepeval](https://github.com/confident-ai/deepeval) ⭐18k | [`KimiModel.__init__` 在所选模型没有登记定价时抛 `TypeError: float(None)`，模型根本无法实例化](https://github.com/confident-ai/deepeval/issues/3287) `2026-09-15` | 🟢 修复 [#3288](https://github.com/confident-ai/deepeval/pull/3288) 已提交 |
