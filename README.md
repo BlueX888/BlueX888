@@ -116,6 +116,7 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): pair Codex invalid tool calls with their tool results](https://github.com/bytedance/deer-flow/pull/5509) `2026-09-17`
 - [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] keep falsy tool results (0, False, []) on the sync tool execution path](https://github.com/agno-agi/agno/pull/9948) `2026-09-16`
 - [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k — [fix(local-provider): apply transforms in get_tasks](https://github.com/PrefectHQ/fastmcp/pull/5117) `2026-09-15`
   - MCP 本地 Provider：`LocalProvider.get_tasks()` 直接返回原始组件键，绕过了 Provider 基类的 transform 管线，于是 `add_transform(Namespace(...))` 之后后台任务注册到的名字与工具/资源不一致，按命名空间调用会找不到任务。改为在 `get_tasks` 里同样应用 transforms，并补回归测试。
