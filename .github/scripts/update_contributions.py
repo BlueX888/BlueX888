@@ -15,6 +15,14 @@ START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contribution
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 只渲染标题行。
 NOTES = {
+    "bytedance/deer-flow#5522": (
+        "MCP 工具结果重写：`_rewrite_unique_bare_filenames` 把相关好的虚拟路径当成 `Pattern.subn` 的**替换模板**传入，"
+        "而替换串来自真实文件的相对路径、反斜杠在 POSIX 文件名里是普通字符（模型给 stdio server 传了 Windows 风格路径就会"
+        "产生名为 `screenshots\\q3.png` 的文件）。模板在找匹配**之前**编译，于是 `\\q` 这种未知转义直接抛 `re.error` 逃出 "
+        "`_convert_call_tool_result`、整个工具调用失败（文件其实已写好）；能被 `re` 接受的转义则把该字节替换进返回文本"
+        "（`\\r` 变成路径中间的真实回车）。改为用 callable 替换逐字插入，并补两半回归测试。"
+        "文件来自 workspace 快照 diff，所以触发文件不必是本次调用写的。"
+    ),
     "bytedance/deer-flow#5509": (
         "Codex Responses 序列化：模型发出 `arguments` 不是合法 JSON 的 `function_call` 时，该调用被 `_parse_response` 收进 "
         "`invalid_tool_calls`，中间件会用带同一 `call_id` 的占位 `ToolMessage` 就地兜住，但序列化器只回放 `msg.tool_calls`，"
@@ -147,9 +155,11 @@ def main():
             "拒绝写入：本次抓到 %d 条，现有区块有 %d 条。"
             "多半是 GitHub search 返回了不完整结果，重跑即可。" % (new_count, old_count)
         )
+    # 用 callable 替换：body 里有反斜杠（说明文字里引用的文件名）时，
+    # 字符串模板会被 re 当成转义序列解析，`\q` 这种直接抛 re.error。
     new = re.sub(
         re.escape(START) + r".*?" + re.escape(END),
-        f"{START}\n{body}\n{END}",
+        lambda _m: f"{START}\n{body}\n{END}",
         text,
         flags=re.S,
     )
