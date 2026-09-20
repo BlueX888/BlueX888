@@ -116,6 +116,10 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): tolerate a null Codex account_id before it reaches the request header](https://github.com/bytedance/deer-flow/pull/5601) `2026-09-20`
+  - Codex 凭据加载：`account_id` 以 `data.get("account_id") or tokens.get("account_id", "")` 读取，`""` 兜底只覆盖「键缺失」——键存在但值为 JSON `null` 时 falsy 落穿到下一环，表达式求值为 `None` 灌进 `CodexCliCredential(account_id=None)`，在 `model_post_init` 的 `account_id[:8]` 处抛裸 `TypeError`，account 未知的凭据文件让所有 `CodexChatModel` 构造失败而非以未记账账号运行。改为任何非字符串值一律归一为字段文档的未知账号值 `""`，补回归测试。
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): skip Claude credentials sources with a non-numeric expiresAt](https://github.com/bytedance/deer-flow/pull/5591) `2026-09-20`
+  - Claude 凭据加载：`_extract_claude_code_credential` 把 `claudeAiOauth.expiresAt` 原样拷进 `ClaudeCodeCredential.expires_at`，`is_expired` 随即拿它和 `0` 比大小——字符串、`null`、list、object 一律抛 `TypeError` 且无人捕获，凭据查找循环停在坏文件上不再推进，`$CLAUDE_CODE_CREDENTIALS_PATH` 里一个坏 `expiresAt` 就足以让 `~/.claude/.credentials.json` 永远读不到，还顺着 `ClaudeChatModel.model_post_init` 冒出去使该文件存在时所有模型构造失败而非降级。改为非数值 `expiresAt` 的候选源按 #5494 已立的契约跳过并记 debug 日志（缺失键仍回落默认 `0`、不视为过期），补齐各形态回归测试。
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): degrade a non-object Codex auth file to no credential](https://github.com/bytedance/deer-flow/pull/5584) `2026-09-19`
   - Codex 凭据加载：`load_codex_cli_credential` 经 `_load_json_file` 读 `~/.codex/auth.json`，而 `json.loads` 的产物不限于对象，加载器却直接对它调 `data.get("tokens", {})`——顶层是数组/字符串/数字的 auth 文件因此抛 `AttributeError: 'list' object has no attribute 'get'`。异常无人捕获，从 `CodexChatModel.model_post_init` 冒出去，在 provider 来得及抛它那句文档化的「Codex CLI credential not found」之前就中止了模型构造，与该模块「读不到就降级」的约定正好相反。嵌套的 `tokens` 早已有这道守卫，同文件的 Claude 加载器也在 #5494 补了等价的顶层守卫，Codex 的顶层是唯一漏掉的一处。
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): insert bare-filename rewrites literally](https://github.com/bytedance/deer-flow/pull/5522) `2026-09-18`
