@@ -136,7 +136,7 @@
   - HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词（与 summarization / tool_receipt 中间件一致），并补回归测试。
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools](https://github.com/bytedance/deer-flow/pull/5164) `2026-09-04`
   - MCP 工具调用：同步包装的 MCP 工具在 PEP 563 延迟注解下丢失 `ToolRuntime` 注入，工具拿不到会话上下文。修复后注入在两种注解模式下都生效，按 maintainer review 补了契约说明和测试。
-- [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k — [fix(openai): report max_tokens when a Responses function call is cut off](https://github.com/strands-agents/harness-sdk/pull/4139) `2026-09-03`
+- [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8k — [fix(openai): report max_tokens when a Responses function call is cut off](https://github.com/strands-agents/harness-sdk/pull/4139) `2026-09-03`
   - OpenAI Responses 流式解析：function call 被 `max_output_tokens` 截断时 `stop_reason` 仍报 `tool_use`，Agent 会拿残缺参数直接执行工具。修正判定优先级，截断时如实报 `max_tokens`，并补回归测试。
 - [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg](https://github.com/agno-agi/agno/pull/9887) `2026-09-02`
   - Gemini 多模态输入：图片 MIME 类型被硬编码为 `image/jpeg`，PNG/WebP 等格式会被贴错标签导致 API 拒收或误解析。改为从图片数据实际解析类型后再传给模型。
