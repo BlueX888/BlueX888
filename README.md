@@ -116,6 +116,8 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(tools): route bound task and batch tools' sync path through the bound runtime](https://github.com/bytedance/deer-flow/pull/5861) `2026-09-25`
+- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(sandbox): list the skills root when only category mounts exist](https://github.com/bytedance/deer-flow/pull/5857) `2026-09-25`
 - [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [fix: store raw video bytes in GeminiTools.generate_video artifact](https://github.com/agno-agi/agno/pull/10554) `2026-09-25`
   - `GeminiTools.generate_video` 把返回的 `Video` artifact 用 base64 **文本**构造（`base64.b64encode(generated_video.video_bytes).decode("utf-8")`），而 `agno.media.Video.content` 声明为原始视频 `bytes`，Pydantic 把该字符串强转成 base64 文本的 UTF-8 字节——`Video.get_content_bytes()` 的每个消费者（媒体卸载上传、artifact 落盘）拿到的都是 base64 文本而不是视频。改为直接传原始字节，对齐同工具箱的 `generate_image` 分支与其余六个视频工具箱（opencv/fal/minimax/replicate/wavespeed/lumalab），补回归测试。
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): tolerate a null Codex account_id before it reaches the request header](https://github.com/bytedance/deer-flow/pull/5601) `2026-09-20`
