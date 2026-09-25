@@ -15,6 +15,14 @@ START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contribution
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 只渲染标题行。
 NOTES = {
+    "agno-agi/agno#10554": (
+        "`GeminiTools.generate_video` 把返回的 `Video` artifact 用 base64 **文本**构造"
+        "（`base64.b64encode(generated_video.video_bytes).decode(\"utf-8\")`），而 `agno.media.Video.content` "
+        "声明为原始视频 `bytes`，Pydantic 把该字符串强转成 base64 文本的 UTF-8 字节——`Video.get_content_bytes()` "
+        "的每个消费者（媒体卸载上传、artifact 落盘）拿到的都是 base64 文本而不是视频。改为直接传原始字节，"
+        "对齐同工具箱的 `generate_image` 分支与其余六个视频工具箱（opencv/fal/minimax/replicate/wavespeed/lumalab），"
+        "补回归测试。"
+    ),
     "bytedance/deer-flow#5591": (
         "Claude 凭据加载：`_extract_claude_code_credential` 把 `claudeAiOauth.expiresAt` 原样拷进 "
         "`ClaudeCodeCredential.expires_at`，`is_expired` 随即拿它和 `0` 比大小——字符串、`null`、list、object "
