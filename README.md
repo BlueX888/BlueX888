@@ -116,6 +116,7 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
+- [openai/openai-agents-js](https://github.com/openai/openai-agents-js) ⭐4k — [fix(agents-core): handle same-server MCP tool name collisions](https://github.com/openai/openai-agents-js/pull/1935) `2026-09-25`
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(tools): route bound task and batch tools' sync path through the bound runtime](https://github.com/bytedance/deer-flow/pull/5861) `2026-09-25`
 - [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(sandbox): list the skills root when only category mounts exist](https://github.com/bytedance/deer-flow/pull/5857) `2026-09-25`
 - [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [fix: store raw video bytes in GeminiTools.generate_video artifact](https://github.com/agno-agi/agno/pull/10554) `2026-09-25`
