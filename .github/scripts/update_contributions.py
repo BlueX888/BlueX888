@@ -15,6 +15,32 @@ START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contribution
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 只渲染标题行。
 NOTES = {
+    "bytedance/deer-flow#5861": (
+        "`bind_task_tool` / `_bind_batch_tool` 给副本重绑的只有 `coroutine`，`func` 仍是进程级单例的 sync 包装——"
+        "包着**未绑定**的 coroutine，同步调用 bound 副本因此绕过显式 SDK submitter 与执行容量、落回进程全局回退"
+        "（恰是 `bind_batch_tools` docstring 明令禁止的「never fall through to another application's process-global "
+        "submitter」），在单例从未被 sync 包装过的新进程里则直接 `NotImplementedError`。"
+        "改为把副本的 `func` 也重绑成 `make_sync_tool_wrapper(bound_coroutine, ...)`（与 `_ensure_sync_invocable_tool` "
+        "同一 helper），两条调用路径都走 bound coroutine 及其 runtime 的 submitter 与容量；补三条回归测试，"
+        "main 上红、本分支绿。"
+    ),
+    "bytedance/deer-flow#5857": (
+        "默认（非 policy-scoped）skills 投影下 `ls /mnt/skills` 报 Directory not found：该布局只挂四个 category "
+        "子目录、没有 `/mnt/skills` 根自身的 `PathMapping`，`LocalSandbox.list_dir` 把根解析成字面宿主路径，"
+        "宿主扫描的 `FileNotFoundError` 抢在虚拟子目录 overlay——专为让 agent 用 `ls /mnt/skills` 发现 category "
+        "而写的代码块——之前抛出。改为宿主扫描抛 `FileNotFoundError` 时，只要请求的容器路径内至少挂了一个映射，"
+        "就按空宿主列表处理、让既有 overlay 浮出挂载的子目录，什么都没挂的路径照旧报错；"
+        "补回归测试，main 上红、本分支绿。"
+    ),
+    "openai/openai-agents-js#1935": (
+        "`getAllMcpTools` 只拦**跨** server 的重名：`toFunctionToolName` 把非字母数字全替成 `_`，同一 server 里 "
+        "`search-a` 与 `search_a` 归一后都叫 `search_a`，两个工具一起返回，`resolveModelVisibleToolNameCollisions` "
+        "丢掉其中一个、模型只剩一个可达——守卫只拿当前 server 的名字与之前 server 已占的比较，还先把当前批次收进 "
+        "`Set`，批内重复根本到不了比较；prefixed 路径按前缀后的 base name 计数，`-` 与 `_` 都算安全字符、"
+        "base 不同就不强制 hash 后缀，归一后才相撞。改为 `findDuplicateToolNames` 同时报批内重复与先前 server 的"
+        "占用（非前缀路径抛既有 `UserError`），前缀路径按归一后的名字计数预留、相撞时给同一确定性 hash 后缀，"
+        "两个工具都保可达；补/扩回归测试，修前 2 败、修后 69 全过。"
+    ),
     "agno-agi/agno#10554": (
         "`GeminiTools.generate_video` 把返回的 `Video` artifact 用 base64 **文本**构造"
         "（`base64.b64encode(generated_video.video_bytes).decode(\"utf-8\")`），而 `agno.media.Video.content` "
