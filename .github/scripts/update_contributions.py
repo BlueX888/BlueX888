@@ -1,19 +1,30 @@
 #!/usr/bin/env python3
-"""把已合并到他人仓库的 PR 写进 README 的 contributions 区块。
+"""刷新 README 里两个自动生成的区块。
+
+- contributions：已合并到他人仓库的 PR（GraphQL search 抓取）——上游仓库头像墙 + 每个 PR 一条可折叠说明；
+- bug-stats：缺陷表上方的数字条，逐行统计手工维护的 `## 🔍` 缺陷表，改完表跑一次本脚本即可跟上。
 
 用法: GITHUB_TOKEN=xxx python3 update_contributions.py README.md
 """
+import html
 import json
+import math
 import os
 import re
 import sys
 import urllib.request
+from collections import Counter
 
 USER = "BlueX888"
 START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contributions-->"
+BUG_START, BUG_END = "<!--START_SECTION:bug-stats-->", "<!--END_SECTION:bug-stats-->"
+# 头像墙每行最多几个仓库，再多就均分成几行，免得在主页上被挤扁
+WALL_PER_ROW = 6
+# 与 pr-tracker 的 homepage_sync.py 同一口径：区块里每个 PR 至少要有一个 markdown 形式的 `(…/pull/N)` 链接
+PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
-# 新 PR 合并后在这里补一行即可；没有说明的 PR 只渲染标题行。
+# 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
     "bytedance/deer-flow#5861": (
         "`bind_task_tool` / `_bind_batch_tool` 给副本重绑的只有 `coroutine`，`func` 仍是进程级单例的 sync 包装——"
@@ -176,25 +187,126 @@ def fmt_stars(n):
     return f"{n / 1000:.0f}k" if n >= 1000 else str(n)
 
 
+def avatar(owner, size):
+    # github.com/<owner>.png 会 302 到头像 CDN，GitHub 的 camo 图片代理能跟随
+    return f"https://github.com/{owner}.png?size={size}"
+
+
+def render_wall(repos):
+    """repos: [(repository, 合并数)]，按合并数、star 数排成一面上游仓库头像墙。"""
+    repos = sorted(repos, key=lambda e: (-e[1], -e[0]["stargazerCount"], e[0]["nameWithOwner"].lower()))
+    per_row = math.ceil(len(repos) / math.ceil(len(repos) / WALL_PER_ROW))
+    tables = []
+    for i in range(0, len(repos), per_row):
+        cells = []
+        for repo, merged in repos[i:i + per_row]:
+            owner, name = repo["nameWithOwner"].split("/", 1)
+            url, stars = repo["url"], fmt_stars(repo["stargazerCount"])
+            cells.append(
+                f'<td align="center"><a href="{url}"><img src="{avatar(owner, 80)}" width="40" height="40" '
+                f'alt="{owner}"/><br/><b>{name}</b></a><br/><sub>⭐{stars} · 合并 {merged}</sub></td>'
+            )
+        tables.append('<table align="center">\n<tr>\n' + "\n".join(cells) + "\n</tr>\n</table>")
+    return "\n\n".join(tables)
+
+
+def render_entry(p):
+    full, url, date = p["repository"]["nameWithOwner"], p["url"], p["mergedAt"][:10]
+    key = f"{full}#{p['number']}"
+    owner = full.split("/", 1)[0]
+    # <summary> 里不解析 markdown，标题只能写成 HTML；反引号照旧渲染成代码
+    title = re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(p["title"], quote=False))
+    note = NOTES.get(key)
+    return "\n".join([
+        "<details>",
+        # 日期放行首：放行尾时长标题会把它从连字符处折断（GitHub 会剥掉 style，没法 nowrap）
+        f'<summary><code>{date}</code> <img src="{avatar(owner, 40)}" width="16" height="16" alt="{owner}"/> '
+        f'<b>{full}</b> · <a href="{url}">{title}</a></summary>',
+        "",
+        # 展开后的正文必须保留 markdown 链接，见 PR_LINK
+        f"> [{key}]({url})" + (f"：{note}" if note else ""),
+        "",
+        "</details>",
+    ])
+
+
 def render(prs):
     if not prs:
         return "_暂无_"
     prs.sort(key=lambda p: p["mergedAt"], reverse=True)
-    lines = []
+    repos = {}
     for p in prs:
-        repo = p["repository"]
-        lines.append(
-            f"- [{repo['nameWithOwner']}]({repo['url']}) ⭐{fmt_stars(repo['stargazerCount'])} — "
-            f"[{p['title']}]({p['url']}) `{p['mergedAt'][:10]}`"
-        )
-        note = NOTES.get(f"{repo['nameWithOwner']}#{p['number']}")
-        if note:
-            lines.append(f"  - {note}")
-    return "\n".join(lines)
+        repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0])[1] += 1
+    summary = (
+        f'<p align="center"><b>{len(prs)}</b> 个 PR 已合并进 <b>{len(repos)}</b> 个上游仓库'
+        " · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>"
+    )
+    return "\n\n".join([render_wall(repos.values()), summary] + [render_entry(p) for p in prs])
 
 
 def count_entries(section):
-    return sum(1 for line in section.splitlines() if line.startswith("- ["))
+    return len(set(PR_LINK.findall(section)))
+
+
+def bug_rows(text):
+    """缺陷表的数据行（按 `|` 切好的单元格），解析口径与 pr-tracker 的 homepage_sync.py 一致：
+    `## 🔍` 到下一个 `## ` 之间、以 `| [` 开头且含 github.com 的行。"""
+    rows, zone = [], False
+    for line in text.splitlines():
+        if line.startswith("## 🔍"):
+            zone = True
+        elif zone and line.startswith("## "):
+            break
+        elif zone and line.startswith("| [") and "github.com" in line:
+            cells = [c.strip() for c in re.split(r"(?<!\\)\|", line)]
+            if len(cells) >= 5:
+                rows.append(cells)
+    return rows
+
+
+def bug_kind(status):
+    # 状态列开头的色点见 pr-tracker SKILL.md 的用词约定：🟢 有修复，🟡 在等，⚪ 已关闭
+    if status.startswith("🟢"):
+        return "fixed" if "已合并" in status or "已被上游修复" in status else "submitted"
+    if status.startswith("⚪"):
+        return "closed"
+    return "waiting"
+
+
+def render_bug_stats(rows):
+    kinds = Counter(bug_kind(cells[3]) for cells in rows)
+    repos = set()
+    for cells in rows:
+        m = re.search(r"\(https://github\.com/([^)]+)\)", cells[1])
+        repos.add((m.group(1) if m else cells[1]).lower())
+    stats = [
+        ("🐛 发现缺陷", len(rows)),
+        ("📦 涉及仓库", len(repos)),
+        ("✅ 已修复", kinds["fixed"]),
+        ("🔧 修复已提交", kinds["submitted"]),
+        ("⏳ 等待中", kinds["waiting"]),
+        ("⚪ 已关闭", kinds["closed"]),
+    ]
+    return "\n".join([
+        '<div align="center">',
+        "",
+        "| " + " | ".join(label for label, _ in stats) + " |",
+        "|" + ":-:|" * len(stats),
+        "| " + " | ".join(f"**{n}**" for _, n in stats) + " |",
+        "",
+        "</div>",
+    ])
+
+
+def replace_block(text, start, end, body):
+    # 用 callable 替换：body 里有反斜杠（说明文字里引用的文件名）时，
+    # 字符串模板会被 re 当成转义序列解析，`\q` 这种直接抛 re.error。
+    return re.sub(
+        re.escape(start) + r".*?" + re.escape(end),
+        lambda _m: f"{start}\n{body}\n{end}",
+        text,
+        flags=re.S,
+    )
 
 
 def main():
@@ -213,14 +325,9 @@ def main():
             "拒绝写入：本次抓到 %d 条，现有区块有 %d 条。"
             "多半是 GitHub search 返回了不完整结果，重跑即可。" % (new_count, old_count)
         )
-    # 用 callable 替换：body 里有反斜杠（说明文字里引用的文件名）时，
-    # 字符串模板会被 re 当成转义序列解析，`\q` 这种直接抛 re.error。
-    new = re.sub(
-        re.escape(START) + r".*?" + re.escape(END),
-        lambda _m: f"{START}\n{body}\n{END}",
-        text,
-        flags=re.S,
-    )
+    new = replace_block(text, START, END, body)
+    if BUG_START in new and BUG_END in new:
+        new = replace_block(new, BUG_START, BUG_END, render_bug_stats(bug_rows(new)))
     if new != text:
         open(path, "w", encoding="utf-8").write(new)
         print("updated")

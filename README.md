@@ -5,7 +5,10 @@
 <h1>👨‍💻 Hey there! 👋 I'm 哈基米</h1>
 
 <a href="https://github.com/BlueX888">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2500&pause=900&color=A78BFA&center=true&vCenter=true&width=650&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2500&pause=900&color=A78BFA&center=true&vCenter=true&width=650&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!"/>
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2500&pause=900&color=8250DF&center=true&vCenter=true&width=650&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG"/>
+  </picture>
 </a>
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
@@ -116,43 +119,148 @@
 ## 🤝 Merged Upstream PRs
 
 <!--START_SECTION:contributions-->
-- [openai/openai-agents-js](https://github.com/openai/openai-agents-js) ⭐4k — [fix(agents-core): handle same-server MCP tool name collisions](https://github.com/openai/openai-agents-js/pull/1935) `2026-09-25`
-  - `getAllMcpTools` 只拦**跨** server 的重名：`toFunctionToolName` 把非字母数字全替成 `_`，同一 server 里 `search-a` 与 `search_a` 归一后都叫 `search_a`，两个工具一起返回，`resolveModelVisibleToolNameCollisions` 丢掉其中一个、模型只剩一个可达——守卫只拿当前 server 的名字与之前 server 已占的比较，还先把当前批次收进 `Set`，批内重复根本到不了比较；prefixed 路径按前缀后的 base name 计数，`-` 与 `_` 都算安全字符、base 不同就不强制 hash 后缀，归一后才相撞。改为 `findDuplicateToolNames` 同时报批内重复与先前 server 的占用（非前缀路径抛既有 `UserError`），前缀路径按归一后的名字计数预留、相撞时给同一确定性 hash 后缀，两个工具都保可达；补/扩回归测试，修前 2 败、修后 69 全过。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(tools): route bound task and batch tools' sync path through the bound runtime](https://github.com/bytedance/deer-flow/pull/5861) `2026-09-25`
-  - `bind_task_tool` / `_bind_batch_tool` 给副本重绑的只有 `coroutine`，`func` 仍是进程级单例的 sync 包装——包着**未绑定**的 coroutine，同步调用 bound 副本因此绕过显式 SDK submitter 与执行容量、落回进程全局回退（恰是 `bind_batch_tools` docstring 明令禁止的「never fall through to another application's process-global submitter」），在单例从未被 sync 包装过的新进程里则直接 `NotImplementedError`。改为把副本的 `func` 也重绑成 `make_sync_tool_wrapper(bound_coroutine, ...)`（与 `_ensure_sync_invocable_tool` 同一 helper），两条调用路径都走 bound coroutine 及其 runtime 的 submitter 与容量；补三条回归测试，main 上红、本分支绿。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(sandbox): list the skills root when only category mounts exist](https://github.com/bytedance/deer-flow/pull/5857) `2026-09-25`
-  - 默认（非 policy-scoped）skills 投影下 `ls /mnt/skills` 报 Directory not found：该布局只挂四个 category 子目录、没有 `/mnt/skills` 根自身的 `PathMapping`，`LocalSandbox.list_dir` 把根解析成字面宿主路径，宿主扫描的 `FileNotFoundError` 抢在虚拟子目录 overlay——专为让 agent 用 `ls /mnt/skills` 发现 category 而写的代码块——之前抛出。改为宿主扫描抛 `FileNotFoundError` 时，只要请求的容器路径内至少挂了一个映射，就按空宿主列表处理、让既有 overlay 浮出挂载的子目录，什么都没挂的路径照旧报错；补回归测试，main 上红、本分支绿。
-- [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [fix: store raw video bytes in GeminiTools.generate_video artifact](https://github.com/agno-agi/agno/pull/10554) `2026-09-25`
-  - `GeminiTools.generate_video` 把返回的 `Video` artifact 用 base64 **文本**构造（`base64.b64encode(generated_video.video_bytes).decode("utf-8")`），而 `agno.media.Video.content` 声明为原始视频 `bytes`，Pydantic 把该字符串强转成 base64 文本的 UTF-8 字节——`Video.get_content_bytes()` 的每个消费者（媒体卸载上传、artifact 落盘）拿到的都是 base64 文本而不是视频。改为直接传原始字节，对齐同工具箱的 `generate_image` 分支与其余六个视频工具箱（opencv/fal/minimax/replicate/wavespeed/lumalab），补回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): tolerate a null Codex account_id before it reaches the request header](https://github.com/bytedance/deer-flow/pull/5601) `2026-09-20`
-  - Codex 凭据加载：`account_id` 以 `data.get("account_id") or tokens.get("account_id", "")` 读取，`""` 兜底只覆盖「键缺失」——键存在但值为 JSON `null` 时 falsy 落穿到下一环，表达式求值为 `None` 灌进 `CodexCliCredential(account_id=None)`，在 `model_post_init` 的 `account_id[:8]` 处抛裸 `TypeError`，account 未知的凭据文件让所有 `CodexChatModel` 构造失败而非以未记账账号运行。改为任何非字符串值一律归一为字段文档的未知账号值 `""`，补回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): skip Claude credentials sources with a non-numeric expiresAt](https://github.com/bytedance/deer-flow/pull/5591) `2026-09-20`
-  - Claude 凭据加载：`_extract_claude_code_credential` 把 `claudeAiOauth.expiresAt` 原样拷进 `ClaudeCodeCredential.expires_at`，`is_expired` 随即拿它和 `0` 比大小——字符串、`null`、list、object 一律抛 `TypeError` 且无人捕获，凭据查找循环停在坏文件上不再推进，`$CLAUDE_CODE_CREDENTIALS_PATH` 里一个坏 `expiresAt` 就足以让 `~/.claude/.credentials.json` 永远读不到，还顺着 `ClaudeChatModel.model_post_init` 冒出去使该文件存在时所有模型构造失败而非降级。改为非数值 `expiresAt` 的候选源按 #5494 已立的契约跳过并记 debug 日志（缺失键仍回落默认 `0`、不视为过期），补齐各形态回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): degrade a non-object Codex auth file to no credential](https://github.com/bytedance/deer-flow/pull/5584) `2026-09-19`
-  - Codex 凭据加载：`load_codex_cli_credential` 经 `_load_json_file` 读 `~/.codex/auth.json`，而 `json.loads` 的产物不限于对象，加载器却直接对它调 `data.get("tokens", {})`——顶层是数组/字符串/数字的 auth 文件因此抛 `AttributeError: 'list' object has no attribute 'get'`。异常无人捕获，从 `CodexChatModel.model_post_init` 冒出去，在 provider 来得及抛它那句文档化的「Codex CLI credential not found」之前就中止了模型构造，与该模块「读不到就降级」的约定正好相反。嵌套的 `tokens` 早已有这道守卫，同文件的 Claude 加载器也在 #5494 补了等价的顶层守卫，Codex 的顶层是唯一漏掉的一处。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): insert bare-filename rewrites literally](https://github.com/bytedance/deer-flow/pull/5522) `2026-09-18`
-  - MCP 工具结果重写：`_rewrite_unique_bare_filenames` 把相关好的虚拟路径当成 `Pattern.subn` 的**替换模板**传入，而替换串来自真实文件的相对路径、反斜杠在 POSIX 文件名里是普通字符（模型给 stdio server 传了 Windows 风格路径就会产生名为 `screenshots\q3.png` 的文件）。模板在找匹配**之前**编译，于是 `\q` 这种未知转义直接抛 `re.error` 逃出 `_convert_call_tool_result`、整个工具调用失败（文件其实已写好）；能被 `re` 接受的转义则把该字节替换进返回文本（`\r` 变成路径中间的真实回车）。改为用 callable 替换逐字插入，并补两半回归测试。文件来自 workspace 快照 diff，所以触发文件不必是本次调用写的。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(models): pair Codex invalid tool calls with their tool results](https://github.com/bytedance/deer-flow/pull/5509) `2026-09-17`
-  - Codex Responses 序列化：模型发出 `arguments` 不是合法 JSON 的 `function_call` 时，该调用被 `_parse_response` 收进 `invalid_tool_calls`，中间件会用带同一 `call_id` 的占位 `ToolMessage` 就地兜住，但序列化器只回放 `msg.tool_calls`，于是占位结果的 `call_id` 在请求里找不到对应的 `function_call` item，Responses 直接拒收——恰好是中间件要恢复的那种可恢复错误。改为把 `invalid_tool_calls` 一并回放；同时处理 `InvalidToolCall` 字段可空，缺 name/call_id 的调用直接跳过（中间件已为这类调用补了合成 id 与兜底名，跳过不会让占位结果变孤儿）。
-- [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] keep falsy tool results (0, False, []) on the sync tool execution path](https://github.com/agno-agi/agno/pull/9948) `2026-09-16`
-  - 同步工具执行路径把 `0` / `False` / `[]` 这类有意义的假值结果当成空结果发给模型，异步路径 `arun_function_calls` 却照发 `str(result)`，同一个工具在 `run()` 与 `arun()` 下给模型的结果不一致，模型无法区分“零条”和“没有输出”，空串还会被持久化进会话。去掉真值判断让两条路径一致，并补无网络回归测试。
-- [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k — [fix(local-provider): apply transforms in get_tasks](https://github.com/PrefectHQ/fastmcp/pull/5117) `2026-09-15`
-  - MCP 本地 Provider：`LocalProvider.get_tasks()` 直接返回原始组件键，绕过了 Provider 基类的 transform 管线，于是 `add_transform(Namespace(...))` 之后后台任务注册到的名字与工具/资源不一致，按命名空间调用会找不到任务。改为在 `get_tasks` 里同样应用 transforms，并补回归测试。
-- [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) ⭐59k — [fix(azure): key streamed tool calls by wire index](https://github.com/crewAIInc/crewAI/pull/7487) `2026-09-15`
-  - Azure 流式补全：tool call 的增量按数组位置归并，但后续 chunk 会重排顺序，导致首个 chunk 的 `id` 配上最后一个 chunk 的 `name`、参数被拼到错误的调用上。改为按 wire index 归并，并补回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): treat a Human Input Card reply as the current user request](https://github.com/bytedance/deer-flow/pull/5426) `2026-09-14`
-  - HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词（与 summarization / tool_receipt 中间件一致），并补回归测试。
-- [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k — [fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools](https://github.com/bytedance/deer-flow/pull/5164) `2026-09-04`
-  - MCP 工具调用：同步包装的 MCP 工具在 PEP 563 延迟注解下丢失 `ToolRuntime` 注入，工具拿不到会话上下文。修复后注入在两种注解模式下都生效，按 maintainer review 补了契约说明和测试。
-- [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8k — [fix(openai): report max_tokens when a Responses function call is cut off](https://github.com/strands-agents/harness-sdk/pull/4139) `2026-09-03`
-  - OpenAI Responses 流式解析：function call 被 `max_output_tokens` 截断时 `stop_reason` 仍报 `tool_use`，Agent 会拿残缺参数直接执行工具。修正判定优先级，截断时如实报 `max_tokens`，并补回归测试。
-- [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k — [[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg](https://github.com/agno-agi/agno/pull/9887) `2026-09-02`
-  - Gemini 多模态输入：图片 MIME 类型被硬编码为 `image/jpeg`，PNG/WebP 等格式会被贴错标签导致 API 拒收或误解析。改为从图片数据实际解析类型后再传给模型。
+<table align="center">
+<tr>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐83k · 合并 9</sub></td>
+<td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐42k · 合并 3</sub></td>
+<td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐59k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
+</tr>
+</table>
+
+<p align="center"><b>16</b> 个 PR 已合并进 <b>6</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-09-25</code> <img src="https://github.com/openai.png?size=40" width="16" height="16" alt="openai"/> <b>openai/openai-agents-js</b> · <a href="https://github.com/openai/openai-agents-js/pull/1935">fix(agents-core): handle same-server MCP tool name collisions</a></summary>
+
+> [openai/openai-agents-js#1935](https://github.com/openai/openai-agents-js/pull/1935)：`getAllMcpTools` 只拦**跨** server 的重名：`toFunctionToolName` 把非字母数字全替成 `_`，同一 server 里 `search-a` 与 `search_a` 归一后都叫 `search_a`，两个工具一起返回，`resolveModelVisibleToolNameCollisions` 丢掉其中一个、模型只剩一个可达——守卫只拿当前 server 的名字与之前 server 已占的比较，还先把当前批次收进 `Set`，批内重复根本到不了比较；prefixed 路径按前缀后的 base name 计数，`-` 与 `_` 都算安全字符、base 不同就不强制 hash 后缀，归一后才相撞。改为 `findDuplicateToolNames` 同时报批内重复与先前 server 的占用（非前缀路径抛既有 `UserError`），前缀路径按归一后的名字计数预留、相撞时给同一确定性 hash 后缀，两个工具都保可达；补/扩回归测试，修前 2 败、修后 69 全过。
+
+</details>
+
+<details>
+<summary><code>2026-09-25</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5861">fix(tools): route bound task and batch tools' sync path through the bound runtime</a></summary>
+
+> [bytedance/deer-flow#5861](https://github.com/bytedance/deer-flow/pull/5861)：`bind_task_tool` / `_bind_batch_tool` 给副本重绑的只有 `coroutine`，`func` 仍是进程级单例的 sync 包装——包着**未绑定**的 coroutine，同步调用 bound 副本因此绕过显式 SDK submitter 与执行容量、落回进程全局回退（恰是 `bind_batch_tools` docstring 明令禁止的「never fall through to another application's process-global submitter」），在单例从未被 sync 包装过的新进程里则直接 `NotImplementedError`。改为把副本的 `func` 也重绑成 `make_sync_tool_wrapper(bound_coroutine, ...)`（与 `_ensure_sync_invocable_tool` 同一 helper），两条调用路径都走 bound coroutine 及其 runtime 的 submitter 与容量；补三条回归测试，main 上红、本分支绿。
+
+</details>
+
+<details>
+<summary><code>2026-09-25</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5857">fix(sandbox): list the skills root when only category mounts exist</a></summary>
+
+> [bytedance/deer-flow#5857](https://github.com/bytedance/deer-flow/pull/5857)：默认（非 policy-scoped）skills 投影下 `ls /mnt/skills` 报 Directory not found：该布局只挂四个 category 子目录、没有 `/mnt/skills` 根自身的 `PathMapping`，`LocalSandbox.list_dir` 把根解析成字面宿主路径，宿主扫描的 `FileNotFoundError` 抢在虚拟子目录 overlay——专为让 agent 用 `ls /mnt/skills` 发现 category 而写的代码块——之前抛出。改为宿主扫描抛 `FileNotFoundError` 时，只要请求的容器路径内至少挂了一个映射，就按空宿主列表处理、让既有 overlay 浮出挂载的子目录，什么都没挂的路径照旧报错；补回归测试，main 上红、本分支绿。
+
+</details>
+
+<details>
+<summary><code>2026-09-25</code> <img src="https://github.com/agno-agi.png?size=40" width="16" height="16" alt="agno-agi"/> <b>agno-agi/agno</b> · <a href="https://github.com/agno-agi/agno/pull/10554">fix: store raw video bytes in GeminiTools.generate_video artifact</a></summary>
+
+> [agno-agi/agno#10554](https://github.com/agno-agi/agno/pull/10554)：`GeminiTools.generate_video` 把返回的 `Video` artifact 用 base64 **文本**构造（`base64.b64encode(generated_video.video_bytes).decode("utf-8")`），而 `agno.media.Video.content` 声明为原始视频 `bytes`，Pydantic 把该字符串强转成 base64 文本的 UTF-8 字节——`Video.get_content_bytes()` 的每个消费者（媒体卸载上传、artifact 落盘）拿到的都是 base64 文本而不是视频。改为直接传原始字节，对齐同工具箱的 `generate_image` 分支与其余六个视频工具箱（opencv/fal/minimax/replicate/wavespeed/lumalab），补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-20</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5601">fix(models): tolerate a null Codex account_id before it reaches the request header</a></summary>
+
+> [bytedance/deer-flow#5601](https://github.com/bytedance/deer-flow/pull/5601)：Codex 凭据加载：`account_id` 以 `data.get("account_id") or tokens.get("account_id", "")` 读取，`""` 兜底只覆盖「键缺失」——键存在但值为 JSON `null` 时 falsy 落穿到下一环，表达式求值为 `None` 灌进 `CodexCliCredential(account_id=None)`，在 `model_post_init` 的 `account_id[:8]` 处抛裸 `TypeError`，account 未知的凭据文件让所有 `CodexChatModel` 构造失败而非以未记账账号运行。改为任何非字符串值一律归一为字段文档的未知账号值 `""`，补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-20</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5591">fix(models): skip Claude credentials sources with a non-numeric expiresAt</a></summary>
+
+> [bytedance/deer-flow#5591](https://github.com/bytedance/deer-flow/pull/5591)：Claude 凭据加载：`_extract_claude_code_credential` 把 `claudeAiOauth.expiresAt` 原样拷进 `ClaudeCodeCredential.expires_at`，`is_expired` 随即拿它和 `0` 比大小——字符串、`null`、list、object 一律抛 `TypeError` 且无人捕获，凭据查找循环停在坏文件上不再推进，`$CLAUDE_CODE_CREDENTIALS_PATH` 里一个坏 `expiresAt` 就足以让 `~/.claude/.credentials.json` 永远读不到，还顺着 `ClaudeChatModel.model_post_init` 冒出去使该文件存在时所有模型构造失败而非降级。改为非数值 `expiresAt` 的候选源按 #5494 已立的契约跳过并记 debug 日志（缺失键仍回落默认 `0`、不视为过期），补齐各形态回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-19</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5584">fix(models): degrade a non-object Codex auth file to no credential</a></summary>
+
+> [bytedance/deer-flow#5584](https://github.com/bytedance/deer-flow/pull/5584)：Codex 凭据加载：`load_codex_cli_credential` 经 `_load_json_file` 读 `~/.codex/auth.json`，而 `json.loads` 的产物不限于对象，加载器却直接对它调 `data.get("tokens", {})`——顶层是数组/字符串/数字的 auth 文件因此抛 `AttributeError: 'list' object has no attribute 'get'`。异常无人捕获，从 `CodexChatModel.model_post_init` 冒出去，在 provider 来得及抛它那句文档化的「Codex CLI credential not found」之前就中止了模型构造，与该模块「读不到就降级」的约定正好相反。嵌套的 `tokens` 早已有这道守卫，同文件的 Claude 加载器也在 #5494 补了等价的顶层守卫，Codex 的顶层是唯一漏掉的一处。
+
+</details>
+
+<details>
+<summary><code>2026-09-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5522">fix(mcp): insert bare-filename rewrites literally</a></summary>
+
+> [bytedance/deer-flow#5522](https://github.com/bytedance/deer-flow/pull/5522)：MCP 工具结果重写：`_rewrite_unique_bare_filenames` 把相关好的虚拟路径当成 `Pattern.subn` 的**替换模板**传入，而替换串来自真实文件的相对路径、反斜杠在 POSIX 文件名里是普通字符（模型给 stdio server 传了 Windows 风格路径就会产生名为 `screenshots\q3.png` 的文件）。模板在找匹配**之前**编译，于是 `\q` 这种未知转义直接抛 `re.error` 逃出 `_convert_call_tool_result`、整个工具调用失败（文件其实已写好）；能被 `re` 接受的转义则把该字节替换进返回文本（`\r` 变成路径中间的真实回车）。改为用 callable 替换逐字插入，并补两半回归测试。文件来自 workspace 快照 diff，所以触发文件不必是本次调用写的。
+
+</details>
+
+<details>
+<summary><code>2026-09-17</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5509">fix(models): pair Codex invalid tool calls with their tool results</a></summary>
+
+> [bytedance/deer-flow#5509](https://github.com/bytedance/deer-flow/pull/5509)：Codex Responses 序列化：模型发出 `arguments` 不是合法 JSON 的 `function_call` 时，该调用被 `_parse_response` 收进 `invalid_tool_calls`，中间件会用带同一 `call_id` 的占位 `ToolMessage` 就地兜住，但序列化器只回放 `msg.tool_calls`，于是占位结果的 `call_id` 在请求里找不到对应的 `function_call` item，Responses 直接拒收——恰好是中间件要恢复的那种可恢复错误。改为把 `invalid_tool_calls` 一并回放；同时处理 `InvalidToolCall` 字段可空，缺 name/call_id 的调用直接跳过（中间件已为这类调用补了合成 id 与兜底名，跳过不会让占位结果变孤儿）。
+
+</details>
+
+<details>
+<summary><code>2026-09-16</code> <img src="https://github.com/agno-agi.png?size=40" width="16" height="16" alt="agno-agi"/> <b>agno-agi/agno</b> · <a href="https://github.com/agno-agi/agno/pull/9948">[fix] keep falsy tool results (0, False, []) on the sync tool execution path</a></summary>
+
+> [agno-agi/agno#9948](https://github.com/agno-agi/agno/pull/9948)：同步工具执行路径把 `0` / `False` / `[]` 这类有意义的假值结果当成空结果发给模型，异步路径 `arun_function_calls` 却照发 `str(result)`，同一个工具在 `run()` 与 `arun()` 下给模型的结果不一致，模型无法区分“零条”和“没有输出”，空串还会被持久化进会话。去掉真值判断让两条路径一致，并补无网络回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-15</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5117">fix(local-provider): apply transforms in get_tasks</a></summary>
+
+> [PrefectHQ/fastmcp#5117](https://github.com/PrefectHQ/fastmcp/pull/5117)：MCP 本地 Provider：`LocalProvider.get_tasks()` 直接返回原始组件键，绕过了 Provider 基类的 transform 管线，于是 `add_transform(Namespace(...))` 之后后台任务注册到的名字与工具/资源不一致，按命名空间调用会找不到任务。改为在 `get_tasks` 里同样应用 transforms，并补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-15</code> <img src="https://github.com/crewAIInc.png?size=40" width="16" height="16" alt="crewAIInc"/> <b>crewAIInc/crewAI</b> · <a href="https://github.com/crewAIInc/crewAI/pull/7487">fix(azure): key streamed tool calls by wire index</a></summary>
+
+> [crewAIInc/crewAI#7487](https://github.com/crewAIInc/crewAI/pull/7487)：Azure 流式补全：tool call 的增量按数组位置归并，但后续 chunk 会重排顺序，导致首个 chunk 的 `id` 配上最后一个 chunk 的 `name`、参数被拼到错误的调用上。改为按 wire index 归并，并补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5426">fix(mcp): treat a Human Input Card reply as the current user request</a></summary>
+
+> [bytedance/deer-flow#5426](https://github.com/bytedance/deer-flow/pull/5426)：HITL 澄清与 MCP 路由：Human Input Card 的回执被 `is_real_user_message` 当成“非真实用户消息”跳过，用户只在澄清回答里提到的关键词不会触发延迟 MCP 工具提升。改用同包已有的 `is_genuine_user_message` 谓词（与 summarization / tool_receipt 中间件一致），并补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-04</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/5164">fix(mcp): keep ToolRuntime injection for sync-wrapped MCP tools</a></summary>
+
+> [bytedance/deer-flow#5164](https://github.com/bytedance/deer-flow/pull/5164)：MCP 工具调用：同步包装的 MCP 工具在 PEP 563 延迟注解下丢失 `ToolRuntime` 注入，工具拿不到会话上下文。修复后注入在两种注解模式下都生效，按 maintainer review 补了契约说明和测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-03</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4139">fix(openai): report max_tokens when a Responses function call is cut off</a></summary>
+
+> [strands-agents/harness-sdk#4139](https://github.com/strands-agents/harness-sdk/pull/4139)：OpenAI Responses 流式解析：function call 被 `max_output_tokens` 截断时 `stop_reason` 仍报 `tool_use`，Agent 会拿残缺参数直接执行工具。修正判定优先级，截断时如实报 `max_tokens`，并补回归测试。
+
+</details>
+
+<details>
+<summary><code>2026-09-02</code> <img src="https://github.com/agno-agi.png?size=40" width="16" height="16" alt="agno-agi"/> <b>agno-agi/agno</b> · <a href="https://github.com/agno-agi/agno/pull/9887">[fix] Resolve Gemini image MIME type instead of hard-coding image/jpeg</a></summary>
+
+> [agno-agi/agno#9887](https://github.com/agno-agi/agno/pull/9887)：Gemini 多模态输入：图片 MIME 类型被硬编码为 `image/jpeg`，PNG/WebP 等格式会被贴错标签导致 API 拒收或误解析。改为从图片数据实际解析类型后再传给模型。
+
+</details>
 <!--END_SECTION:contributions-->
 
 ## 🔍 Upstream Bugs Found
 
-自己审代码发现、带无网络最小复现报出的缺陷。维护者那边已有讨论的按 issue 报，能直接修的当天带回归测试提 PR；有些仓库不必先开 issue，缺陷的复现与根因就写在 PR 描述里，这类条目的「问题」列直接指向 PR。下表按发现时间倒序，合并后会自动进上一栏：
+自己审代码发现、带无网络最小复现报出的缺陷。维护者那边已有讨论的按 issue 报，能直接修的当天带回归测试提 PR；有些仓库不必先开 issue，缺陷的复现与根因就写在 PR 描述里，这类条目的「问题」列直接指向 PR。修复合并后会自动进上一栏。
+
+<!--START_SECTION:bug-stats-->
+<div align="center">
+
+| 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| **141** | **32** | **20** | **83** | **30** | **8** |
+
+</div>
+<!--END_SECTION:bug-stats-->
+
+<details>
+<summary><b>📋 展开完整缺陷表</b>（按发现时间倒序）</summary>
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
@@ -298,6 +406,8 @@
 | [OpenBMB/StaffDeck](https://github.com/OpenBMB/StaffDeck)（实习团队项目） | [`parse_bid_award` 把 TL 判定分数直接写进 `bid.score`，没有 `parse_bid_scores` 那道 0–10 夹取。越界的判定分（如 `12.0`、`-3.0`）因此进入持久化的 bid 记录，并流入 `candidate_hp`——HP 损失按 `10 - score` 计算，超过 10 的分数能把已被淘汰候选人的 HP 拉回零以上。同一个 `bid.score` 字段由两条解析路径写入，只有其中一条夹取](https://github.com/OpenBMB/StaffDeck/pull/256) `2026-09-02` | 🟢 直接提 PR（未建 issue） |
 | [huggingface/smolagents](https://github.com/huggingface/smolagents) ⭐29k | [provider 为 `<end_plan>` 返回结构化内容（内容块列表）时，`_generate_planning_step` 把整个 list 直接塞进 plan 的 f-string，而 `plan` 是字符串字段，于是计划文本变成 list 的 Python repr 而不是可读文本；生成计划与更新计划两条分支都受影响，而这段文本正是会被记日志、被下一次模型调用读回的内容](https://github.com/huggingface/smolagents/pull/2730) `2026-09-02` | 🟢 直接提 PR（未建 issue） |
 
+</details>
+
 ---
 
 ## 🛠️ Technical Arsenal
@@ -336,12 +446,21 @@
 
 <div align="center">
 
-<img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats.svg" alt="GitHub 统计"/>
-<img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs.svg" alt="常用语言"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats.svg"/>
+  <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats-light.svg" alt="GitHub 统计"/>
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs.svg"/>
+  <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs-light.svg" alt="常用语言"/>
+</picture>
 
 <br/>
 
-<img src="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans" alt="连续贡献"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans"/>
+  <img src="https://streak-stats.demolab.com?user=BlueX888&hide_border=true&background=00000000&ring=8250DF&fire=8250DF&currStreakNum=1F2328&sideNums=1F2328&currStreakLabel=8250DF&sideLabels=656D76&dates=656D76&stroke=D0D7DE&locale=zh_Hans" alt="连续贡献"/>
+</picture>
 
 <br/><br/>
 
