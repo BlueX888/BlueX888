@@ -122,7 +122,7 @@
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐83k · 合并 9</sub></td>
-<td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐42k · 合并 3</sub></td>
+<td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐59k · 合并 1</sub></td>
 </tr>
