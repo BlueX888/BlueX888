@@ -123,20 +123,34 @@
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐83k · 合并 9</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
-<td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐59k · 合并 1</sub></td>
 </tr>
 </table>
 
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐59k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
 </tr>
 </table>
 
-<p align="center"><b>18</b> 个 PR 已合并进 <b>7</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>20</b> 个 PR 已合并进 <b>7</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-05</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5271">fix(tools): keep structured content for object schemas without explicit type</a></summary>
+
+> [PrefectHQ/fastmcp#5271](https://github.com/PrefectHQ/fastmcp/pull/5271)
+
+</details>
+
+<details>
+<summary><code>2026-10-05</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5269">fix(tools): take partial tool names and docstrings from the wrapped function</a></summary>
+
+> [PrefectHQ/fastmcp#5269](https://github.com/PrefectHQ/fastmcp/pull/5269)
+
+</details>
 
 <details>
 <summary><code>2026-10-01</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4593">fix(anthropic): store redacted thinking as bytes and re-encode on send</a></summary>
