@@ -26,6 +26,19 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "bytedance/deer-flow#6478": (
+        "MindIE 的无工具原生流式逐 chunk 调 `_decode_escaped_newlines_outside_fences`，而该助手靠输入里成对的围栏定界符判断围栏——"
+        "token 大小的 chunk 几乎不可能同时含一对定界符，围栏判定永不生效，chunk 里每个字面 `\\n`（包括完整回复中位于围栏内的代码）"
+        "都被解成真换行：`print(\"a\\nb\")` 的转义被拆成两行写进用户可见消息与持久化内容，而非流式路径（`_generate`/`_agenerate`）"
+        "与开工具的模拟流都保留转义。改为用带围栏状态的解码器跨 chunk 维持围栏状态、复用同一实现，跨 chunk 的半个围栏定界符或 `\\` "
+        "留到下一 chunk 决定，流末未决文本作为最后一个 chunk 吐出。"
+    ),
+    "Arize-ai/phoenix#16535": (
+        "`_ToolKwargsConversion.to_anthropic` 在存档 prompt 的 `tool_choice` 为 `\"none\"` 时立即 `return {}`，"
+        "把此前已装好的 `ans[\"tools\"]` 一并丢掉——带工具但禁用工具使用的捕获请求，回放时 tools 整个消失；"
+        "服务端 playground 本就同时发 tools 与 `tool_choice: none`，同文件 `_ToolChoiceConversion` 的 to/from 两个方向"
+        "都早已正确映射 `\"none\"`，只有这条早退绕开了既有处理。改为删掉早退，让 tool_choice 走既有映射、tools 保留，补回归用例。"
+    ),
     "livekit/agents#7445": (
         "`Agent.chat_ctx` 返回的 `_ReadOnlyChatContext` 有两条变更路径没守卫、静默写进视图的 detached 副本后正常返回："
         "`_ImmutableList` 覆盖了 append/extend/pop/remove/clear/sort/reverse 独漏 `insert`，`chat_ctx.insert(item)` 与"

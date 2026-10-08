@@ -121,7 +121,7 @@
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐83k · 合并 9</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐83k · 合并 10</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
@@ -137,40 +137,47 @@
 </tr>
 </table>
 
-<p align="center"><b>21</b> 个 PR 已合并进 <b>8</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>22</b> 个 PR 已合并进 <b>8</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-08</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6478">fix(models): keep escaped newlines inside fences in MindIE native stream</a></summary>
+
+> [bytedance/deer-flow#6478](https://github.com/bytedance/deer-flow/pull/6478)：MindIE 的无工具原生流式逐 chunk 调 `_decode_escaped_newlines_outside_fences`，而该助手靠输入里成对的围栏定界符判断围栏——token 大小的 chunk 几乎不可能同时含一对定界符，围栏判定永不生效，chunk 里每个字面 `\n`（包括完整回复中位于围栏内的代码）都被解成真换行：`print("a\nb")` 的转义被拆成两行写进用户可见消息与持久化内容，而非流式路径（`_generate`/`_agenerate`）与开工具的模拟流都保留转义。改为用带围栏状态的解码器跨 chunk 维持围栏状态、复用同一实现，跨 chunk 的半个围栏定界符或 `\` 留到下一 chunk 决定，流末未决文本作为最后一个 chunk 吐出。
+
+</details>
 
 <details>
 <summary><code>2026-10-06</code> <img src="https://github.com/Arize-ai.png?size=40" width="16" height="16" alt="Arize-ai"/> <b>Arize-ai/phoenix</b> · <a href="https://github.com/Arize-ai/phoenix/pull/16535">fix(client): keep tools when anthropic tool_choice is none</a></summary>
 
-> [Arize-ai/phoenix#16535](https://github.com/Arize-ai/phoenix/pull/16535)
+> [Arize-ai/phoenix#16535](https://github.com/Arize-ai/phoenix/pull/16535)：`_ToolKwargsConversion.to_anthropic` 在存档 prompt 的 `tool_choice` 为 `"none"` 时立即 `return {}`，把此前已装好的 `ans["tools"]` 一并丢掉——带工具但禁用工具使用的捕获请求，回放时 tools 整个消失；服务端 playground 本就同时发 tools 与 `tool_choice: none`，同文件 `_ToolChoiceConversion` 的 to/from 两个方向都早已正确映射 `"none"`，只有这条早退绕开了既有处理。改为删掉早退，让 tool_choice 走既有映射、tools 保留，补回归用例。
 
 </details>
 
 <details>
 <summary><code>2026-10-05</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5271">fix(tools): keep structured content for object schemas without explicit type</a></summary>
 
-> [PrefectHQ/fastmcp#5271](https://github.com/PrefectHQ/fastmcp/pull/5271)
+> [PrefectHQ/fastmcp#5271](https://github.com/PrefectHQ/fastmcp/pull/5271)：`TransformedTool.run` 只拿字面顶层 `"type": "object"` 键判定 `output_schema` 是不是 object schema——不带该键的 object schema（properties-only 的 `{"properties": {...}}`、根级 `$ref` 指向 object）被误判为非 object，`transform_fn` 返回的 `ToolResult` 的 `structured_content` 被丢弃，重建的 `ToolResult` 还把 `is_error` 与 `meta` 一并丢掉。改为按解析后的 schema 判定（properties-only 与根级 `$ref` 都算 object），透传 `structured_content` 并保留 `is_error`/`meta`，补回归测试。
 
 </details>
 
 <details>
 <summary><code>2026-10-05</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5269">fix(tools): take partial tool names and docstrings from the wrapped function</a></summary>
 
-> [PrefectHQ/fastmcp#5269](https://github.com/PrefectHQ/fastmcp/pull/5269)
+> [PrefectHQ/fastmcp#5269](https://github.com/PrefectHQ/fastmcp/pull/5269)：`functools.partial` 造的工具全叫 `partial`、描述是 partial 类 docstring——`ParsedFunction.from_function` 经 `fn.__class__.__name__` 兜底取名，partial 既无 `__name__` 也无 `__doc__`，注册两个 partial 工具就在名字 `partial` 上相撞、后者顶掉前者（只给一条泛型 warning）。改为取名/取 docstring 时回退到被包裹的 callable（保留 partial 绑定的参数与默认值）；partial 上显式给的名字、文档与参数描述仍优先（含故意留空的文档），FastMCP 显式元数据照样覆盖，补回归测试。
 
 </details>
 
 <details>
 <summary><code>2026-10-01</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4593">fix(anthropic): store redacted thinking as bytes and re-encode on send</a></summary>
 
-> [strands-agents/harness-sdk#4593](https://github.com/strands-agents/harness-sdk/pull/4593)
+> [strands-agents/harness-sdk#4593](https://github.com/strands-agents/harness-sdk/pull/4593)：Anthropic Messages API 的 `RedactedThinkingBlock.data` 是 base64 字符串，`AnthropicModel.stream` 却经编译期 cast 把它直接塞进声明为 `Uint8Array`、带 base64 `toJSON()/fromJSON()` 契约的 `ReasoningBlock.redactedContent`——首轮侥幸原样通过，首次 `Message.clone()` 或 session 存取经 `toJSON()/fromJSON()` 把它再编码成 base64 文本的 ASCII 字节，下一请求的 `redacted_thinking` 块序列化成 `{"0":69,"1":109,...}` 被 Messages API 拒收，加密推理的多轮工具使用全断。改为入库时把 base64 解码成字节存进 `redactedContent`、发送时再编码回字符串，往返与类型契约都对齐。
 
 </details>
 
 <details>
 <summary><code>2026-09-30</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7445">fix(llm): block unguarded mutations on read-only chat contexts</a></summary>
 
-> [livekit/agents#7445](https://github.com/livekit/agents/pull/7445)
+> [livekit/agents#7445](https://github.com/livekit/agents/pull/7445)：`Agent.chat_ctx` 返回的 `_ReadOnlyChatContext` 有两条变更路径没守卫、静默写进视图的 detached 副本后正常返回：`_ImmutableList` 覆盖了 append/extend/pop/remove/clear/sort/reverse 独漏 `insert`，`chat_ctx.insert(item)` 与走 `list.insert()` 的 `add_message(created_at=...)` / `merge(...)` 都把消息写丢，消息从没进真实 chat context；`items` property setter 也未覆盖，`chat_ctx.items = [...]` 把不可变列表换成可变列表而 `readonly` 仍报 True。改为补上 `insert` 的抛错实现并覆盖 `items` setter，两条路径都按文档抛 `RuntimeError`，补回归测试。
 
 </details>
 
@@ -296,7 +303,7 @@
 
 | 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| **141** | **32** | **27** | **74** | **28** | **12** |
+| **149** | **32** | **28** | **78** | **30** | **13** |
 
 </div>
 <!--END_SECTION:bug-stats-->
@@ -306,6 +313,14 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [工具返回的 bytes 藏在容器里（`dict[str, bytes]`、`list[bytes]`）时整次调用崩在未捕获的 `PydanticSerializationError`，而同样内容裸返回（`-> bytes`）却正常走 base64——#3829 给裸 bytes 打的补丁只盖住 `_convert_to_single_content_block` 与 `_contains_bytes_type` 的 union/`Annotated` 分支：`default_serializer` 对嵌套在 dict/list/tuple/set（含键）里任何位置的非法 UTF-8 bytes 直接抛错，调用点又跑在结构化内容序列化的 `try/except` 之前，错误逃出 `convert_result`；容器类型还照样宣告一份运行时填不满的输出 schema（dict 情形给 `{"additionalProperties": {"format": "binary"}}`），裸 `bytes` 早已抑制](https://github.com/PrefectHQ/fastmcp/pull/5577) `2026-10-07` | 🟢 直接提 PR（未建 issue） |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`ResponseCachingMiddleware` 的缓存条目按调用方 access token 分区，却没按 MCP session 分区，而 session 状态本就按会话隔离（`Context.set_state`/`get_state` 以 session id 为键）——装了该中间件后第二个 session 的 `tools/call` 会拿到第一个 session 的缓存答案，哪怕它已经写入自己的值；`resources/read` 与 `prompts/get` 同理，同一 token 分区内的同一个缺陷](https://github.com/PrefectHQ/fastmcp/issues/5574) `2026-10-07` | 🟢 修复 [#5576](https://github.com/PrefectHQ/fastmcp/pull/5576) 已提交 |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`set_up_component_manager` 文档写明支持 `POST /tools/{name}/disable?version=v1`，处理器却把原始查询串直接交给 `Provider.enable`/`disable` 的 `VersionSpec` 参数——存下 `str` 后 `Visibility._matches` 调 `self.version.matches(...)` 抛 `AttributeError`：一次带 `?version=` 的请求返回 200，之后所有客户端的 `tools/list` 全部报错直到重启](https://github.com/PrefectHQ/fastmcp/issues/5572) `2026-10-07` | 🟢 修复 [#5575](https://github.com/PrefectHQ/fastmcp/pull/5575) 已提交 |
+| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [`InvokeOptions.limits` 承诺每个上限「只约束本次 `invoke()`/`stream()`」，而设置 `AfterInvocationEvent.resume` 的钩子会在同一次公开调用里重入 agent 循环，每次重入都再调 `Meter.startNewInvocation()`——`_checkLimits` 每轮读到的都是空预算，`turns`/`totalTokens`/`outputTokens` 三个上限永不触发，一次 `invoke()` 可以发无限次模型调用（Python SDK 只在 `stream_async` 顶部重置一次）](https://github.com/strands-agents/harness-sdk/pull/4982) `2026-10-07` | 🟢 直接提 PR（未建 issue） |
+| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [`deepCopyWithValidation` 对嵌套对象/数组之后出现的不可序列化值报错路径错误：replacer 的路径栈只压不弹，子树序列化完留下的陈旧帧被后续兄弟节点继承——`StateStore` 校验把 `{ nested: {x:1}, bad: fn }` 报成 `value for key "a".nested.bad` 而非 `"a".bad`，把用户指向错误位置](https://github.com/strands-agents/harness-sdk/pull/4981) `2026-10-07` | 🟢 直接提 PR（未建 issue） |
+| [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [OpenAI chat API 的 `mapChatChunkToEvents` 每遇到带 `id`/`name` 的 `tool_calls` 增量就发一个 `modelContentBlockStartEvent` 却从不关闭已打开的块，而 `streamAggregated` 在每次 start 时重置唯一的累积缓冲——并行工具调用只剩最后开始的那个、工具调用之前流出的助手文本被整个丢弃，agent 走 chat API 时整批并行调用丢到只剩一个](https://github.com/strands-agents/harness-sdk/issues/4975) `2026-10-07` | 🟢 修复 [#4980](https://github.com/strands-agents/harness-sdk/pull/4980) 已提交 |
+| [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k | [`AgentAsJudgeEval.run(cases=[])` 抛 `UnboundLocalError` 而非返回空结果：`_run_batch` 里 `status` 只在 `for` 循环体内赋值，`status.stop()` 却在循环外——空列表下 `status` 从未绑定；`run()` 的 gating 又把 `[]` 直接放行（`cases is not None` 为真，几个 `ValueError` 只挡「同时给」与「都不给」）。异步孪生 `_arun_batch` 把 `status.stop()` 放在循环内、对同样输入正常返回空结果，同步路径与它漂移](https://github.com/agno-agi/agno/issues/10879) `2026-10-07` | 🟡 已提交，等待确认 |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [`DbRunEventStore.delete_by_run()` 删掉某 run 的事件后，新事件的 `seq` 由「剩余行的 max + 1」算出——已发放过的序号被重新发放，客户端游标已越过的位置又写进新事件、对 `after_seq` 分页永久不可见（`list_messages(after_seq=2)` 对存在 seq=2 的事件返回空）；同一操作序列在 Memory/Jsonl 两个实现上都严格递增，三个实现对一个有文档有测试的公开方法给出不同答案。作者注明：当前树内没找到生产调用方](https://github.com/bytedance/deer-flow/issues/6471) `2026-10-07` | 🟡 已提交，等待确认 |
 | [mastra-ai/mastra](https://github.com/mastra-ai/mastra) ⭐28k | [数组结构化输出的逐 token 流式下，每个 `object` chunk 携带「到目前为止的数组」，chunk 尾部元素还是半成品、后续 chunk 在原位补全它（同 index、多字段）而非追加新元素——`textStream` 与 `elementStream` 都留着那条陈旧的半成品：流出的 `[{"a":1},{"a":2,"b":4}]` 缺了最终对象第一个元素的 `"b":2`，渲染或持久化流的消费者静默丢字段，与 Mastra 自己返回的最终校验对象不一致](https://github.com/mastra-ai/mastra/issues/25208) `2026-09-26` | 🟢 已被上游修复（[PR #25278](https://github.com/mastra-ai/mastra/pull/25278)） |
 | [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) ⭐20k | [`FunctionSignature.render_type_definitions` 按类型名消解冲突，产出行为可以与意图相悖的 Python 且全程无报错：参数与返回 schema 各自定义 `User` 的工具渲染出两份 `class sync_user_User(TypedDict)`，拼进同一模块后第二份静默重绑名字，`user` 参数落到返回类型的形状上；`RetWrap.user` 又渲染成裸 `User`——没有任何一份产出定义提供它，不冲突但引用了冲突类型的字段同样渲染裸名、指向空处](https://github.com/pydantic/pydantic-ai/issues/8816) `2026-09-26` | ⚪ 修复 [#8789](https://github.com/pydantic/pydantic-ai/pull/8789) 被关闭（要求 PR 先引用既有 issue；issue 后建，待按 `Fixes #8816` 重提） |
 | [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) ⭐20k | [`FunctionToolset.__init__` 对 `timeout` 与 `max_retries` 不做任何校验，而兄弟构造器在构造期就拒（`Agent(tool_timeout=0)` 抛 `UserError`）——`timeout=0` 被当真用作 `call_tool` 的 `anyio.fail_after(timeout)`，每个工具调用都以超时 `ModelRetry` 失败直到整轮 run 死掉，报错不指向坏值本身；负的 `max_retries` 盖到所有未自设重试数的工具上、充当 run 级重试预算](https://github.com/pydantic/pydantic-ai/issues/8815) `2026-09-26` | ⚪ 修复 [#8788](https://github.com/pydantic/pydantic-ai/pull/8788) 被关闭（要求 PR 先引用既有 issue；issue 后建，待按 `Fixes #8815` 重提） |
@@ -313,7 +328,7 @@
 | [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) ⭐20k | [`ReplayModel` 只在回放动作恰为字符串 `"submit"` 时才调 `_next_replay()`，而 `run-replay` 自己的写入器 `_create_actions_file` 把每个动作都写成 dict（`{"message": ...}`，function-calling 配置再加 `tool_calls`）——精确字符串比较永远匹配不上自家工具产出的文件，`_replay_idx` 从不前进，条目回放完之后的查询全落进 `IndexError` 兜底自动提交，永远走不到下一个回放条目](https://github.com/SWE-agent/SWE-agent/pull/1569) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
 | [e2b-dev/E2B](https://github.com/e2b-dev/E2B) ⭐14k | [`git.push()` / `git.pull()` 只在无凭证分支上做 auth/upstream 失败的映射：带 `username`/`password` 的分支在把失败映射成 `GitAuthError`/`GitUpstreamError`（Python 侧 `GitAuthException`/`GitUpstreamException`）的 `try`/`catch` 之前就提前 return——过期 token 的推拉把 git 的退出码与 stderr 当裸 `CommandExitError` 抛出，拿不到可操作的类型化错误，而 `clone()` 在含凭证的所有路径上都做同一映射](https://github.com/e2b-dev/E2B/pull/1897) `2026-09-25` | ⚪ 已关闭（未合并）：上游已废弃 Git 集成 |
 | [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) ⭐12k | [`executeSql` 的 SQLite 后端重写已放行的时间戳字面量时把时刻转成 UTC：`0001-01-01T00:00:00+00:30` 通过准入（`parse_timestamp_literal` 只要解析出时刻就收），`format_timestamp_for_sqlite` 的 `astimezone` 算出 0000-12-31 23:30 这个 `datetime` 装不下的值，调用点抛裸 `OverflowError`——它不是 `AnalyticsSqlError`，绕过 `executeSql` 文档承诺的错误信封直达调用方；同一条语句在不重写字面量的 PostgreSQL 上正常返回行](https://github.com/Arize-ai/phoenix/pull/16536) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
-| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) ⭐12k | [`_ToolKwargsConversion.to_anthropic` 在存档 prompt 的 `tool_choice` 为 `"none"` 时立即 `return {}`，把此前已装好的 `ans["tools"]` 一并丢弃——带工具但禁用工具使用的捕获请求，回放时 tools 整个消失；服务端 playground 本就同时发 tools 与 `tool_choice: none`，同文件 `_ToolChoiceConversion` 的 to/from 两个方向都早已正确映射 `"none"`，只有这条早退绕开了既有处理](https://github.com/Arize-ai/phoenix/pull/16535) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
+| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) ⭐12k | [`_ToolKwargsConversion.to_anthropic` 在存档 prompt 的 `tool_choice` 为 `"none"` 时立即 `return {}`，把此前已装好的 `ans["tools"]` 一并丢弃——带工具但禁用工具使用的捕获请求，回放时 tools 整个消失；服务端 playground 本就同时发 tools 与 `tool_choice: none`，同文件 `_ToolChoiceConversion` 的 to/from 两个方向都早已正确映射 `"none"`，只有这条早退绕开了既有处理](https://github.com/Arize-ai/phoenix/pull/16535) `2026-09-25` | 🟢 直接提 PR（未建 issue），已合并 |
 | [run-llama/llama_index](https://github.com/run-llama/llama_index) ⭐52k | [google-genai 集成的 `merge_neighboring_same_role_messages()` 用浅层 `BaseModel.model_copy()` 拷贝消息，`merged_content`/`merged_kwargs` 仍指向调用方的 blocks 列表与 `additional_kwargs` 字典，就地 `extend()`/`update()` 直接改写调用方原始消息——与函数自己的注释「operate on a copy … to avoid mutating the original」相反；chat memory 跨轮复用同一批 `ChatMessage`，每轮 `chat()` 都把之前轮次的内容重发一遍、随调用次数增长](https://github.com/run-llama/llama_index/pull/23251) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
 | [e2b-dev/E2B](https://github.com/e2b-dev/E2B) ⭐14k | [`WatchHandle.stop()` 只触发请求控制器的清理，`controller.abort()` 掐断的 Connect 流以 `Code.Canceled` 的 `ConnectError` 冒出，被默认错误映射包成劝人调大 `requestTimeoutMs` 的 `TimeoutError` 传给 `onExit`——用户自己发起的每次正常 stop 都长得像请求超时，报错还指向一个不该动的参数；Python SDK 早已把 `stop()` 当干净的主动结束（`on_exit` 无错误触发）](https://github.com/e2b-dev/E2B/issues/1895) `2026-09-25` | 🟢 已被上游修复（maintainer [PR #1923](https://github.com/e2b-dev/E2B/pull/1923) 已合并，修复 [#1896](https://github.com/e2b-dev/E2B/pull/1896) 被关为 superseded） |
 | [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) ⭐20k | [`SetStatusAgentHook.on_setup_attempt` 把上一轮尝试的花费折进 `_previous_cost` 却从不重置 `self._cost`（注释明说「Costs will be reset for the next attempt」），状态行显示的又是 `_previous_cost + _cost`——重试轮从首个状态行起就把上一轮花费重复计入，直到 `on_step_done` 用新尝试的花费覆盖才恢复：实际只花 $1.00 也显示 `Attempt 2 Step   1 ($2.00)`](https://github.com/SWE-agent/SWE-agent/issues/1567) `2026-09-25` | 🟢 修复 [#1568](https://github.com/SWE-agent/SWE-agent/pull/1568) 已提交 |
@@ -346,7 +361,7 @@
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐7k | [Anthropic redacted thinking 的 base64 字符串经编译期 cast 直接塞进声明为 `Uint8Array` 的 `ReasoningBlock.redactedContent`——首轮侥幸原样通过，首次 `Message.clone()` 或 session 存取把它经 `toJSON()/fromJSON()` 再编码成 base64 文本的 ASCII 字节，下一请求的 `redacted_thinking` 块序列化成 `{"0":69,"1":109,...}` 被 Messages API 拒收，加密推理的多轮工具使用全断](https://github.com/strands-agents/harness-sdk/issues/4587) `2026-09-25` | 🟢 修复 [#4593](https://github.com/strands-agents/harness-sdk/pull/4593) 已合并 |
 | [pipecat-ai/pipecat](https://github.com/pipecat-ai/pipecat) ⭐16k | [`GatedLLMContextAggregator.process_frame` 里 `StartFrame` 分支是独立 `if`：push 并 `_start()` 之后落进 catch-all `else` 把同一帧再 push 一遍——下游每个处理器收到两个 `StartFrame`、重跑启动逻辑（`FrameProcessor` 重建 process task、`BaseOutputTransport` 再次 `start()`）；修好只需一个 token：并入 `if/elif` 链](https://github.com/pipecat-ai/pipecat/pull/5911) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
 | [pipecat-ai/pipecat](https://github.com/pipecat-ai/pipecat) ⭐16k | [Gemini 适配器用「恰好一个 text part」判定 regular message：`create_image_message()` 造的双 part（text+image）与纯图单 part 都不算，只含这类消息的 context 被当成纯函数消息 context，system instruction 在已随 `system_instruction` 参数发送之外又作为尾部 user message 注入一遍](https://github.com/pipecat-ai/pipecat/pull/5910) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
-| [mastra-ai/mastra](https://github.com/mastra-ai/mastra) ⭐28k | [`convertMcpContentToolResultOutput` 在 v5 tool-result 输出里发 spec-v3（AI SDK v6）形态的 `image-data`/`file-data`，而 `LanguageModelV2ToolResultOutput` 只收 `text`/`media`——spec-v2 provider 把图片条目变 `undefined` 静默丢掉，spec-v4 provider 报 `unsupported tool content part type: image-data`（Bedrock 直接抛错），MCP 自动探测工具的图片/音频结果到不了任何一侧的模型](https://github.com/mastra-ai/mastra/pull/25093) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
+| [mastra-ai/mastra](https://github.com/mastra-ai/mastra) ⭐28k | [`convertMcpContentToolResultOutput` 在 v5 tool-result 输出里发 spec-v3（AI SDK v6）形态的 `image-data`/`file-data`，而 `LanguageModelV2ToolResultOutput` 只收 `text`/`media`——spec-v2 provider 把图片条目变 `undefined` 静默丢掉，spec-v4 provider 报 `unsupported tool content part type: image-data`（Bedrock 直接抛错），MCP 自动探测工具的图片/音频结果到不了任何一侧的模型](https://github.com/mastra-ai/mastra/pull/25093) `2026-09-25` | ⚪ 已关闭（未合并）：bot 判 stale（关联 issue #19658 已关闭） |
 | [confident-ai/deepeval](https://github.com/confident-ai/deepeval) ⭐18k | [OpenAI Agents SDK 的 function span `input` 非可解析 JSON 时 `json.loads` 裸抛：custom tool 与 apply_patch 走 `with_tool_function_span`（从不设 input，即 `None`）、无动作 computer call 是 `""`——崩点在 `Observer.__exit__`（span 已进 trace_manager、还没 `remove_span`），`ToolSpan` 以占位 `"NA"` 名泄漏在 `active_spans`，SDK trace provider 吞掉异常，除坏掉的 trace 外无任何表象](https://github.com/confident-ai/deepeval/pull/3365) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
 | [confident-ai/deepeval](https://github.com/confident-ai/deepeval) ⭐18k | [被 patch 的 `langchain_core.tools.tool` 在无活动 span 时直接崩：包装器无条件 `current_span.metrics = ...`，而 `current_span_context.get()` 在直接 `tool.invoke(...)` 或没挂 CallbackHandler 的运行里是 `None`，`AttributeError` 让工具调用本身失败；bare `@tool()` 还会把 `on_tool_start` 刚从 `next_tool_span(...)` 应用上的 metrics 用 `None` 覆盖掉——其余 tracing 层早就该用 skip-don't-clobber 语义](https://github.com/confident-ai/deepeval/pull/3364) `2026-09-25` | 🟢 直接提 PR（未建 issue） |
 | [huggingface/smolagents](https://github.com/huggingface/smolagents) ⭐29k | [`Tool.to_dict()` 的 `forward_source_code.replace(self.name, "forward")` 全量替换：`@tool` 装饰器存的 `__source__` 本就以 `def forward(...)` 开头，替换只会改写 body 里出现的工具名子串（URL、f-string、docstring、同名内置调用），`from_dict()`/`save()`/`push_to_hub()` 往返后的工具行为被静默改变、无任何报错](https://github.com/huggingface/smolagents/issues/2833) `2026-09-25` | 🟡 已提交，等待确认 |
