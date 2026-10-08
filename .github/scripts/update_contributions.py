@@ -26,6 +26,35 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "livekit/agents#7445": (
+        "`Agent.chat_ctx` 返回的 `_ReadOnlyChatContext` 有两条变更路径没守卫、静默写进视图的 detached 副本后正常返回："
+        "`_ImmutableList` 覆盖了 append/extend/pop/remove/clear/sort/reverse 独漏 `insert`，`chat_ctx.insert(item)` 与"
+        "走 `list.insert()` 的 `add_message(created_at=...)` / `merge(...)` 都把消息写丢，消息从没进真实 chat context；"
+        "`items` property setter 也未覆盖，`chat_ctx.items = [...]` 把不可变列表换成可变列表而 `readonly` 仍报 True。"
+        "改为补上 `insert` 的抛错实现并覆盖 `items` setter，两条路径都按文档抛 `RuntimeError`，补回归测试。"
+    ),
+    "strands-agents/harness-sdk#4593": (
+        "Anthropic Messages API 的 `RedactedThinkingBlock.data` 是 base64 字符串，`AnthropicModel.stream` 却经"
+        "编译期 cast 把它直接塞进声明为 `Uint8Array`、带 base64 `toJSON()/fromJSON()` 契约的 "
+        "`ReasoningBlock.redactedContent`——首轮侥幸原样通过，首次 `Message.clone()` 或 session 存取经 "
+        "`toJSON()/fromJSON()` 把它再编码成 base64 文本的 ASCII 字节，下一请求的 `redacted_thinking` 块序列化成 "
+        "`{\"0\":69,\"1\":109,...}` 被 Messages API 拒收，加密推理的多轮工具使用全断。"
+        "改为入库时把 base64 解码成字节存进 `redactedContent`、发送时再编码回字符串，往返与类型契约都对齐。"
+    ),
+    "PrefectHQ/fastmcp#5271": (
+        "`TransformedTool.run` 只拿字面顶层 `\"type\": \"object\"` 键判定 `output_schema` 是不是 object schema——"
+        "不带该键的 object schema（properties-only 的 `{\"properties\": {...}}`、根级 `$ref` 指向 object）被误判为"
+        "非 object，`transform_fn` 返回的 `ToolResult` 的 `structured_content` 被丢弃，重建的 `ToolResult` 还把 "
+        "`is_error` 与 `meta` 一并丢掉。改为按解析后的 schema 判定（properties-only 与根级 `$ref` 都算 object），"
+        "透传 `structured_content` 并保留 `is_error`/`meta`，补回归测试。"
+    ),
+    "PrefectHQ/fastmcp#5269": (
+        "`functools.partial` 造的工具全叫 `partial`、描述是 partial 类 docstring——`ParsedFunction.from_function` 经 "
+        "`fn.__class__.__name__` 兜底取名，partial 既无 `__name__` 也无 `__doc__`，注册两个 partial 工具就在名字 "
+        "`partial` 上相撞、后者顶掉前者（只给一条泛型 warning）。改为取名/取 docstring 时回退到被包裹的 callable"
+        "（保留 partial 绑定的参数与默认值）；partial 上显式给的名字、文档与参数描述仍优先（含故意留空的文档），"
+        "FastMCP 显式元数据照样覆盖，补回归测试。"
+    ),
     "bytedance/deer-flow#5861": (
         "`bind_task_tool` / `_bind_batch_tool` 给副本重绑的只有 `coroutine`，`func` 仍是进程级单例的 sync 包装——"
         "包着**未绑定**的 coroutine，同步调用 bound 副本因此绕过显式 SDK submitter 与执行容量、落回进程全局回退"
