@@ -61,6 +61,13 @@ NOTES = {
         "`is_error` 与 `meta` 一并丢掉。改为按解析后的 schema 判定（properties-only 与根级 `$ref` 都算 object），"
         "透传 `structured_content` 并保留 `is_error`/`meta`，补回归测试。"
     ),
+    "PrefectHQ/fastmcp#5575": (
+        "`set_up_component_manager` 文档写明支持 `POST /tools/{name}/disable?version=v1`，路由处理器却把原始查询串"
+        "直接交给 `Provider.enable`/`disable` 的 `VersionSpec` 参数，存下 `str` 后 `Visibility._matches` 调 "
+        "`self.version.matches(...)` 抛 `AttributeError`：一次带 `?version=` 的请求返回 200，之后所有客户端的 "
+        "`tools/list` 全部报错直到重启。改为把 `version` 查询参数转成 `VersionSpec(eq=version)` 再传入，"
+        "无 `?version=` 路径保持 `None` 不变，补回归测试。"
+    ),
     "PrefectHQ/fastmcp#5269": (
         "`functools.partial` 造的工具全叫 `partial`、描述是 partial 类 docstring——`ParsedFunction.from_function` 经 "
         "`fn.__class__.__name__` 兜底取名，partial 既无 `__name__` 也无 `__doc__`，注册两个 partial 工具就在名字 "

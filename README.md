@@ -122,8 +122,8 @@
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 10</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
-<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
 </tr>
 </table>
@@ -137,7 +137,14 @@
 </tr>
 </table>
 
-<p align="center"><b>22</b> 个 PR 已合并进 <b>8</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>23</b> 个 PR 已合并进 <b>8</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-09</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5575">fix: convert version query param to VersionSpec in component manager routes</a></summary>
+
+> [PrefectHQ/fastmcp#5575](https://github.com/PrefectHQ/fastmcp/pull/5575)：`set_up_component_manager` 文档写明支持 `POST /tools/{name}/disable?version=v1`，路由处理器却把原始查询串直接交给 `Provider.enable`/`disable` 的 `VersionSpec` 参数，存下 `str` 后 `Visibility._matches` 调 `self.version.matches(...)` 抛 `AttributeError`：一次带 `?version=` 的请求返回 200，之后所有客户端的 `tools/list` 全部报错直到重启。改为把 `version` 查询参数转成 `VersionSpec(eq=version)` 再传入，无 `?version=` 路径保持 `None` 不变，补回归测试。
+
+</details>
 
 <details>
 <summary><code>2026-10-08</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6478">fix(models): keep escaped newlines inside fences in MindIE native stream</a></summary>
@@ -303,7 +310,7 @@
 
 | 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| **149** | **32** | **28** | **78** | **30** | **13** |
+| **149** | **32** | **30** | **77** | **30** | **12** |
 
 </div>
 <!--END_SECTION:bug-stats-->
@@ -315,7 +322,7 @@
 |:--|:--|:--|
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [工具返回的 bytes 藏在容器里（`dict[str, bytes]`、`list[bytes]`）时整次调用崩在未捕获的 `PydanticSerializationError`，而同样内容裸返回（`-> bytes`）却正常走 base64——#3829 给裸 bytes 打的补丁只盖住 `_convert_to_single_content_block` 与 `_contains_bytes_type` 的 union/`Annotated` 分支：`default_serializer` 对嵌套在 dict/list/tuple/set（含键）里任何位置的非法 UTF-8 bytes 直接抛错，调用点又跑在结构化内容序列化的 `try/except` 之前，错误逃出 `convert_result`；容器类型还照样宣告一份运行时填不满的输出 schema（dict 情形给 `{"additionalProperties": {"format": "binary"}}`），裸 `bytes` 早已抑制](https://github.com/PrefectHQ/fastmcp/issues/5637) `2026-10-07` | 🟢 修复 [#5577](https://github.com/PrefectHQ/fastmcp/pull/5577) 已提交 |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`ResponseCachingMiddleware` 的缓存条目按调用方 access token 分区，却没按 MCP session 分区，而 session 状态本就按会话隔离（`Context.set_state`/`get_state` 以 session id 为键）——装了该中间件后第二个 session 的 `tools/call` 会拿到第一个 session 的缓存答案，哪怕它已经写入自己的值；`resources/read` 与 `prompts/get` 同理，同一 token 分区内的同一个缺陷](https://github.com/PrefectHQ/fastmcp/issues/5574) `2026-10-07` | 🟢 修复 [#5576](https://github.com/PrefectHQ/fastmcp/pull/5576) 已提交 |
-| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`set_up_component_manager` 文档写明支持 `POST /tools/{name}/disable?version=v1`，处理器却把原始查询串直接交给 `Provider.enable`/`disable` 的 `VersionSpec` 参数——存下 `str` 后 `Visibility._matches` 调 `self.version.matches(...)` 抛 `AttributeError`：一次带 `?version=` 的请求返回 200，之后所有客户端的 `tools/list` 全部报错直到重启](https://github.com/PrefectHQ/fastmcp/issues/5572) `2026-10-07` | 🟢 修复 [#5575](https://github.com/PrefectHQ/fastmcp/pull/5575) 已提交 |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`set_up_component_manager` 文档写明支持 `POST /tools/{name}/disable?version=v1`，处理器却把原始查询串直接交给 `Provider.enable`/`disable` 的 `VersionSpec` 参数——存下 `str` 后 `Visibility._matches` 调 `self.version.matches(...)` 抛 `AttributeError`：一次带 `?version=` 的请求返回 200，之后所有客户端的 `tools/list` 全部报错直到重启](https://github.com/PrefectHQ/fastmcp/issues/5572) `2026-10-07` | 🟢 修复 [#5575](https://github.com/PrefectHQ/fastmcp/pull/5575) 已合并 |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [`InvokeOptions.limits` 承诺每个上限「只约束本次 `invoke()`/`stream()`」，而设置 `AfterInvocationEvent.resume` 的钩子会在同一次公开调用里重入 agent 循环，每次重入都再调 `Meter.startNewInvocation()`——`_checkLimits` 每轮读到的都是空预算，`turns`/`totalTokens`/`outputTokens` 三个上限永不触发，一次 `invoke()` 可以发无限次模型调用（Python SDK 只在 `stream_async` 顶部重置一次）](https://github.com/strands-agents/harness-sdk/pull/4982) `2026-10-07` | 🟢 直接提 PR（未建 issue） |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [`deepCopyWithValidation` 对嵌套对象/数组之后出现的不可序列化值报错路径错误：replacer 的路径栈只压不弹，子树序列化完留下的陈旧帧被后续兄弟节点继承——`StateStore` 校验把 `{ nested: {x:1}, bad: fn }` 报成 `value for key "a".nested.bad` 而非 `"a".bad`，把用户指向错误位置](https://github.com/strands-agents/harness-sdk/pull/4981) `2026-10-07` | 🟢 直接提 PR（未建 issue） |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [OpenAI chat API 的 `mapChatChunkToEvents` 每遇到带 `id`/`name` 的 `tool_calls` 增量就发一个 `modelContentBlockStartEvent` 却从不关闭已打开的块，而 `streamAggregated` 在每次 start 时重置唯一的累积缓冲——并行工具调用只剩最后开始的那个、工具调用之前流出的助手文本被整个丢弃，agent 走 chat API 时整批并行调用丢到只剩一个](https://github.com/strands-agents/harness-sdk/issues/4975) `2026-10-07` | 🟢 修复 [#4980](https://github.com/strands-agents/harness-sdk/pull/4980) 已提交 |
