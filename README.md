@@ -130,7 +130,7 @@
 
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐59k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
