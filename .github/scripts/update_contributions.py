@@ -26,6 +26,17 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "agentscope-ai/agentscope#3242": (
+        "流式语音的最终 `is_last` 音频 `DataBlock` 保留流式 WAV 头的 `0xFFFFFFFF` RIFF/data 占位大小——"
+        "两个流式 parser 只给首个 delta 加流式头，累积器把后续 delta 原样拼进完成块，完成的音频不是合法 WAV、"
+        "与同一调用非流式路径的产物不一致，信任头部的消费方（`wave.getnframes()`、时长、seek、严格播放器）"
+        "看到 4294967295 而非实际音频长度。改为在最终块声明真实 RIFF/data 尺寸。"
+    ),
+    "livekit/agents#7734": (
+        "`ToolProxyToolset` 的 `call_tool` 工具描述与 unknown-tool 报错都让模型「用 `search_tools` 发现工具」，"
+        "而该工具集实际暴露的搜索工具由父类 `ToolSearchToolset` 以 `tool_search` 之名创建、测试也断言这个名字——"
+        "两段字符串都是 LLM 可见的，照自己指令行事的模型会去调用一个不存在的工具。改为引用真实工具名 `tool_search`。"
+    ),
     "bytedance/deer-flow#6478": (
         "MindIE 的无工具原生流式逐 chunk 调 `_decode_escaped_newlines_outside_fences`，而该助手靠输入里成对的围栏定界符判断围栏——"
         "token 大小的 chunk 几乎不可能同时含一对定界符，围栏判定永不生效，chunk 里每个字面 `\\n`（包括完整回复中位于围栏内的代码）"
