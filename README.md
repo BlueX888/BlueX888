@@ -121,7 +121,7 @@
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 10</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 12</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 2</sub></td>
@@ -138,7 +138,21 @@
 </tr>
 </table>
 
-<p align="center"><b>25</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>27</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6732">fix(memory): read the complete scope in the substring search fallback</a></summary>
+
+> [bytedance/deer-flow#6732](https://github.com/bytedance/deer-flow/pull/6732)
+
+</details>
+
+<details>
+<summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6733">fix(memory): keep non-core fact categories instead of rewriting to other</a></summary>
+
+> [bytedance/deer-flow#6733](https://github.com/bytedance/deer-flow/pull/6733)
+
+</details>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/agentscope-ai.png?size=40" width="16" height="16" alt="agentscope-ai"/> <b>agentscope-ai/agentscope</b> · <a href="https://github.com/agentscope-ai/agentscope/pull/3242">fix(model): declare real WAV sizes in the final streamed audio block</a></summary>
