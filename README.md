@@ -124,7 +124,7 @@
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 12</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
-<td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 2</sub></td>
+<td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
 </tr>
 </table>
@@ -138,19 +138,26 @@
 </tr>
 </table>
 
-<p align="center"><b>27</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>28</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-13</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7733">fix: split underscore terms in BM25 description and param tokens</a></summary>
+
+> [livekit/agents#7733](https://github.com/livekit/agents/pull/7733)：`BM25SearchStrategy` 的查询归一化把 `_` 换成空格，工具名与参数键的分词也做同样拆分，唯独描述 token 与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，而每个查询都先替换掉 `_`、不可能含它，`checking_balance` 这类写在描述里的术语搜索永远 0 分，`tool_search` 对描述里明确写着该术语的工具抛 `No tools found`。改为对描述与参数描述 token 应用与名字/键相同的下划线拆分，补跨两种策略、两种查询拼法的回归测试。
+
+</details>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6732">fix(memory): read the complete scope in the substring search fallback</a></summary>
 
-> [bytedance/deer-flow#6732](https://github.com/bytedance/deer-flow/pull/6732)
+> [bytedance/deer-flow#6732](https://github.com/bytedance/deer-flow/pull/6732)：检索适配器关闭时（`retrieval_adapter: ""` 是文档化的配置）substring 搜索走 `FileMemoryStorage._search_substring`，它遍历默认 `limit: 100` 的分页 `list_facts` 且从不翻页——一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search` 「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 不会再落到无上限的兜底路径，同文件 scoped `rebuild_index` 早已为「bulk replace 会丢掉没读到的行」读完整 scope。改为按同样方式读全量事实、原位套用 filters，补回归测试。
 
 </details>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6733">fix(memory): keep non-core fact categories instead of rewriting to other</a></summary>
 
-> [bytedance/deer-flow#6733](https://github.com/bytedance/deer-flow/pull/6733)
+> [bytedance/deer-flow#6733](https://github.com/bytedance/deer-flow/pull/6733)：`memory_add` 文档明文允许自由 category 标签（示例给出 "personal"），`memory_search` 承诺「Only facts with this exact category are returned」，`storage._normalize_category` 却把核心类目之外的标签一律改写成 "other"、原文只存进全仓无代码读取的 `categoryExtension` 字段——`memory_add(category="personal")` 落库即 "other"、按 "personal" 永远搜不到，记忆设置页的自由文本分类输入与 fact 抽取 prompt 自带的 `knowledge` 枚举（不在核心类目里）也被同一改写折进 "other"。改为保留调用方标签作为存储 `category`（空串仍回退 "context"），非核心标签在 create/update、get_memory 文档、FTS5 检索索引与分类过滤中全程 round-trip。
 
 </details>
 
@@ -339,7 +346,7 @@
 
 | 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| **186** | **33** | **32** | **102** | **39** | **13** |
+| **186** | **33** | **38** | **99** | **36** | **13** |
 
 </div>
 <!--END_SECTION:bug-stats-->
@@ -349,12 +356,12 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
-| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [`memory_add` 的 docstring 明文允许自由 category 标签（示例给出 "personal"、"behavior" 等），`memory_search` 也承诺「Only facts with this exact category are returned」，但 storage 的 `_normalize_category` 把 `CORE_CATEGORIES` 之外的标签一律改写成 "other"、原文只存进全仓无代码读取的 `categoryExtension` 字段——`memory_add(category="personal")` 落库即 "other"，`memory_search(category="personal")` 永远搜不到，`get_memory`/gateway 文档还一直报 "other"；同一改写还打到记忆设置页的自由文本分类输入与 fact 抽取 prompt 自带的 `knowledge` 枚举（不在核心类目里），LLM 抽出的 knowledge 事实也被折进 "other"。修复改为保留调用方标签作为存储 `category`（空串仍回退 "context"），非核心标签在 create/update、get_memory 文档、FTS5 检索索引与分类过滤中全程 round-trip](https://github.com/bytedance/deer-flow/pull/6733) `2026-10-12` | 🟢 直接提 PR（未建 issue） |
-| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [检索适配器关闭时（`retrieval_adapter: ""` 是文档化的配置）substring 搜索走 `_search_substring`，它用默认 `limit: int = 100` 的分页 `list_facts` 遍历且从不翻页——一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search`「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 又不会再落到无上限的兜底路径。同文件 scoped `rebuild_index` 早已因「bulk replace 会丢掉没读到的行」读完整 scope。修复让 substring 回退按同样方式读全量事实、原位套用 filters：≤100 条匹配的结果不变，大 scope 恢复 `top_k` 契约](https://github.com/bytedance/deer-flow/pull/6732) `2026-10-12` | 🟢 直接提 PR（未建 issue） |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [`memory_add` 的 docstring 明文允许自由 category 标签（示例给出 "personal"、"behavior" 等），`memory_search` 也承诺「Only facts with this exact category are returned」，但 storage 的 `_normalize_category` 把 `CORE_CATEGORIES` 之外的标签一律改写成 "other"、原文只存进全仓无代码读取的 `categoryExtension` 字段——`memory_add(category="personal")` 落库即 "other"，`memory_search(category="personal")` 永远搜不到，`get_memory`/gateway 文档还一直报 "other"；同一改写还打到记忆设置页的自由文本分类输入与 fact 抽取 prompt 自带的 `knowledge` 枚举（不在核心类目里），LLM 抽出的 knowledge 事实也被折进 "other"。修复改为保留调用方标签作为存储 `category`（空串仍回退 "context"），非核心标签在 create/update、get_memory 文档、FTS5 检索索引与分类过滤中全程 round-trip](https://github.com/bytedance/deer-flow/pull/6733) `2026-10-12` | 🟢 直接提 PR（未建 issue），已合并 |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [检索适配器关闭时（`retrieval_adapter: ""` 是文档化的配置）substring 搜索走 `_search_substring`，它用默认 `limit: int = 100` 的分页 `list_facts` 遍历且从不翻页——一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search`「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 又不会再落到无上限的兜底路径。同文件 scoped `rebuild_index` 早已因「bulk replace 会丢掉没读到的行」读完整 scope。修复让 substring 回退按同样方式读全量事实、原位套用 filters：≤100 条匹配的结果不变，大 scope 恢复 `top_k` 契约](https://github.com/bytedance/deer-flow/pull/6732) `2026-10-12` | 🟢 直接提 PR（未建 issue），已合并 |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`json_schema_to_type` 对带根 title 的递归 schema 必炸：`{"$ref": "#"}` 指向根 schema、其生成类以根 title 命名（回退 `Root`），而 `_convert_schema` 的 `ref == "#"` 分支却从无 title 的裸 ref 节点建 ForwardRef——引用恒名 `Root`、类名却是如 `Node`，`TypeAdapter` 校验抛 `PydanticUserError: ... is not fully defined`；无 title 的递归 schema 本来是好的，带 title 恰是多数 schema 生产方的默认形态。修复让转换全程跟踪 `root_class_name`（显式 `name` 覆盖 → 根 title → `Root`），`anyOf`、array items、Pydantic-model 分支等所有引用位置统一指向实际生成的类，显式 `name=` 使类名与 title 不一致的情形一并修好](https://github.com/PrefectHQ/fastmcp/issues/5669) `2026-10-12` | 🟢 修复 [#5671](https://github.com/PrefectHQ/fastmcp/pull/5671) 已提交 |
-| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [删除 Bot 或群聊不清理其定时任务：任务仍按计划在 DSH 中待触发、却从 Settings 界面消失，`schedule-delete` 又拒绝删除它们——孤儿任务永久滞留调度器](https://github.com/Fei2411/DeepSeek-Bot/issues/57) `2026-10-12` | 🟡 已提交，等待确认 |
-| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [另一 host 接管 `state.lock` 后，store 的写端点仍返回 `ok:true` 但 `save()` 静默丢弃本次变更——多 host 场景下写入互相覆盖且无任何报错](https://github.com/Fei2411/DeepSeek-Bot/issues/56) `2026-10-12` | 🟡 已提交，等待确认 |
-| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [mock LLM 的长任务指令（`长任务 N`）省略步数上限 K 时，`.map(Number)` 把缺失捕获组转成 NaN、击穿 `size = 4` 默认值——每个 step 不再发出任何文本块](https://github.com/Fei2411/DeepSeek-Bot/issues/55) `2026-10-12` | 🟡 已提交，等待确认 |
+| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [删除 Bot 或群聊不清理其定时任务：任务仍按计划在 DSH 中待触发、却从 Settings 界面消失，`schedule-delete` 又拒绝删除它们——孤儿任务永久滞留调度器](https://github.com/Fei2411/DeepSeek-Bot/issues/57) `2026-10-12` | 🟢 已被上游修复（维护者回复「已完成修复」后关闭） |
+| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [另一 host 接管 `state.lock` 后，store 的写端点仍返回 `ok:true` 但 `save()` 静默丢弃本次变更——多 host 场景下写入互相覆盖且无任何报错](https://github.com/Fei2411/DeepSeek-Bot/issues/56) `2026-10-12` | 🟢 已被上游修复（维护者回复「已完成修复」后关闭） |
+| [Fei2411/DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) ⭐1.2k | [mock LLM 的长任务指令（`长任务 N`）省略步数上限 K 时，`.map(Number)` 把缺失捕获组转成 NaN、击穿 `size = 4` 默认值——每个 step 不再发出任何文本块](https://github.com/Fei2411/DeepSeek-Bot/issues/55) `2026-10-12` | 🟢 已被上游修复（维护者回复「已完成修复」后关闭） |
 | [agno-agi/agno](https://github.com/agno-agi/agno) ⭐42k | [`get_messages_for_output_model()` 在 output model 调用前无条件 pop 掉 transcript 最后一条消息——本意是丢主模型的草稿答案，但配了 `output_model` 又有可暂停工具（`requires_confirmation=True`、用户输入、外部执行）或 `stop_after_tool_call` 时，此刻最后一条是携带 pending `tool_calls` 的 assistant 消息（暂停路径）或工具结果（stop 路径）；各调用点 output model 又都先于 paused 检查执行，暂停的 run 于是被持久化成没有待执行工具调用、content 却是工具还没跑就被 output model 编好的答案，`continue_run` 后 transcript 里续出无前置 assistant `tool_calls` 的孤立 tool 消息被 OpenAI/Anthropic/Gemini 400 拒收；stop 路径则丢的是工具结果，output model 拿着孤立的 `tool_call` 消息收尾。附无网络、stub Model 的最小复现](https://github.com/agno-agi/agno/issues/11014) `2026-10-11` | 🟡 已提交，等待确认 |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`Tool.from_tool` 的 `TransformedTool.run` 只认协程函数与普通同步 callable 两条派发路径，生成器结果被原样交给 `convert_result`——生成器体在迭代时才执行：同步生成器在文本序列化时被消费、构建 structured_content 时已耗尽，`content` 与 `structured_content` 全空；async 生成器函数不是协程函数、被当普通 callable 扔进线程池，生成器对象序列化成 repr，直接抛「has an output schema but did not return structured content」。同一生成器只要恰好声明了注入参数（如 `ctx`）就正常——那条路径的 wrapper 会消费生成器，普通工具的 `FunctionTool` 也早有 `_materialize_generator`，唯独这条直接派发分支漏了。修在派发后、结果检查前按同样方式物化 async/sync 生成器，物化保持在 `_current_tool` 作用域内，`forward()` 照常可用](https://github.com/PrefectHQ/fastmcp/issues/5668) `2026-10-11` | 🟢 修复 [#5672](https://github.com/PrefectHQ/fastmcp/pull/5672) 已提交 |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [TS `Graph._stream` 在 `targets` 还持有已发现未调度节点时处理 `INTERRUPTED` 结果，整次运行死锁：调度被 `!interrupted` 拦住、`streams` 已空、主循环在 `queue.wait()` 上无生产者地永久阻塞。只要中断被观测到时 `targets` 非空即可触发——bounded `maxConcurrency`（校验器认可的合法配置）下并非所有 source 能同时 in flight，或同一次 queue 排空中更早的完成事件已把就绪节点塞进 `targets`。附无网络、纯 `Node` 子类的最小复现](https://github.com/strands-agents/harness-sdk/issues/5066) `2026-10-11` | 🟡 已提交，等待确认 |
@@ -377,7 +384,7 @@
 | [livekit/agents](https://github.com/livekit/agents) ⭐14k | [`ToolProxyToolset` 的 `call_tool` 工具描述与 unknown-tool 错误消息都让模型「用 `search_tools` 发现工具」，而该工具集实际暴露的搜索工具叫 `tool_search`——两段字符串都是 LLM 可见的，照自己指令行事的模型会去调一个不存在的工具；搜索工具由父类 `ToolSearchToolset` 以 `raw_schema` 名 `tool_search` 创建，测试也断言这个名字，调用描述是模型发现工具的唯一指令来源](https://github.com/livekit/agents/pull/7734) `2026-10-11` | 🟢 直接提 PR（未建 issue），已合并 |
 | [run-llama/llama_index](https://github.com/run-llama/llama_index) ⭐52k | [向后兼容校验器 `legacy_additional_kwargs_image` 把旧 `additional_kwargs["images"]` 迁移成 `ImageBlock` 后保留 `images` 键、并对每项无条件 `resolve_image()`——pydantic 往返 `model_dump()`→`model_validate()` 崩溃（dump 把残留 `ImageDocument` 序列化成 dict，再校验对 dict 调 `.resolve_image()` 抛 `AttributeError`，同样命中带此类消息的持久化 chat store 重载），已转换的消息每次重校验还会把 `ImageBlock` 再追加一遍、逐次翻倍](https://github.com/run-llama/llama_index/pull/23463) `2026-10-11` | 🟢 直接提 PR（未建 issue） |
 | [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) ⭐20k | [`sweagent run-api` 在 CLI help 里做广告、被 argparse 接受，但每次调用都 `ModuleNotFoundError: No module named 'sweagent.api'`——dispatch 分支 import 的模块整个包里不存在、`pyproject.toml` 也没有提供它的 optional extra，广告出的子命令从来无法启动](https://github.com/SWE-agent/SWE-agent/issues/1602) `2026-10-11` | 🟢 修复 [#1604](https://github.com/SWE-agent/SWE-agent/pull/1604) 已提交 |
-| [livekit/agents](https://github.com/livekit/agents) ⭐14k | [`BM25SearchStrategy` 对查询、工具名、参数键都做下划线转空格分词，唯独描述与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，而每个查询都先被替换掉 `_`、不可能含它，`checking_balance` 与 `checking balance` 的搜索都得 0 分，`tool_search` 对描述里写着该术语的工具抛 `No tools found`；`KeywordSearchStrategy` 同输入能返回同一工具](https://github.com/livekit/agents/issues/7727) `2026-10-11` | 🟢 修复 [#7733](https://github.com/livekit/agents/pull/7733) 已提交 |
+| [livekit/agents](https://github.com/livekit/agents) ⭐14k | [`BM25SearchStrategy` 对查询、工具名、参数键都做下划线转空格分词，唯独描述与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，而每个查询都先被替换掉 `_`、不可能含它，`checking_balance` 与 `checking balance` 的搜索都得 0 分，`tool_search` 对描述里写着该术语的工具抛 `No tools found`；`KeywordSearchStrategy` 同输入能返回同一工具](https://github.com/livekit/agents/issues/7727) `2026-10-11` | 🟢 修复 [#7733](https://github.com/livekit/agents/pull/7733) 已合并 |
 | [run-llama/llama_index](https://github.com/run-llama/llama_index) ⭐52k | [llama-index-llms-anthropic 的 `stream_chat`/`astream_chat` 在工具块结束时从不重置 `cur_tool_call`——流式回合里客户端 `tool_use` 块后跟服务端工具块（`web_search`、`mcp_servers`）时，本应忽略服务端 `input_json_delta` 的守卫不触发，服务端工具的半截 JSON 被追加进陈旧的 `cur_tool_json` 并写回已完成的客户端工具调用参数、将其覆盖；非流式路径不受影响](https://github.com/run-llama/llama_index/issues/23459) `2026-10-11` | 🟢 修复 [#23462](https://github.com/run-llama/llama_index/pull/23462) 已提交 |
 | [guidance-ai/guidance](https://github.com/guidance-ai/guidance) ⭐22k | [实验性 `SglangModel`/`LiteLLM` 适配器上 `gen(stop="...")` 在构建任何请求之前就 `AttributeError: 'LiteralNode' object has no attribute 'regex'`——字符串 stop 造的是 `LiteralNode`（文本在 `.value`），两个适配器的 `rule()` 却无条件读 `node.stop.regex`；两个适配器都声称支持 stop（所有支持的后端都有 stop 参数），字符串 stop 本应作为请求参数发出](https://github.com/guidance-ai/guidance/issues/1542) `2026-10-11` | 🟢 修复 [#1543](https://github.com/guidance-ai/guidance/pull/1543) 已提交 |
 | [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) ⭐20k | [`sweagent sh` 不带 `-r` 时会提示输入仓库路径，但提示发生在环境配置构建之后——docker 卷挂载已用 `cli_args.repo` 插值成 `-v None:/repo`，随后输入的路径被丢弃；兄弟 `-p` 问题陈述提示早已按「先问后用」排序，repo 提示挪到 `EnvironmentConfig` 构造之前即可让输入路径真正进挂载参数](https://github.com/SWE-agent/SWE-agent/pull/1603) `2026-10-11` | 🟢 直接提 PR（未建 issue） |

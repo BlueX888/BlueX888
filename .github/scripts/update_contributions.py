@@ -26,6 +26,30 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "livekit/agents#7733": (
+        "`BM25SearchStrategy` 的查询归一化把 `_` 换成空格，工具名与参数键的分词也做同样拆分，"
+        "唯独描述 token 与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，"
+        "而每个查询都先替换掉 `_`、不可能含它，`checking_balance` 这类写在描述里的术语搜索永远 0 分，"
+        "`tool_search` 对描述里明确写着该术语的工具抛 `No tools found`。"
+        "改为对描述与参数描述 token 应用与名字/键相同的下划线拆分，补跨两种策略、两种查询拼法的回归测试。"
+    ),
+    "bytedance/deer-flow#6733": (
+        "`memory_add` 文档明文允许自由 category 标签（示例给出 \"personal\"），`memory_search` 承诺"
+        "「Only facts with this exact category are returned」，`storage._normalize_category` 却把核心类目之外的"
+        "标签一律改写成 \"other\"、原文只存进全仓无代码读取的 `categoryExtension` 字段——"
+        "`memory_add(category=\"personal\")` 落库即 \"other\"、按 \"personal\" 永远搜不到，"
+        "记忆设置页的自由文本分类输入与 fact 抽取 prompt 自带的 `knowledge` 枚举（不在核心类目里）"
+        "也被同一改写折进 \"other\"。改为保留调用方标签作为存储 `category`（空串仍回退 \"context\"），"
+        "非核心标签在 create/update、get_memory 文档、FTS5 检索索引与分类过滤中全程 round-trip。"
+    ),
+    "bytedance/deer-flow#6732": (
+        "检索适配器关闭时（`retrieval_adapter: \"\"` 是文档化的配置）substring 搜索走 "
+        "`FileMemoryStorage._search_substring`，它遍历默认 `limit: 100` 的分页 `list_facts` 且从不翻页——"
+        "一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search` "
+        "「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 不会再落到无上限的兜底路径，"
+        "同文件 scoped `rebuild_index` 早已为「bulk replace 会丢掉没读到的行」读完整 scope。"
+        "改为按同样方式读全量事实、原位套用 filters，补回归测试。"
+    ),
     "agentscope-ai/agentscope#3242": (
         "流式语音的最终 `is_last` 音频 `DataBlock` 保留流式 WAV 头的 `0xFFFFFFFF` RIFF/data 占位大小——"
         "两个流式 parser 只给首个 delta 加流式头，累积器把后续 delta 原样拼进完成块，完成的音频不是合法 WAV、"
