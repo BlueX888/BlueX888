@@ -1,30 +1,18 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:8E2DE2,100:4A00E0&height=200&section=header&text=BlueX888&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Multi-Agent%20Systems%20Builder&descSize=20&descAlignY=55" width="100%"/>
-
-<h1>👨‍💻 Hey there! 👋 I'm 哈基米</h1>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:8E2DE2,100:4A00E0&height=180&section=header&text=BlueX888&fontSize=56&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Multi-Agent%20Systems%20Builder&descSize=18&descAlignY=56" width="100%"/>
 
 <a href="https://github.com/BlueX888">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2500&pause=900&color=A78BFA&center=true&vCenter=true&width=650&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!"/>
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2500&pause=900&color=8250DF&center=true&vCenter=true&width=650&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=2500&pause=900&color=A78BFA&center=true&vCenter=true&width=620&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!"/>
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=2500&pause=900&color=8250DF&center=true&vCenter=true&width=620&lines=%F0%9F%A4%96+Building+Multi-Agent+Systems;%F0%9F%A7%AA+From+1000-line+demos+to+durable+kernels;%F0%9F%9A%80+Talk+is+cheap%2C+show+me+the+Agent!" alt="Typing SVG"/>
   </picture>
 </a>
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
-
 <p>
-  <a href="https://github.com/BlueX888?tab=repositories&sort=stargazers">
-    <img alt="total stars" src="https://custom-icon-badges.demolab.com/github/stars/BlueX888?color=55960c&style=for-the-badge&labelColor=488207&logo=star"/></a>
-  <a href="https://github.com/BlueX888?tab=followers">
-    <img alt="followers" src="https://custom-icon-badges.demolab.com/github/followers/BlueX888?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=person-add&label=Follow&logoColor=white"/></a>
-  <img alt="profile views" src="https://komarev.com/ghpvc/?username=BlueX888&label=Profile%20Views&color=8E2DE2&style=for-the-badge"/>
-</p>
-
-<p>
-  <img alt="Intern at ModelBest" src="https://img.shields.io/badge/💼_面壁智能_%2F_OpenBMB-Agent_方向实习中-4A00E0?style=flat-square"/>
-  <img alt="BJUT" src="https://img.shields.io/badge/🎓_北京工业大学-研二在读-8E2DE2?style=flat-square"/>
-  <img alt="Focus" src="https://img.shields.io/badge/🧪_方向-LLM_Agent_编排_%2F_持久化执行_%2F_多智能体安全-A78BFA?style=flat-square"/>
+  <img alt="Intern at ModelBest" src="https://img.shields.io/badge/面壁智能_·_OpenBMB-Agent_实习-4A00E0?style=for-the-badge"/>
+  <img alt="BJUT" src="https://img.shields.io/badge/北京工业大学-研二-8E2DE2?style=for-the-badge"/>
+  <img alt="Focus" src="https://img.shields.io/badge/方向-Agent_编排_·_持久化执行_·_安全治理-A78BFA?style=for-the-badge"/>
 </p>
 
 </div>
@@ -35,15 +23,14 @@
 <tr>
 <td width="62%" valign="top">
 
-我做多智能体系统。从 174 行就能读完的 deep-research 团队，到跑在 Temporal 上、有租户隔离和审计的企业级执行内核，我想搞清楚同一件事：**让一群模型可靠地协作，到底需要什么样的工程。**
+我是 **哈基米**，做多智能体系统。从 174 行核心代码的 deep-research 团队，到跑在 Temporal 上的企业级执行内核，想回答的是同一个问题：**让一群模型可靠地协作，需要什么样的工程。**
 
-**我信什么？** 模型负责判断，代码负责搬运。安全边界、状态机、可审计性这些东西应该由确定性代码兜底，而不是寄希望于 prompt。
+> 模型负责判断，代码负责兜底——安全边界、状态机、可审计性交给确定性代码，而不是 prompt。
 
 <table>
-  <tr><td>🎓 <b>研究生</b></td><td>北京工业大学（211）· 计算机科学与技术 · 2025.09 – 2028.06</td></tr>
-  <tr><td>🎓 <b>本科</b></td><td>河南大学（双一流）· 计算机科学与技术 · 2021.09 – 2025.06</td></tr>
-  <tr><td>💼 <b>实习</b></td><td>面壁智能（ModelBest / OpenBMB）· Agent 方向 · 2026.08 至今</td></tr>
-  <tr><td>🧪 <b>方向</b></td><td>LLM Agent 编排 · 持久化执行 · 多智能体安全治理</td></tr>
+  <tr><td>🎓 <b>硕士</b></td><td>北京工业大学 · 计算机科学与技术 · 2025 – 2028</td></tr>
+  <tr><td>🎓 <b>本科</b></td><td>河南大学 · 计算机科学与技术 · 2021 – 2025</td></tr>
+  <tr><td>💼 <b>实习</b></td><td>面壁智能（ModelBest / OpenBMB）· Agent 方向 · 2026.08 –</td></tr>
 </table>
 
 </td>
@@ -55,66 +42,59 @@
 </tr>
 </table>
 
----
-
 ## 🔬 Current Work
 
-- ⚙️ **SwarmCore** 正在冲 M5 里程碑（v1 候选基线）：Temporal 持久化编排 + PostgreSQL 单一事实源 + OPA/Vault 治理
-- 💼 在面壁智能实习，参与 OpenBMB 的 Agent 产品（ChatDev / StaffDeck / PilotDeck）开发
-- 🔧 给上游 Agent 框架修 bug、提特性：Strands Agents、Agno、deer-flow、Hugging Face smolagents、OpenHands、crewAI、CAMEL、LangGraph / DeepAgents、mem0、RAGAS、DeepEval、FastMCP、mcp-use、MCP Servers、OpenAI Agents SDK（Python / TS）、Mastra
-- 🔍 审 Agent 框架的核心模块（provider 适配层、streaming 聚合、tool 调用）主动找缺陷：写无网络最小复现 → 按仓库模板报 issue → 允许直接 PR 的仓库当天带回归测试提修复，issue-first 的仓库等维护者确认后再修
-- 📖 维护 **nanoteam**，把多智能体的最小可用形态写成一本能跑的教科书
-
----
+- ⚙️ **SwarmCore** 冲刺 M5（v1 候选基线）：Temporal 持久化编排 · PostgreSQL 单一事实源 · OPA/Vault 治理
+- 💼 **面壁智能**：参与 OpenBMB 的 Agent 产品 ChatDev / StaffDeck / PilotDeck
+- 🔍 **上游审计**：读 Agent 框架的 provider 适配、streaming 聚合、tool 调用层找缺陷，写无网络最小复现，按仓库规则报 issue 或当天带回归测试提 PR
+- 📖 **nanoteam**：把多智能体的最小可用形态写成一本能跑的教科书
 
 ## 📘 Projects
 
-> 一条完整的多智能体谱系：**看得懂 → 用得上 → 跑得稳**
+<p align="center"><i>一条多智能体谱系：<b>看得懂 → 用得上 → 跑得稳</b></i></p>
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🐜 [nanoteam](https://github.com/BlueX888/nanoteam)
+#### 🐜 [nanoteam](https://github.com/BlueX888/nanoteam)
 
-1000 行以内的 deep-research 多智能体团队，一天就能读完的"可运行教科书"。Leader–Worker 架构，可预测的 N+2 次模型调用，CI 强制行数上限。
+deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上限，一天读完的「可运行教科书」。Leader–Worker 架构，每次任务固定 N+2 次模型调用。
 
-<img src="https://img.shields.io/badge/-Leader–Worker-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-CI_行数上限-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-单一依赖-1C3C3C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Python-4A00E0?style=flat-square&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/Leader–Worker-1C1C2E?style=flat-square"/> <img src="https://img.shields.io/badge/单一依赖-1C1C2E?style=flat-square"/>
 
 </td>
 <td width="50%" valign="top">
 
-### 🔨 [forge-code](https://github.com/BlueX888/forge-code)
+#### 🔨 [forge-code](https://github.com/BlueX888/forge-code)
 
-面向本地工程的个人 AI 编程助手。跨会话项目记忆，Skill 自进化（人工审核后沉淀），长任务上下文压缩，本地权限沙箱。
+面向本地工程的 AI 编程助手：跨会话项目记忆，Skill 经人工审核后沉淀自进化，长任务上下文压缩，本地权限沙箱。
 
-<img src="https://img.shields.io/badge/-项目记忆-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-Skill_自进化-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-权限沙箱-1C3C3C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Python-4A00E0?style=flat-square&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/项目记忆-1C1C2E?style=flat-square"/> <img src="https://img.shields.io/badge/权限沙箱-1C1C2E?style=flat-square"/>
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 🏥 [Medical-Agent-Swarm](https://github.com/BlueX888/Medical-Agent-Swarm)
+#### 🏥 [Medical-Agent-Swarm](https://github.com/BlueX888/Medical-Agent-Swarm)
 
-基于 LangGraph 的医疗问答多智能体原型。Orchestrator–Worker 编排，确定性安全层由代码而非 LLM 兜底，技能白名单 + 隐私脱敏 API。
+医疗问答多智能体原型：Orchestrator–Worker 编排，安全层由确定性代码而非 LLM 兜底，技能白名单 + 隐私脱敏。
 
-<img src="https://img.shields.io/badge/-LangGraph-1C3C3C?style=flat-square&logo=langchain&logoColor=white"/> <img src="https://img.shields.io/badge/-确定性安全层-1C3C3C?style=flat-square"/> <img src="https://img.shields.io/badge/-隐私脱敏-1C3C3C?style=flat-square"/>
+<img src="https://img.shields.io/badge/LangGraph-4A00E0?style=flat-square&logo=langchain&logoColor=white"/> <img src="https://img.shields.io/badge/确定性安全层-1C1C2E?style=flat-square"/> <img src="https://img.shields.io/badge/隐私脱敏-1C1C2E?style=flat-square"/>
 
 </td>
 <td width="50%" valign="top">
 
-### ⚙️ [SwarmCore](https://github.com/BlueX888/SwarmCore)
+#### ⚙️ [SwarmCore](https://github.com/BlueX888/SwarmCore)
 
-企业级多租户、可持久化的智能体执行内核。Temporal 持久化编排，不可变执行计划，PostgreSQL 单一事实源，OPA/Vault 安全治理。
+企业级多租户、可持久化的智能体执行内核：不可变执行计划，Temporal 编排，PostgreSQL 单一事实源，OPA/Vault 治理。
 
-<img src="https://img.shields.io/badge/-Temporal-1C3C3C?style=flat-square&logo=temporal&logoColor=white"/> <img src="https://img.shields.io/badge/-PostgreSQL-1C3C3C?style=flat-square&logo=postgresql&logoColor=white"/> <img src="https://img.shields.io/badge/-OPA_%2F_Vault-1C3C3C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Temporal-4A00E0?style=flat-square&logo=temporal&logoColor=white"/> <img src="https://img.shields.io/badge/PostgreSQL-1C1C2E?style=flat-square&logo=postgresql&logoColor=white"/> <img src="https://img.shields.io/badge/OPA_·_Vault-1C1C2E?style=flat-square"/>
 
 </td>
 </tr>
 </table>
-
----
 
 ## 🤝 Merged Upstream PRs
 
@@ -138,7 +118,7 @@
 </tr>
 </table>
 
-<p align="center"><b>30</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>30</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
 
 <details>
 <summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6839">fix(mindie): degrade unserializable tool args to str() in XML replay</a></summary>
@@ -181,6 +161,12 @@
 > [agentscope-ai/agentscope#3242](https://github.com/agentscope-ai/agentscope/pull/3242)：流式语音的最终 `is_last` 音频 `DataBlock` 保留流式 WAV 头的 `0xFFFFFFFF` RIFF/data 占位大小——两个流式 parser 只给首个 delta 加流式头，累积器把后续 delta 原样拼进完成块，完成的音频不是合法 WAV、与同一调用非流式路径的产物不一致，信任头部的消费方（`wave.getnframes()`、时长、seek、严格播放器）看到 4294967295 而非实际音频长度。改为在最终块声明真实 RIFF/data 尺寸。
 
 </details>
+
+<details>
+
+<summary><b>📦 更早的 24 个 PR</b></summary>
+
+<br/>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7734">fix: reference real tool name in ToolProxyToolset description and errors</a></summary>
@@ -349,24 +335,20 @@
 > [agno-agi/agno#9887](https://github.com/agno-agi/agno/pull/9887)：Gemini 多模态输入：图片 MIME 类型被硬编码为 `image/jpeg`，PNG/WebP 等格式会被贴错标签导致 API 拒收或误解析。改为从图片数据实际解析类型后再传给模型。
 
 </details>
+
+</details>
 <!--END_SECTION:contributions-->
 
 ## 🔍 Upstream Bugs Found
 
-自己审代码发现、带无网络最小复现报出的缺陷。维护者那边已有讨论的按 issue 报，能直接修的当天带回归测试提 PR；有些仓库不必先开 issue，缺陷的复现与根因就写在 PR 描述里，这类条目的「问题」列直接指向 PR。修复合并后会自动进上一栏。
+自己审代码发现、附无网络最小复现的缺陷：有讨论的走 issue，能直接修的当天带回归测试提 PR（这类条目的「问题」列直接指向 PR）。修复合并后自动进上一栏。
 
 <!--START_SECTION:bug-stats-->
-<div align="center">
-
-| 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-| **196** | **33** | **40** | **106** | **37** | **13** |
-
-</div>
+<p align="center">🐛 <b>196</b> 发现缺陷 &nbsp;·&nbsp; 📦 <b>33</b> 涉及仓库 &nbsp;·&nbsp; ✅ <b>40</b> 已修复 &nbsp;·&nbsp; 🔧 <b>106</b> 修复已提交 &nbsp;·&nbsp; ⏳ <b>37</b> 等待中 &nbsp;·&nbsp; ⚪ <b>13</b> 已关闭</p>
 <!--END_SECTION:bug-stats-->
 
 <details>
-<summary><b>📋 展开完整缺陷表</b>（按发现时间倒序）</summary>
+<summary><b>📋 展开完整缺陷表</b>（按发现时间倒序 · 🟢 有修复 · 🟡 等待中 · ⚪ 已关闭）</summary>
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
@@ -569,8 +551,6 @@
 
 </details>
 
----
-
 ## 🛠️ Technical Arsenal
 
 <div align="center">
@@ -578,30 +558,24 @@
 <table border="0">
 <tr>
 <td align="right"><b>语言</b></td>
-<td>
-<a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,ts,cpp,bash&theme=dark" alt="languages"/></a>
-</td>
+<td><img src="https://skillicons.dev/icons?i=python,ts,cpp,bash&theme=dark" alt="languages"/></td>
 </tr>
 <tr>
 <td align="right"><b>Agent & AI</b></td>
 <td>
-<img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangGraph"/>
-<img src="https://img.shields.io/badge/Temporal-000000?style=for-the-badge&logo=temporal&logoColor=white" alt="Temporal"/>
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"/>
-<img src="https://img.shields.io/badge/MCP-5A45FF?style=for-the-badge&logoColor=white" alt="MCP"/>
+<img src="https://img.shields.io/badge/LangGraph-1C1C2E?style=for-the-badge&logo=langchain&logoColor=white" alt="LangGraph"/>
+<img src="https://img.shields.io/badge/Temporal-1C1C2E?style=for-the-badge&logo=temporal&logoColor=white" alt="Temporal"/>
+<img src="https://img.shields.io/badge/MCP-1C1C2E?style=for-the-badge" alt="MCP"/>
+<img src="https://img.shields.io/badge/PyTorch-1C1C2E?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" alt="PyTorch"/>
 </td>
 </tr>
 <tr>
 <td align="right"><b>后端 & 基础设施</b></td>
-<td>
-<a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=fastapi,postgres,redis,docker,react,linux,git,githubactions&theme=dark" alt="infra"/></a>
-</td>
+<td><img src="https://skillicons.dev/icons?i=fastapi,postgres,redis,docker,react,linux,git,githubactions&theme=dark" alt="infra"/></td>
 </tr>
 </table>
 
 </div>
-
----
 
 ## 📊 GitHub Analytics
 
@@ -609,53 +583,30 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats.svg"/>
-  <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats-light.svg" alt="GitHub 统计"/>
+  <img height="180" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/stats-light.svg" alt="GitHub 统计"/>
 </picture>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs.svg"/>
-  <img height="195" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs-light.svg" alt="常用语言"/>
+  <img height="180" src="https://raw.githubusercontent.com/BlueX888/BlueX888/metrics/langs-light.svg" alt="常用语言"/>
 </picture>
-
-<br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=BlueX888&theme=tokyonight&hide_border=true&background=00000000&locale=zh_Hans"/>
-  <img src="https://streak-stats.demolab.com?user=BlueX888&hide_border=true&background=00000000&ring=8250DF&fire=8250DF&currStreakNum=1F2328&sideNums=1F2328&currStreakLabel=8250DF&sideLabels=656D76&dates=656D76&stroke=D0D7DE&locale=zh_Hans" alt="连续贡献"/>
-</picture>
-
-<br/><br/>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/output/github-contribution-grid-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BlueX888/BlueX888/output/github-contribution-grid-snake.svg"/>
   <img src="https://raw.githubusercontent.com/BlueX888/BlueX888/output/github-contribution-grid-snake.svg" alt="贪吃蛇贡献图"/>
 </picture>
 
 </div>
 
----
-
 ## 🤝 Let's Connect!
 
 <div align="center">
 
-[![Email](https://img.shields.io/badge/Email-li__chaoran8888%40163.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:li_chaoran8888@163.com)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueX888)
-[![ModelBest](https://img.shields.io/badge/Intern%20%40-ModelBest%20%2F%20OpenBMB-4A00E0?style=for-the-badge&logo=briefcase&logoColor=white)](https://github.com/OpenBMB)
+[![Email](https://img.shields.io/badge/Email-li__chaoran8888%40163.com-4A00E0?style=for-the-badge&logo=gmail&logoColor=white)](mailto:li_chaoran8888@163.com)
+[![Blog](https://img.shields.io/badge/Blog-bluex888.github.io-8E2DE2?style=for-the-badge&logo=rss&logoColor=white)](https://bluex888.github.io)
+[![OpenBMB](https://img.shields.io/badge/Intern_@-OpenBMB-A78BFA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/OpenBMB)
 
-</div>
+<sub>🌟 感谢来访！觉得这些项目有意思的话，给个 ⭐ 是最好的鼓励。</sub>
 
----
-
-<div align="center">
-
-### 💭 "Talk is cheap. Show me the code."
-*— Linus Torvalds*
-
-<br/>
-
-### 🌟 感谢来访！如果觉得这些项目有意思，给个 ⭐ 是最好的鼓励。
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:4A00E0,100:8E2DE2&height=120&section=footer" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:4A00E0,100:8E2DE2&height=110&section=footer" width="100%"/>
 
 </div>

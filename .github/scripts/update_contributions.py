@@ -20,6 +20,8 @@ START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contribution
 BUG_START, BUG_END = "<!--START_SECTION:bug-stats-->", "<!--END_SECTION:bug-stats-->"
 # 头像墙每行最多几个仓库，再多就均分成几行，免得在主页上被挤扁
 WALL_PER_ROW = 6
+# 区块里直接列出最近几个 PR，更早的收进一个外层折叠，免得主页被一长串 summary 撑开
+RECENT_SHOWN = 6
 # 与 pr-tracker 的 homepage_sync.py 同一口径：区块里每个 PR 至少要有一个 markdown 形式的 `(…/pull/N)` 链接
 PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 
@@ -344,10 +346,18 @@ def render(prs):
     for p in prs:
         repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0])[1] += 1
     summary = (
-        f'<p align="center"><b>{len(prs)}</b> 个 PR 已合并进 <b>{len(repos)}</b> 个上游仓库'
-        " · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>"
+        f'<p align="center"><b>{len(prs)}</b> 个 PR 合并进 <b>{len(repos)}</b> 个上游仓库'
+        " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
     )
-    return "\n\n".join([render_wall(repos.values()), summary] + [render_entry(p) for p in prs])
+    recent, older = prs[:RECENT_SHOWN], prs[RECENT_SHOWN:]
+    parts = [render_wall(repos.values()), summary] + [render_entry(p) for p in recent]
+    if older:
+        parts.append("\n\n".join(
+            ["<details>", f"<summary><b>📦 更早的 {len(older)} 个 PR</b></summary>", "<br/>"]
+            + [render_entry(p) for p in older]
+            + ["</details>"]
+        ))
+    return "\n\n".join(parts)
 
 
 def count_entries(section):
@@ -386,22 +396,17 @@ def render_bug_stats(rows):
         m = re.search(r"\(https://github\.com/([^)]+)\)", cells[1])
         repos.add((m.group(1) if m else cells[1]).lower())
     stats = [
-        ("🐛 发现缺陷", len(rows)),
-        ("📦 涉及仓库", len(repos)),
-        ("✅ 已修复", kinds["fixed"]),
-        ("🔧 修复已提交", kinds["submitted"]),
-        ("⏳ 等待中", kinds["waiting"]),
-        ("⚪ 已关闭", kinds["closed"]),
+        ("🐛", "发现缺陷", len(rows)),
+        ("📦", "涉及仓库", len(repos)),
+        ("✅", "已修复", kinds["fixed"]),
+        ("🔧", "修复已提交", kinds["submitted"]),
+        ("⏳", "等待中", kinds["waiting"]),
+        ("⚪", "已关闭", kinds["closed"]),
     ]
-    return "\n".join([
-        '<div align="center">',
-        "",
-        "| " + " | ".join(label for label, _ in stats) + " |",
-        "|" + ":-:|" * len(stats),
-        "| " + " | ".join(f"**{n}**" for _, n in stats) + " |",
-        "",
-        "</div>",
-    ])
+    # 一行数字条，比 6 列表格矮一半，手机上也不会横向滚动
+    return '<p align="center">' + " &nbsp;·&nbsp; ".join(
+        f"{icon} <b>{n}</b> {label}" for icon, label, n in stats
+    ) + "</p>"
 
 
 def replace_block(text, start, end, body):
