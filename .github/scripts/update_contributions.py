@@ -26,6 +26,28 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "bytedance/deer-flow#6839": (
+        "MindIE 的 XML tool-call parser 对 `json.loads` 拒收的 `{` 开头参数值回退 `ast.literal_eval`，"
+        "解析值按设计流入 tool-call args 以满足下游 Pydantic 校验——模型吐出 set 字面量 `{1, 2, 3}` 即产出"
+        "带 Python `set` 的 AIMessage；该消息留在会话历史里，下一轮 `_fix_messages` 重序列化为 XML wire 格式时"
+        "对非 str 值走无守卫的 `json.dumps(v, ensure_ascii=False)`，`TypeError: Object of type set is not JSON "
+        "serializable`，且消息不离开历史，线程此后每个请求都失败而非仅那一次工具调用。同函数 ToolMessage "
+        "json-block 分支早有「Circular 抛 ValueError、其余不可序列化抛 TypeError，一律降级 `str()`」的先例，"
+        "AIMessage args join 是唯一没有该兜底的序列化点。改为新增 `_render_tool_arg` helper 路由 args join："
+        "字符串原样、其余值 json.dumps 失败降级 `str(v)`，与既有分支同构，补 parser→AIMessage→下一轮 "
+        "`_fix_messages` 的 round-trip 回归。"
+    ),
+    "bytedance/deer-flow#6838": (
+        "`config.yaml` profile 的空 YAML 键（`extra_body:` → 显式 null）被 `ModelConfig.when_thinking_enabled`"
+        "（无逐键校验的 `dict | None`）静默接受，legacy（无 `reasoning:` 契约）thinking 禁用路径却用 "
+        "`effective_wte.get(\"extra_body\", {})` 读模板——`dict.get(key, {})` 只兜「键缺失」，显式 `None` "
+        "原样返回，链式 `.get` 抛 `AttributeError: 'NoneType' object has no attribute 'get'`；"
+        "`thinking_enabled=False` 是每个 `create_chat_model` 调用点（标题生成、摘要、子代理与 lead-agent 构建）"
+        "的默认值，首个模型构建即崩而非罕见开关组合。同模块 `_infer_dialect` 与契约路径都已是 "
+        "`get(...) or {}` 的守卫写法，同一 profile 挂上 `reasoning:` 契约反而能正常构建。"
+        "改为 legacy 路径三处模板读取统一 `(effective_wte.get(key) or {})`，null 模板键与缺失键同样落进"
+        "方言启发式，补双 thinking 方向、三种 null 模板形态的回归。"
+    ),
     "livekit/agents#7733": (
         "`BM25SearchStrategy` 的查询归一化把 `_` 换成空格，工具名与参数键的分词也做同样拆分，"
         "唯独描述 token 与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，"

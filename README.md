@@ -121,7 +121,7 @@
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 12</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 14</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 3</sub></td>
@@ -138,7 +138,21 @@
 </tr>
 </table>
 
-<p align="center"><b>28</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+<p align="center"><b>30</b> 个 PR 已合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 展开看修了什么</p>
+
+<details>
+<summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6839">fix(mindie): degrade unserializable tool args to str() in XML replay</a></summary>
+
+> [bytedance/deer-flow#6839](https://github.com/bytedance/deer-flow/pull/6839)：MindIE 的 XML tool-call parser 对 `json.loads` 拒收的 `{` 开头参数值回退 `ast.literal_eval`，解析值按设计流入 tool-call args 以满足下游 Pydantic 校验——模型吐出 set 字面量 `{1, 2, 3}` 即产出带 Python `set` 的 AIMessage；该消息留在会话历史里，下一轮 `_fix_messages` 重序列化为 XML wire 格式时对非 str 值走无守卫的 `json.dumps(v, ensure_ascii=False)`，`TypeError: Object of type set is not JSON serializable`，且消息不离开历史，线程此后每个请求都失败而非仅那一次工具调用。同函数 ToolMessage json-block 分支早有「Circular 抛 ValueError、其余不可序列化抛 TypeError，一律降级 `str()`」的先例，AIMessage args join 是唯一没有该兜底的序列化点。改为新增 `_render_tool_arg` helper 路由 args join：字符串原样、其余值 json.dumps 失败降级 `str(v)`，与既有分支同构，补 parser→AIMessage→下一轮 `_fix_messages` 的 round-trip 回归。
+
+</details>
+
+<details>
+<summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6838">fix(models): tolerate null template keys in the legacy thinking disable path</a></summary>
+
+> [bytedance/deer-flow#6838](https://github.com/bytedance/deer-flow/pull/6838)：`config.yaml` profile 的空 YAML 键（`extra_body:` → 显式 null）被 `ModelConfig.when_thinking_enabled`（无逐键校验的 `dict | None`）静默接受，legacy（无 `reasoning:` 契约）thinking 禁用路径却用 `effective_wte.get("extra_body", {})` 读模板——`dict.get(key, {})` 只兜「键缺失」，显式 `None` 原样返回，链式 `.get` 抛 `AttributeError: 'NoneType' object has no attribute 'get'`；`thinking_enabled=False` 是每个 `create_chat_model` 调用点（标题生成、摘要、子代理与 lead-agent 构建）的默认值，首个模型构建即崩而非罕见开关组合。同模块 `_infer_dialect` 与契约路径都已是 `get(...) or {}` 的守卫写法，同一 profile 挂上 `reasoning:` 契约反而能正常构建。改为 legacy 路径三处模板读取统一 `(effective_wte.get(key) or {})`，null 模板键与缺失键同样落进方言启发式，补双 thinking 方向、三种 null 模板形态的回归。
+
+</details>
 
 <details>
 <summary><code>2026-10-13</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7733">fix: split underscore terms in BM25 description and param tokens</a></summary>
@@ -346,7 +360,7 @@
 
 | 🐛 发现缺陷 | 📦 涉及仓库 | ✅ 已修复 | 🔧 修复已提交 | ⏳ 等待中 | ⚪ 已关闭 |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| **186** | **33** | **38** | **99** | **36** | **13** |
+| **196** | **33** | **40** | **106** | **37** | **13** |
 
 </div>
 <!--END_SECTION:bug-stats-->
@@ -356,6 +370,16 @@
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
+| [run-llama/llama_index](https://github.com/run-llama/llama_index) ⭐52k | [`AnswerRelevancyEvaluator.get_prompts()` 每次调用必抛 `AttributeError`：`_get_prompts()` 返回从 `self._refine_template` 读出的 `refine_template` 条目，`__init__` 却从未初始化该属性、也不收 `refine_template` 参数——docstring 早已文档化该参数、`_update_prompts()` 也已处理这个 key，它是包内唯一 `get_prompts()` 无条件崩溃的 prompt-bearing evaluator。修复补上文档化的 `refine_template` 构造参数，按兄弟 evaluator 的方式以 `DEFAULT_REFINE_TEMPLATE` 兜底初始化](https://github.com/run-llama/llama_index/pull/23489) `2026-10-13` | 🟢 直接提 PR（未建 issue） |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`Middleware` 的四个 typed list hook 把 `context.message` 声明为请求模型（`MiddlewareContext[ListToolsRequest]` 等），运行时却只有 `tools/list` 传了 typed model，`list_resources`、`list_resource_templates`、`list_prompts` 给 middleware 传的都是裸 `{}`——按声明类型写的 middleware 在 tools 路径能读 `context.message.method`，其余三条路径直接 `AttributeError`。修复为三条路径构造对应的 `List*Request` model，镜像 tools 路径](https://github.com/PrefectHQ/fastmcp/issues/5710) `2026-10-13` | 🟢 修复 [#5732](https://github.com/PrefectHQ/fastmcp/pull/5732) 已提交 |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [MindIE 的 XML tool-call parser 对 `json.loads` 拒收的 `{` 开头参数值回退 `ast.literal_eval`，解析值按设计流入 tool-call args——模型吐出 set 字面量 `{1, 2, 3}` 即产出带 Python `set` 的 AIMessage；该消息留在会话历史里，下一轮 `_fix_messages` 重序列化为 XML wire 格式时对非 str 值走无守卫的 `json.dumps`，`TypeError: Object of type set is not JSON serializable`，线程此后每个请求都失败而非仅那一次工具调用。同函数 ToolMessage json-block 分支早有「不可序列化一律降级 `str()`」的先例，AIMessage args join 是唯一没有该兜底的序列化点。修复新增 `_render_tool_arg` helper：json.dumps 失败降级 `str(v)`，与既有分支同构](https://github.com/bytedance/deer-flow/pull/6839) `2026-10-13` | 🟢 直接提 PR（未建 issue），已合并 |
+| [dottxt-ai/outlines](https://github.com/dottxt-ai/outlines) ⭐16k | [`AsyncDottxt.generate` 缺 model 标识符时的报错让用户「把它传给 `from_dottxt_async()`」——这个函数在整个 codebase 里不存在，outlines 只导出 `from_dottxt()`（按 client 类型分发、async client 照样返回 `AsyncDottxt`）；sync 分支的同款报错早就说对了，async 分支漂移了。修复改指 `from_dottxt()`，配回归测试锁住报错只许指向存在的工厂](https://github.com/dottxt-ai/outlines/pull/2075) `2026-10-13` | 🟢 直接提 PR（未建 issue） |
+| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [`config.yaml` profile 的空 YAML 键（`extra_body:` → 显式 null）被 `ModelConfig.when_thinking_enabled`（无逐键校验的 `dict \| None`）静默接受，legacy thinking 禁用路径却用 `effective_wte.get("extra_body", {})` 读模板——`dict.get(key, {})` 只兜「键缺失」，显式 `None` 原样返回，链式 `.get` 抛 `AttributeError: 'NoneType' object has no attribute 'get'`；`thinking_enabled=False` 是每个 `create_chat_model` 调用点（标题生成、摘要、子代理）的默认值，首个模型构建即崩。同模块 `_infer_dialect` 与契约路径都已是 `get(...) or {}` 的守卫写法，同一 profile 挂上 `reasoning:` 契约反而能正常构建。修复 legacy 路径三处模板读取统一 `(effective_wte.get(key) or {})`，补双方向、三种 null 形态的回归](https://github.com/bytedance/deer-flow/pull/6838) `2026-10-13` | 🟢 直接提 PR（未建 issue），已合并 |
+| [run-llama/llama_index](https://github.com/run-llama/llama_index) ⭐52k | [`FaithfulnessEvaluator` 对 str 形式传入的自定义 `eval_template` 静默忽略：构造器先把它包成 `PromptTemplate`，随后两个独立 `if` 中第二个 `isinstance(..., BasePromptTemplate)` 对 str 为假、其 `else` 分支用 `TEMPLATES_CATALOG` 默认模板覆盖刚赋值的自定义模板——与 docstring 声明的 `Union[str, BasePromptTemplate]` 和已正确处理的兄弟 evaluator（relevancy、multi_modal faithfulness）相悖。修复改 `if/elif` 让三分支互斥](https://github.com/run-llama/llama_index/pull/23484) `2026-10-13` | 🟢 直接提 PR（未建 issue） |
+| [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) ⭐32k | [`Read` 工具的 schema 声明 `offset` 为 1-based（`ge=1`）、`limit` 为 `ge=1, le=2000`，运行时却无人校验（`Grep`/`Glob` 都有）：绕过 schema 校验的调用直达切片，`offset=0` 让 `start_idx=-1` 从列表尾部寻址，返回文件**尾部**内容并标着 0/负数行号、state 还是成功；`limit=0` 返回空文本同样报成功——模型拿到错误位置的内容且无自纠信号。修复在 `_read_text_file` 补运行时校验](https://github.com/agentscope-ai/agentscope/issues/3291) `2026-10-13` | 🟢 修复 [#3303](https://github.com/agentscope-ai/agentscope/pull/3303) 已提交 |
+| [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) ⭐32k | [`AnthropicChatModel._call_api` 在合并调用方 `generate_kwargs` **之前**就用参数级 `max_tokens`（或 8192 默认）计算 `thinking.budget_tokens`——`thinking_enable=True` 时 `await model(msgs, max_tokens=1000)` 发出 `budget_tokens=4096` 配 `max_tokens=1000`，Messages API 以 HTTP 400 拒收（budget 必须 ≥1024 且 < max_tokens）。修复改用合并后的 `kwargs["max_tokens"]` 构建 thinking 配置，小上限按 SDK 文档钳到 1024 下限，`max_tokens≤1024` 无解时显式报错并给出 `thinking={'type':'disabled'}` 逃生门](https://github.com/agentscope-ai/agentscope/issues/3288) `2026-10-13` | 🟢 修复 [#3292](https://github.com/agentscope-ai/agentscope/pull/3292) 已提交 |
+| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) ⭐12k | [playground 的 OpenAI streaming 路径用 `enumerate()` 的 delta 内位置给 tool-call fragment 配 key，而不是 fragment 自带的 `index` 字段——并行工具调用的参数在重组时张冠李戴；首个 fragment 不带 `id` 时 `tool_call_ids[tool_call_index]` 直接 `KeyError`，整个 playground run 崩溃。附无网络复现](https://github.com/Arize-ai/phoenix/issues/16941) `2026-10-12` | 🟡 已提交，等待确认 |
+| [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [OpenAPI 3.1 的 media-type schema 可自带 `$defs` 并以 `#/$defs/...` 引用；`components/schemas` 非空时生成的工具 schema 把这些内联定义丢掉——input schema 的 `$defs` 只来自 `route.request_schemas`，output schema 的 `$defs` 被组件导出的直接覆盖，`#/$defs/...` 引用悬空，返回合法 body 的工具调用在按通告的 output schema 校验时抛 jsonschema `PointerToNowhere`。修复让 media-type schema 自带的 `$defs` 在 input/output 两条路径都与组件定义合并](https://github.com/PrefectHQ/fastmcp/issues/5708) `2026-10-12` | 🟢 修复 [#5709](https://github.com/PrefectHQ/fastmcp/pull/5709) 已提交 |
 | [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [`memory_add` 的 docstring 明文允许自由 category 标签（示例给出 "personal"、"behavior" 等），`memory_search` 也承诺「Only facts with this exact category are returned」，但 storage 的 `_normalize_category` 把 `CORE_CATEGORIES` 之外的标签一律改写成 "other"、原文只存进全仓无代码读取的 `categoryExtension` 字段——`memory_add(category="personal")` 落库即 "other"，`memory_search(category="personal")` 永远搜不到，`get_memory`/gateway 文档还一直报 "other"；同一改写还打到记忆设置页的自由文本分类输入与 fact 抽取 prompt 自带的 `knowledge` 枚举（不在核心类目里），LLM 抽出的 knowledge 事实也被折进 "other"。修复改为保留调用方标签作为存储 `category`（空串仍回退 "context"），非核心标签在 create/update、get_memory 文档、FTS5 检索索引与分类过滤中全程 round-trip](https://github.com/bytedance/deer-flow/pull/6733) `2026-10-12` | 🟢 直接提 PR（未建 issue），已合并 |
 | [bytedance/deer-flow](https://github.com/bytedance/deer-flow) ⭐83k | [检索适配器关闭时（`retrieval_adapter: ""` 是文档化的配置）substring 搜索走 `_search_substring`，它用默认 `limit: int = 100` 的分页 `list_facts` 遍历且从不翻页——一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search`「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 又不会再落到无上限的兜底路径。同文件 scoped `rebuild_index` 早已因「bulk replace 会丢掉没读到的行」读完整 scope。修复让 substring 回退按同样方式读全量事实、原位套用 filters：≤100 条匹配的结果不变，大 scope 恢复 `top_k` 契约](https://github.com/bytedance/deer-flow/pull/6732) `2026-10-12` | 🟢 直接提 PR（未建 issue），已合并 |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`json_schema_to_type` 对带根 title 的递归 schema 必炸：`{"$ref": "#"}` 指向根 schema、其生成类以根 title 命名（回退 `Root`），而 `_convert_schema` 的 `ref == "#"` 分支却从无 title 的裸 ref 节点建 ForwardRef——引用恒名 `Root`、类名却是如 `Node`，`TypeAdapter` 校验抛 `PydanticUserError: ... is not fully defined`；无 title 的递归 schema 本来是好的，带 title 恰是多数 schema 生产方的默认形态。修复让转换全程跟踪 `root_class_name`（显式 `name` 覆盖 → 根 title → `Root`），`anyOf`、array items、Pydantic-model 分支等所有引用位置统一指向实际生成的类，显式 `name=` 使类名与 title 不一致的情形一并修好](https://github.com/PrefectHQ/fastmcp/issues/5669) `2026-10-12` | 🟢 修复 [#5671](https://github.com/PrefectHQ/fastmcp/pull/5671) 已提交 |
