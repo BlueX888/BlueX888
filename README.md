@@ -10,9 +10,11 @@
 </a>
 
 <p>
-  <img alt="Intern at ModelBest" src="https://img.shields.io/badge/面壁智能_·_OpenBMB-Agent_实习-4A00E0?style=for-the-badge"/>
+  <a href="https://github.com/OpenBMB">
+    <img alt="Intern at ModelBest" src="https://img.shields.io/badge/面壁智能_·_OpenBMB-Agent_实习-4A00E0?style=for-the-badge"/></a>
   <img alt="BJUT" src="https://img.shields.io/badge/北京工业大学-研二-8E2DE2?style=for-the-badge"/>
   <img alt="Focus" src="https://img.shields.io/badge/方向-Agent_编排_·_持久化执行_·_安全治理-A78BFA?style=for-the-badge"/>
+  <img alt="profile views" src="https://komarev.com/ghpvc/?username=BlueX888&label=Profile%20Views&color=8E2DE2&style=for-the-badge"/>
 </p>
 
 </div>
