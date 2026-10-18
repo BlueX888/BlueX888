@@ -28,6 +28,27 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "bytedance/deer-flow#7002": (
+        "local-sandbox 模式的 forward（容器→宿主）路径翻译在 `write_file` 内容、bash 命令"
+        "（skills/ACP/自定义挂载）与用户数据命令解析三处尾部模式里都不在 `:` 处结束，冒号连接列表"
+        "只有第一项被翻成宿主路径、其余仍是容器内虚拟路径："
+        "`export PATH=\"/mnt/user-data/workspace/bin:/mnt/user-data/outputs/bin\"` 落盘后第二项悬空，"
+        "之后 source 该文件或 runner 脚本会继承只存在于容器路径契约里的条目；`read_file` 又把混合行"
+        "掩回原始虚拟文本，模型看不到损坏。反向翻译的 `path_patterns._PATH_TAIL` 早已为此在 `:` 处"
+        "结束尾部。修复在三处 forward 尾部停止集合里加入 `:`，替换在每个列表项处续接；"
+        "单条目形式 `$PATH` 后缀与裸根路径行为不变。"
+    ),
+    "livekit/agents#7894": (
+        "`livekit.agents.llm.__all__` 里留着 `RealtimeSessionRestoredEvent`——全仓仅此一处出现该名字，"
+        "真正的类是 `RealtimeSessionReconnectedEvent`（`llm/realtime.py`），显然是一次改名/删除留下的"
+        "幽灵条目：`from livekit.agents.llm import *` 在 3.12 抛 "
+        "`AttributeError: module 'livekit.agents.llm' has no attribute 'RealtimeSessionRestoredEvent'`"
+        "（旧版本是 `ImportError`），任何星号导入公共 API 的调用方在导入期就崩；79 个导出里恰好 1 个"
+        "没有后备属性（修复后 78 个全部可解析）。仓内 "
+        "`tests/test_inference_utils.py::test_public_inference_exports_resolve` "
+        "已为 `inference.__all__` 立了同款守卫。修复删掉该条目，并补一份镜像测试逐个断言 "
+        "`llm.__all__` 都能解析。"
+    ),
     "bytedance/deer-flow#6839": (
         "MindIE 的 XML tool-call parser 对 `json.loads` 拒收的 `{` 开头参数值回退 `ast.literal_eval`，"
         "解析值按设计流入 tool-call args 以满足下游 Pydantic 校验——模型吐出 set 字面量 `{1, 2, 3}` 即产出"
