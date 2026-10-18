@@ -103,7 +103,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 15</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 16</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
@@ -120,7 +120,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>32</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>33</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7039">fix(models): tolerate non-mapping when_thinking_enabled.extra_body on the reasoning-contract path</a></summary>
+
+> [bytedance/deer-flow#7039](https://github.com/bytedance/deer-flow/pull/7039)
+
+</details>
 
 <details>
 <summary><code>2026-10-17</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7002">fix(sandbox): resolve every entry of colon-joined path lists in forward path translation</a></summary>
@@ -158,17 +165,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 27 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6732">fix(memory): read the complete scope in the substring search fallback</a></summary>
 
 > [bytedance/deer-flow#6732](https://github.com/bytedance/deer-flow/pull/6732)：检索适配器关闭时（`retrieval_adapter: ""` 是文档化的配置）substring 搜索走 `FileMemoryStorage._search_substring`，它遍历默认 `limit: 100` 的分页 `list_facts` 且从不翻页——一个 scope 有 150 条匹配、`top_k=150` 也只返回前 100 条，违反 `MemoryManager.search` 「return up to `top_k`」的契约；索引结果非空时上层 `DeerMem.search` 不会再落到无上限的兜底路径，同文件 scoped `rebuild_index` 早已为「bulk replace 会丢掉没读到的行」读完整 scope。改为按同样方式读全量事实、原位套用 filters，补回归测试。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 26 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6733">fix(memory): keep non-core fact categories instead of rewriting to other</a></summary>
