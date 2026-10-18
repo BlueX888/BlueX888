@@ -103,7 +103,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 16</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 17</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
@@ -120,7 +120,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>33</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>34</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6981">fix(memory): filter honcho search by category instead of stamping it on unfiltered results</a></summary>
+
+> [bytedance/deer-flow#6981](https://github.com/bytedance/deer-flow/pull/6981)
+
+</details>
 
 <details>
 <summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7039">fix(models): tolerate non-mapping when_thinking_enabled.extra_body on the reasoning-contract path</a></summary>
@@ -158,17 +165,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 28 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-13</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7733">fix: split underscore terms in BM25 description and param tokens</a></summary>
 
 > [livekit/agents#7733](https://github.com/livekit/agents/pull/7733)：`BM25SearchStrategy` 的查询归一化把 `_` 换成空格，工具名与参数键的分词也做同样拆分，唯独描述 token 与参数描述值只按空白切——描述里的 `snake_case` 术语被索引成单个 token，而每个查询都先替换掉 `_`、不可能含它，`checking_balance` 这类写在描述里的术语搜索永远 0 分，`tool_search` 对描述里明确写着该术语的工具抛 `No tools found`。改为对描述与参数描述 token 应用与名字/键相同的下划线拆分，补跨两种策略、两种查询拼法的回归测试。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 27 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-12</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6732">fix(memory): read the complete scope in the substring search fallback</a></summary>
