@@ -107,25 +107,32 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
-<td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
+<td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 3</sub></td>
 </tr>
 </table>
 
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
-<td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐33k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐34k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
 </tr>
 </table>
 
-<p align="center"><b>35</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>36</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4981">fix(ts): report correct paths for values after nested objects in deepCopyWithValidation</a></summary>
+
+> [strands-agents/harness-sdk#4981](https://github.com/strands-agents/harness-sdk/pull/4981)
+
+</details>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7929">fix(cli): apply connect credentials to the agent server</a></summary>
 
-> [livekit/agents#7929](https://github.com/livekit/agents/pull/7929)：legacy `connect` 命令解析 `--url`/`--api-key`/`--api-secret` 却只拿它们调房间 API（`api.LiveKitAPI(...)`），从不 `server.update_options(...)`——`start`/`dev` 都会把 CLI 值灌给 `AgentServer`，`connect` 不会，于是 `server.simulate_job` 按构造时/环境变量造连接：环境里没有 `LIVEKIT_URL`/`LIVEKIT_API_KEY`/`LIVEKIT_API_SECRET`（或另有一套）时，模拟 job 带着空/错凭据，agent 加不进房间。修复在 server 启动前把真值参数 `update_options` 到 `AgentServer`，未传的 flag 仍回退环境变量。
+> [livekit/agents#7929](https://github.com/livekit/agents/pull/7929)
 
 </details>
 
@@ -158,17 +165,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 30 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6839">fix(mindie): degrade unserializable tool args to str() in XML replay</a></summary>
 
 > [bytedance/deer-flow#6839](https://github.com/bytedance/deer-flow/pull/6839)：MindIE 的 XML tool-call parser 对 `json.loads` 拒收的 `{` 开头参数值回退 `ast.literal_eval`，解析值按设计流入 tool-call args 以满足下游 Pydantic 校验——模型吐出 set 字面量 `{1, 2, 3}` 即产出带 Python `set` 的 AIMessage；该消息留在会话历史里，下一轮 `_fix_messages` 重序列化为 XML wire 格式时对非 str 值走无守卫的 `json.dumps(v, ensure_ascii=False)`，`TypeError: Object of type set is not JSON serializable`，且消息不离开历史，线程此后每个请求都失败而非仅那一次工具调用。同函数 ToolMessage json-block 分支早有「Circular 抛 ValueError、其余不可序列化抛 TypeError，一律降级 `str()`」的先例，AIMessage args join 是唯一没有该兜底的序列化点。改为新增 `_render_tool_arg` helper 路由 args join：字符串原样、其余值 json.dumps 失败降级 `str(v)`，与既有分支同构，补 parser→AIMessage→下一轮 `_fix_messages` 的 round-trip 回归。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 29 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6838">fix(models): tolerate null template keys in the legacy thinking disable path</a></summary>
