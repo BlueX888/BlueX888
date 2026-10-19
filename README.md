@@ -104,8 +104,8 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 17</sub></td>
+<td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
-<td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 2</sub></td>
 </tr>
@@ -120,7 +120,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>34</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>35</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7929">fix(cli): apply connect credentials to the agent server</a></summary>
+
+> [livekit/agents#7929](https://github.com/livekit/agents/pull/7929)
+
+</details>
 
 <details>
 <summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6981">fix(memory): filter honcho search by category instead of stamping it on unfiltered results</a></summary>
@@ -158,17 +165,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 29 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6838">fix(models): tolerate null template keys in the legacy thinking disable path</a></summary>
 
 > [bytedance/deer-flow#6838](https://github.com/bytedance/deer-flow/pull/6838)：`config.yaml` profile 的空 YAML 键（`extra_body:` → 显式 null）被 `ModelConfig.when_thinking_enabled`（无逐键校验的 `dict | None`）静默接受，legacy（无 `reasoning:` 契约）thinking 禁用路径却用 `effective_wte.get("extra_body", {})` 读模板——`dict.get(key, {})` 只兜「键缺失」，显式 `None` 原样返回，链式 `.get` 抛 `AttributeError: 'NoneType' object has no attribute 'get'`；`thinking_enabled=False` 是每个 `create_chat_model` 调用点（标题生成、摘要、子代理与 lead-agent 构建）的默认值，首个模型构建即崩而非罕见开关组合。同模块 `_infer_dialect` 与契约路径都已是 `get(...) or {}` 的守卫写法，同一 profile 挂上 `reasoning:` 契约反而能正常构建。改为 legacy 路径三处模板读取统一 `(effective_wte.get(key) or {})`，null 模板键与缺失键同样落进方言启发式，补双 thinking 方向、三种 null 模板形态的回归。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 28 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-13</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7733">fix: split underscore terms in BM25 description and param tokens</a></summary>
