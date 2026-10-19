@@ -28,6 +28,26 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "bytedance/deer-flow#6981": (
+        "`HonchoMemoryManager.search` 无视调用方给的 `category`：查询始终发同一条未过滤语句，命中之后再把"
+        "请求的 category 标签贴到每个结果上——`memory_search(category=\"preference\")` 变成「先按相关度取"
+        "top-k，再统一标成 preference」，与 `MemoryManager.search` 契约「category 在 top_k 切片**之前**过滤」"
+        "以及工具承诺「Only facts with this exact category are returned」相悖；mem0、OpenViking 两个后端都按"
+        "服务端过滤。修复把 category 作为 Honcho 排序查询的服务端 filter"
+        "（`filters={\"metadata\": {\"category\": ...}}`，v3 search 端点在其 limit 之前应用），"
+        "并按每条记录自身元数据标注结果。"
+    ),
+    "bytedance/deer-flow#7039": (
+        "`config.yaml` profile 同时声明 `reasoning:` 契约和真值但非 mapping 的 "
+        "`when_thinking_enabled.extra_body`（例如把 payload 写成字符串 `extra_body: oops`、或写成 `true`）"
+        "时配置能加载、模型却完全不可用：`ModelConfig.when_thinking_enabled` 是无逐键校验的 `dict | None`，"
+        "契约校验器的 `_lookup_dotted` 对这种形状直接返回 `None`，随后**每次** `create_chat_model` 都抛 "
+        "`AttributeError: 'str' object has no attribute 'get'`——lead agent、子代理、标题生成与摘要全走这个工厂，"
+        "整个后端为该模型瘫掉；legacy（无 `reasoning:` 契约）的启用路径早已原样转发非 mapping 模板值。"
+        "修复让契约路径把真值非 mapping 的 `extra_body` 与缺失/null 同等对待：`_infer_dialect` 与 "
+        "`_apply_contract_thinking_settings` 共用 `isinstance(..., dict)` 守卫，启用方向仍原样转发模板值、"
+        "禁用方向继续合成方言 payload——已能构建的 profile 行为逐字节不变。"
+    ),
     "bytedance/deer-flow#7002": (
         "local-sandbox 模式的 forward（容器→宿主）路径翻译在 `write_file` 内容、bash 命令"
         "（skills/ACP/自定义挂载）与用户数据命令解析三处尾部模式里都不在 `:` 处结束，冒号连接列表"
