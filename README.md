@@ -104,8 +104,8 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 17</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 6</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
-<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 4</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 3</sub></td>
 </tr>
@@ -113,6 +113,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 
 <table align="center">
 <tr>
+<td align="center"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=80" width="40" height="40" alt="mcp-use"/><br/><b>mcp-use</b></a><br/><sub>⭐11k · 合并 2</sub></td>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐34k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
@@ -120,7 +121,35 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>36</b> 个 PR 合并进 <b>9</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>40</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5843">fix(resources): preserve component meta for list[ResourceContent] returns</a></summary>
+
+> [PrefectHQ/fastmcp#5843](https://github.com/PrefectHQ/fastmcp/pull/5843)
+
+</details>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5823">fix: treat non-string skill frontmatter descriptions as absent</a></summary>
+
+> [PrefectHQ/fastmcp#5823](https://github.com/PrefectHQ/fastmcp/pull/5823)
+
+</details>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/mcp-use.png?size=40" width="16" height="16" alt="mcp-use"/> <b>mcp-use/mcp-use</b> · <a href="https://github.com/mcp-use/mcp-use/pull/2651">fix(agent): treat missing error field as success in RemoteAgent.run</a></summary>
+
+> [mcp-use/mcp-use#2651](https://github.com/mcp-use/mcp-use/pull/2651)
+
+</details>
+
+<details>
+<summary><code>2026-10-19</code> <img src="https://github.com/mcp-use.png?size=40" width="16" height="16" alt="mcp-use"/> <b>mcp-use/mcp-use</b> · <a href="https://github.com/mcp-use/mcp-use/pull/2551">fix(agent): emit OpenAI Responses tool-call args events keyed by item_id</a></summary>
+
+> [mcp-use/mcp-use#2551](https://github.com/mcp-use/mcp-use/pull/2551)
+
+</details>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4981">fix(ts): report correct paths for values after nested objects in deepCopyWithValidation</a></summary>
@@ -135,6 +164,12 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 > [livekit/agents#7929](https://github.com/livekit/agents/pull/7929)
 
 </details>
+
+<details>
+
+<summary><b>📦 更早的 34 个 PR</b></summary>
+
+<br/>
 
 <details>
 <summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6981">fix(memory): filter honcho search by category instead of stamping it on unfiltered results</a></summary>
@@ -163,12 +198,6 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 > [livekit/agents#7894](https://github.com/livekit/agents/pull/7894)：`livekit.agents.llm.__all__` 里留着 `RealtimeSessionRestoredEvent`——全仓仅此一处出现该名字，真正的类是 `RealtimeSessionReconnectedEvent`（`llm/realtime.py`），显然是一次改名/删除留下的幽灵条目：`from livekit.agents.llm import *` 在 3.12 抛 `AttributeError: module 'livekit.agents.llm' has no attribute 'RealtimeSessionRestoredEvent'`（旧版本是 `ImportError`），任何星号导入公共 API 的调用方在导入期就崩；79 个导出里恰好 1 个没有后备属性（修复后 78 个全部可解析）。仓内 `tests/test_inference_utils.py::test_public_inference_exports_resolve` 已为 `inference.__all__` 立了同款守卫。修复删掉该条目，并补一份镜像测试逐个断言 `llm.__all__` 都能解析。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 30 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-14</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6839">fix(mindie): degrade unserializable tool args to str() in XML replay</a></summary>
