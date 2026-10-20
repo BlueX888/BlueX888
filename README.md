@@ -121,7 +121,13 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>40</b> 个 PR 合并进 <b>10</b> 个上游仓库，另有 <b>1</b> 项修复由 maintainer PR 携带合并（commit 作者保留，未计入 PR 数）· 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<table align="center">
+<tr>
+<td align="center"><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=80" width="40" height="40" alt="modelcontextprotocol"/><br/><b>servers</b></a><br/><sub>⭐90k · 🎯 采纳 1</sub></td>
+</tr>
+</table>
+
+<p align="center"><b>40</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5843">fix(resources): preserve component meta for list[ResourceContent] returns</a></summary>
