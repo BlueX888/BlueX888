@@ -104,7 +104,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 17</sub></td>
-<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 6</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 7</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 3</sub></td>
@@ -121,7 +121,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>40</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-20</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5672">fix(tools): materialize generator transform_fn results in TransformedTool.run</a></summary>
+
+> [PrefectHQ/fastmcp#5672](https://github.com/PrefectHQ/fastmcp/pull/5672)
+
+</details>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5843">fix(resources): preserve component meta for list[ResourceContent] returns</a></summary>
@@ -159,17 +166,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 35 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-19</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7929">fix(cli): apply connect credentials to the agent server</a></summary>
 
 > [livekit/agents#7929](https://github.com/livekit/agents/pull/7929)
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 34 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-18</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/6981">fix(memory): filter honcho search by category instead of stamping it on unfiltered results</a></summary>
