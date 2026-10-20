@@ -121,12 +121,6 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<table align="center">
-<tr>
-<td align="center"><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=80" width="40" height="40" alt="modelcontextprotocol"/><br/><b>servers</b></a><br/><sub>⭐90k · 🎯 采纳 1</sub></td>
-</tr>
-</table>
-
 <p align="center"><b>40</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
 
 <details>
@@ -423,7 +417,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 自己审代码发现、附无网络最小复现的缺陷：有讨论的走 issue，能直接修的当天带回归测试提 PR（这类条目的「问题」列直接指向 PR）。修复合并后自动进上一栏。
 
 <!--START_SECTION:bug-stats-->
-<p align="center">🐛 <b>238</b> 发现缺陷 &nbsp;·&nbsp; 📦 <b>35</b> 涉及仓库 &nbsp;·&nbsp; ✅ <b>43</b> 已修复 &nbsp;·&nbsp; 🔧 <b>133</b> 修复已提交 &nbsp;·&nbsp; ⏳ <b>49</b> 等待中 &nbsp;·&nbsp; ⚪ <b>13</b> 已关闭</p>
+<p align="center">🐛 <b>238</b> 发现缺陷 &nbsp;·&nbsp; 📦 <b>35</b> 涉及仓库 &nbsp;·&nbsp; ✅ <b>42</b> 已修复 &nbsp;·&nbsp; 🔧 <b>134</b> 修复已提交 &nbsp;·&nbsp; ⏳ <b>49</b> 等待中 &nbsp;·&nbsp; ⚪ <b>13</b> 已关闭</p>
 <!--END_SECTION:bug-stats-->
 
 <details>
