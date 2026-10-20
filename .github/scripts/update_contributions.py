@@ -28,6 +28,55 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
 NOTES = {
+    "PrefectHQ/fastmcp#5672": (
+        "`Tool.from_tool` 的 `TransformedTool.run` 只认协程函数与普通同步 callable 两条派发路径，生成器结果"
+        "被原样交给 `convert_result`——生成器体在迭代时才执行：同步生成器在文本序列化时被消费、构建 "
+        "`structured_content` 时已耗尽，`content` 与 `structured_content` 全空；async 生成器函数不是协程"
+        "函数、被当普通 callable 扔进线程池，生成器对象序列化成 repr，直接抛「has an output schema but did "
+        "not return structured content」；带注入依赖的 transform 还可能把阻塞生成器跑在事件循环上。"
+        "修复在依赖注入之前包裹函数体并复用普通工具的物化路径：同步迭代留在 worker、异步迭代留在本次调用内，"
+        "`_current_tool` 与 `forward()` 照常可用，body 校验失败仍按工具执行错误返回。"
+    ),
+    "PrefectHQ/fastmcp#5843": (
+        "函数 resource/template 声明组件级 `meta=` 且返回 `list[ResourceContent]` 时，组件 meta 在每一项上被丢掉"
+        "（`list_resources` 却照常公告），只有 list 形状受影响，`str`/`bytes`/JSON 返回都正常。修复在 "
+        "`convert_raw_to_resource_result` 为 list 增加显式分支：先按 `ResourceResult` 校验（非 "
+        "`ResourceContent` 成员仍抛 `TypeError`），再逐项把组件 meta 合并进副本（项级键优先、不改调用方对象）；"
+        "没有公开 meta 时原样返回，空列表与模板路径行为不变。"
+    ),
+    "PrefectHQ/fastmcp#5823": (
+        "`SKILL.md` frontmatter 的 `description` 写成 YAML 序列或映射时，`parse_frontmatter` 返回 list/dict，"
+        "`SkillProvider._load_skill` 原样存下，`SkillResource(description=...)` 的 pydantic 校验随即失败——"
+        "`list_resources`/`get_resource` 抛错，技能从 provider 列表里静默消失（目录模式只剩一条 warning）。"
+        "修复只接受 `str` 类型的 description，其余按缺失处理并回退到正文第一条有意义的行（再回退 "
+        "`Skill: {name}`），资源列表恢复完整。"
+    ),
+    "mcp-use/mcp-use#2651": (
+        "`RemoteAgent.run` 用 `result.status === \"error\" || result.error !== null` 判定失败，200 成功响应"
+        "只要缺 `error` 键就被拒（`undefined !== null`），与注释和下方成功分支相悖；错误插值还把对象错误值"
+        "渲染成 `[object Object]`。修复改为 `result.error != null`（缺失/`null` 都算成功，真实错误与 "
+        "`status:\"error\"` 仍拒绝），对象错误用 `JSON.stringify` 展示，并删掉永远匹配不上的 "
+        "`String(result).includes(...)` 死代码。"
+    ),
+    "mcp-use/mcp-use#2551": (
+        "OpenAI Responses 驱动的流式工具调用缓冲按 `call_id` 索引，而 "
+        "`response.function_call_arguments.delta/done` 携带的是 output item id（`fc_...`），查不到缓冲就永不"
+        "发出 `tool-call-args-delta`/`tool-call-ready`——工具照常执行但 `agent.stream()`/`streamEvents()` 对"
+        "工具调用产出零 AgentStep，缺陷是静默的。修复按 `item.id` 索引缓冲并在事件里继续使用 MCP 侧的 "
+        "`call_id`，两种 id 都保存以保持 `toolCallId` 与 `tool-result` 对齐。"
+    ),
+    "strands-agents/harness-sdk#4981": (
+        "`deepCopyWithValidation` 的 replacer 路径栈只压不弹：嵌套对象/数组序列化完后陈旧帧留在栈顶，后续"
+        "兄弟节点的不可序列化值继承已完成子树的路径——`StateStore`/router 元数据校验把 "
+        "`{ nested: {x:1}, bad: fn }` 报成 `value for key \"a\".nested.bad` 而非 `\"a\".bad`。修复让每个"
+        "栈帧记录其对象并按当前序列化对象回弹，路径始终相对真实父级。"
+    ),
+    "livekit/agents#7929": (
+        "legacy `connect` 命令解析 `--url`/`--api-key`/`--api-secret` 却只拿它们调房间 API，从未 "
+        "`server.update_options(...)`（`start`/`dev` 都会），`simulate_job` 因此按构造时/环境变量生成 job "
+        "连接：环境里没有或只有不同凭据时模拟 job 带着空/错凭据、agent 无法入会。修复在 server 启动前把"
+        "真值参数传给 `update_options`，与 `_run_worker` 一致，未提供的 flag 仍回落环境变量。"
+    ),
     "bytedance/deer-flow#6981": (
         "`HonchoMemoryManager.search` 无视调用方给的 `category`：查询始终发同一条未过滤语句，命中之后再把"
         "请求的 category 标签贴到每个结果上——`memory_search(category=\"preference\")` 变成「先按相关度取"
