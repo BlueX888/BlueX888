@@ -122,9 +122,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<sub>🔧 <a href="https://github.com/modelcontextprotocol/servers/pull/5013"><b>modelcontextprotocol/servers#5013</b></a> 采纳了我们的 <a href="https://github.com/modelcontextprotocol/servers/pull/4828">#4828</a> · <code>1b01ea6dac</code> · 2026-10-05</sub>
-
-<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 另有 <b>1</b> 个修复被上游采纳 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
 
 <details>
 <summary><code>2026-10-20</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5672">fix(tools): materialize generator transform_fn results in TransformedTool.run</a></summary>

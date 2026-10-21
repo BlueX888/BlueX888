@@ -450,20 +450,6 @@ def render_wall(repos):
     return "\n\n".join(tables)
 
 
-def render_adopted(adopted):
-    """被采纳的修复单独列在头像墙下方，不混进「已合并 PR」的折叠说明。"""
-    lines = []
-    for full, entries in adopted.items():
-        for e in entries:
-            url = f"https://github.com/{full}/pull/{e['pr']}"
-            ours = f"https://github.com/{full}/pull/{e['our_pr']}"
-            lines.append(
-                f'<sub>🔧 <a href="{url}"><b>{full}#{e["pr"]}</b></a> 采纳了我们的 '
-                f'<a href="{ours}">#{e["our_pr"]}</a> · <code>{e["commit"]}</code> · {e["merged_at"]}</sub>'
-            )
-    return "<br/>\n".join(lines)
-
-
 def render_entry(p):
     full, url, date = p["repository"]["nameWithOwner"], p["url"], p["mergedAt"][:10]
     key = f"{full}#{p['number']}"
@@ -491,26 +477,19 @@ def render(prs):
     repos = {}
     for p in prs:
         repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0, 0])[1] += 1
-    # 摘要里的「上游仓库」只数真有合并 PR 的仓库；只被采纳的仓库不算，另用「采纳」单独表述。
+    # 摘要里的「上游仓库」只数真有合并 PR 的仓库；只被采纳的仓库不算。
     merged_repos = len(repos)
-    adopted_total = 0
     for full, entries in ADOPTED.items():
         if full in repos:
             repos[full][2] = len(entries)
         else:
             repos[full] = [fetch_repo(full), 0, len(entries)]
-        adopted_total += len(entries)
     summary = (
         f'<p align="center"><b>{len(prs)}</b> 个 PR 合并进 <b>{merged_repos}</b> 个上游仓库'
-        + (f" · 另有 <b>{adopted_total}</b> 个修复被上游采纳" if adopted_total else "")
-        + " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
+        " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
     )
-    parts = [render_wall(repos.values())]
-    if adopted_total:
-        parts.append(render_adopted(ADOPTED))
-    parts.append(summary)
     recent, older = prs[:RECENT_SHOWN], prs[RECENT_SHOWN:]
-    parts += [render_entry(p) for p in recent]
+    parts = [render_wall(repos.values()), summary] + [render_entry(p) for p in recent]
     if older:
         parts.append("\n\n".join(
             ["<details>", f"<summary><b>📦 更早的 {len(older)} 个 PR</b></summary>", "<br/>"]
