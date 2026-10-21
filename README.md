@@ -108,20 +108,23 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 3</sub></td>
+<td align="center"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=80" width="40" height="40" alt="mcp-use"/><br/><b>mcp-use</b></a><br/><sub>⭐11k · 合并 2</sub></td>
 </tr>
 </table>
 
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=80" width="40" height="40" alt="mcp-use"/><br/><b>mcp-use</b></a><br/><sub>⭐11k · 合并 2</sub></td>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐34k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=80" width="40" height="40" alt="modelcontextprotocol"/><br/><b>servers</b></a><br/><sub>⭐91k · 修补 1</sub></td>
 </tr>
 </table>
 
-<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<sub>🔧 <a href="https://github.com/modelcontextprotocol/servers/pull/5013"><b>modelcontextprotocol/servers#5013</b></a> 采纳了我们的 <a href="https://github.com/modelcontextprotocol/servers/pull/4828">#4828</a> · <code>1b01ea6dac</code> · 2026-10-05</sub>
+
+<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 另有 <b>1</b> 个修复被上游采纳 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
 
 <details>
 <summary><code>2026-10-20</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5672">fix(tools): materialize generator transform_fn results in TransformedTool.run</a></summary>
@@ -424,7 +427,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 自己审代码发现、附无网络最小复现的缺陷：有讨论的走 issue，能直接修的当天带回归测试提 PR（这类条目的「问题」列直接指向 PR）。修复合并后自动进上一栏。
 
 <!--START_SECTION:bug-stats-->
-<p align="center">🐛 <b>260</b> 发现缺陷 &nbsp;·&nbsp; 📦 <b>35</b> 涉及仓库 &nbsp;·&nbsp; ✅ <b>50</b> 已修复 &nbsp;·&nbsp; 🔧 <b>139</b> 修复已提交 &nbsp;·&nbsp; ⏳ <b>49</b> 等待中 &nbsp;·&nbsp; ⚪ <b>22</b> 已关闭</p>
+<p align="center">🐛 <b>261</b> 发现缺陷 &nbsp;·&nbsp; 📦 <b>35</b> 涉及仓库 &nbsp;·&nbsp; ✅ <b>50</b> 已修复 &nbsp;·&nbsp; 🔧 <b>140</b> 修复已提交 &nbsp;·&nbsp; ⏳ <b>49</b> 等待中 &nbsp;·&nbsp; ⚪ <b>22</b> 已关闭</p>
 <!--END_SECTION:bug-stats-->
 
 <details>
@@ -432,6 +435,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 
 | 仓库 | 问题 | 状态 |
 |:--|:--|:--|
+| [livekit/agents](https://github.com/livekit/agents) ⭐15k | [`session.say()` 对 `supports_say=False` 的 realtime 模型（如 OpenAI Realtime）在播放后快照 `chat_ctx` 并整体回推；#7947 新增的这条推送没有走 #7905 引入的 `_rt_chat_ctx_lock`。若期间并发推入工具输出，旧快照缺项会被 OpenAI Realtime 当成删除并发出 `conversation.item.delete`，`function_call_output` 从 provider 历史消失、后续轮次看到未应答的工具调用。修复把 say() 的快照+插入+推送包进同一把锁（`_mark_generation_done()` 留在锁外，`RealtimeError` 仍记录后吞掉），补并发回归测试](https://github.com/livekit/agents/pull/7997) `2026-10-20` | 🟢 直接提 PR（未建 issue） |
 | [strands-agents/harness-sdk](https://github.com/strands-agents/harness-sdk) ⭐8.7k | [文件工具把结尾换行当成新空行：POSIX 文件 `"alpha\nbeta\n"`（2 行）被 `read` 报成 3 行、`offset=3` 能选中不存在的幻影行，footer 写 `of 3`，`write` 报 `Wrote 3 lines`；空文件读成 1 行却写 0 行，`read(limit=0)` 给出误导性的 past-the-end 消息。编码 agent 依赖这些行号，幻影行会把它们引到不存在的位置。修复在 Python/TypeScript 两侧共用「结尾换行是终止符而非行」的计数 helper，`read`/`write` 同步修正，空文件统一 0 行，`limit=0` 抛 `ValueError`](https://github.com/strands-agents/harness-sdk/pull/5260) `2026-10-20` | 🟢 直接提 PR（未建 issue） |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`fastmcp run` 对 SDK `MCPServer`（v1）目标静默忽略 `--path`、`--stateless`、`--log-level`：server 仍跑 SDK 默认的 `/mcp`/`/sse` 且保持 stateful，FastMCP server 路径不受影响。修复把这些参数传入 `run_v1_server_async`，HTTP/streamable-http 映射 `streamable_http_path`/`stateless_http`、SSE 映射 `sse_path`，只转发非 None 值以保留 SDK 默认；stdio 没有对应运行时开关，限制写进文档而不是伪造](https://github.com/PrefectHQ/fastmcp/issues/5869) `2026-10-19` | 🟢 已提交 [#5870](https://github.com/PrefectHQ/fastmcp/pull/5870)，等待维护者指派 |
 | [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp) ⭐28k | [`FastMCPApp` 把所有匹配 `<12 位小写十六进制>_<name>` 的工具名当成已做身份寻址，却不校验 digest 是否真是该 app 对此 local name 的哈希：用户自取名 `abcdef012345_save` 因此跳过前缀，`annotate_payload_identities` 记下错误的自身份，经命名空间 mount/provider 后 Prefab payload 指向不可调用的裸名（`NotFoundError: Unknown tool`）。修复只在名字等于 `hashed_backend_name(app_name, local)` 时原样返回，其余照常加前缀](https://github.com/PrefectHQ/fastmcp/issues/5866) `2026-10-19` | ⚪ 自行关闭 [#5867](https://github.com/PrefectHQ/fastmcp/pull/5867)（未合并），issue 保持开启 |

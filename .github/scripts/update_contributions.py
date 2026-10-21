@@ -331,6 +331,20 @@ NOTES = {
     ),
 }
 
+# 修复被上游采纳、但没有以「我们的 PR 被合并」形式落地的贡献（cherry-pick / 沿用修复）。
+# 这些 PR 不会出现在上面的 merged 查询里，头像墙与摘要要单独算；键为 owner/repo。
+ADOPTED = {
+    "modelcontextprotocol/servers": [
+        {
+            "pr": 5013,
+            "our_pr": 4828,
+            "title": "fix(memory): preserve memory file permissions across atomic save",
+            "commit": "1b01ea6dac",
+            "merged_at": "2026-10-05",
+        },
+    ],
+}
+
 QUERY = """
 {
   search(query: "author:%s is:pr is:merged -user:%s", type: ISSUE, first: 50) {
@@ -345,10 +359,22 @@ QUERY = """
 """ % (USER, USER)
 
 
-def fetch_once():
+REPO_QUERY = """
+query($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    nameWithOwner url stargazerCount
+  }
+}
+"""
+
+
+def graphql(query, variables=None):
+    payload = {"query": query}
+    if variables:
+        payload["variables"] = variables
     req = urllib.request.Request(
         "https://api.github.com/graphql",
-        data=json.dumps({"query": QUERY}).encode(),
+        data=json.dumps(payload).encode(),
         headers={
             "Authorization": "bearer " + os.environ["GITHUB_TOKEN"],
             "Content-Type": "application/json",
@@ -358,7 +384,17 @@ def fetch_once():
         data = json.loads(resp.read())
     if "errors" in data:
         raise RuntimeError("GraphQL errors: %s" % data["errors"])
-    return [n for n in data["data"]["search"]["nodes"] if n]
+    return data["data"]
+
+
+def fetch_once():
+    return [n for n in graphql(QUERY)["search"]["nodes"] if n]
+
+
+def fetch_repo(full):
+    """只被采纳、没有已合并 PR 的仓库不在 search 结果里，单独取头像墙需要的信息。"""
+    owner, name = full.split("/", 1)
+    return graphql(REPO_QUERY, {"owner": owner, "name": name})["repository"]
 
 
 def fetch(attempts=4):
@@ -391,21 +427,41 @@ def avatar(owner, size):
 
 
 def render_wall(repos):
-    """repos: [(repository, 合并数)]，按合并数、star 数排成一面上游仓库头像墙。"""
-    repos = sorted(repos, key=lambda e: (-e[1], -e[0]["stargazerCount"], e[0]["nameWithOwner"].lower()))
+    """repos: [(repository, 合并数, 修补数)]，按贡献数、star 数排成一面上游仓库头像墙。"""
+    repos = sorted(repos, key=lambda e: (-(e[1] + e[2]), -e[1], -e[0]["stargazerCount"],
+                                         e[0]["nameWithOwner"].lower()))
     per_row = math.ceil(len(repos) / math.ceil(len(repos) / WALL_PER_ROW))
     tables = []
     for i in range(0, len(repos), per_row):
         cells = []
-        for repo, merged in repos[i:i + per_row]:
+        for repo, merged, adopted in repos[i:i + per_row]:
             owner, name = repo["nameWithOwner"].split("/", 1)
             url, stars = repo["url"], fmt_stars(repo["stargazerCount"])
+            bits = [f"⭐{stars}"]
+            if merged:
+                bits.append(f"合并 {merged}")
+            if adopted:
+                bits.append(f"修补 {adopted}")
             cells.append(
                 f'<td align="center"><a href="{url}"><img src="{avatar(owner, 80)}" width="40" height="40" '
-                f'alt="{owner}"/><br/><b>{name}</b></a><br/><sub>⭐{stars} · 合并 {merged}</sub></td>'
+                f'alt="{owner}"/><br/><b>{name}</b></a><br/><sub>{" · ".join(bits)}</sub></td>'
             )
         tables.append('<table align="center">\n<tr>\n' + "\n".join(cells) + "\n</tr>\n</table>")
     return "\n\n".join(tables)
+
+
+def render_adopted(adopted):
+    """被采纳的修复单独列在头像墙下方，不混进「已合并 PR」的折叠说明。"""
+    lines = []
+    for full, entries in adopted.items():
+        for e in entries:
+            url = f"https://github.com/{full}/pull/{e['pr']}"
+            ours = f"https://github.com/{full}/pull/{e['our_pr']}"
+            lines.append(
+                f'<sub>🔧 <a href="{url}"><b>{full}#{e["pr"]}</b></a> 采纳了我们的 '
+                f'<a href="{ours}">#{e["our_pr"]}</a> · <code>{e["commit"]}</code> · {e["merged_at"]}</sub>'
+            )
+    return "<br/>\n".join(lines)
 
 
 def render_entry(p):
@@ -434,13 +490,27 @@ def render(prs):
     prs.sort(key=lambda p: p["mergedAt"], reverse=True)
     repos = {}
     for p in prs:
-        repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0])[1] += 1
+        repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0, 0])[1] += 1
+    # 摘要里的「上游仓库」只数真有合并 PR 的仓库；只被采纳的仓库不算，另用「采纳」单独表述。
+    merged_repos = len(repos)
+    adopted_total = 0
+    for full, entries in ADOPTED.items():
+        if full in repos:
+            repos[full][2] = len(entries)
+        else:
+            repos[full] = [fetch_repo(full), 0, len(entries)]
+        adopted_total += len(entries)
     summary = (
-        f'<p align="center"><b>{len(prs)}</b> 个 PR 合并进 <b>{len(repos)}</b> 个上游仓库'
-        " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
+        f'<p align="center"><b>{len(prs)}</b> 个 PR 合并进 <b>{merged_repos}</b> 个上游仓库'
+        + (f" · 另有 <b>{adopted_total}</b> 个修复被上游采纳" if adopted_total else "")
+        + " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
     )
+    parts = [render_wall(repos.values())]
+    if adopted_total:
+        parts.append(render_adopted(ADOPTED))
+    parts.append(summary)
     recent, older = prs[:RECENT_SHOWN], prs[RECENT_SHOWN:]
-    parts = [render_wall(repos.values()), summary] + [render_entry(p) for p in recent]
+    parts += [render_entry(p) for p in recent]
     if older:
         parts.append("\n\n".join(
             ["<details>", f"<summary><b>📦 更早的 {len(older)} 个 PR</b></summary>", "<br/>"]
