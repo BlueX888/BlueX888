@@ -103,7 +103,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 17</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 18</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 7</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
@@ -122,7 +122,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>41</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>42</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-22</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7088">fix(skills): treat only top-level scripts/ paths as executable in skill_manage</a></summary>
+
+> [bytedance/deer-flow#7088](https://github.com/bytedance/deer-flow/pull/7088)
+
+</details>
 
 <details>
 <summary><code>2026-10-20</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5672">fix(tools): materialize generator transform_fn results in TransformedTool.run</a></summary>
@@ -160,17 +167,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 36 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-19</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4981">fix(ts): report correct paths for values after nested objects in deepCopyWithValidation</a></summary>
 
 > [strands-agents/harness-sdk#4981](https://github.com/strands-agents/harness-sdk/pull/4981)：`deepCopyWithValidation` 的 replacer 路径栈只压不弹：嵌套对象/数组序列化完后陈旧帧留在栈顶，后续兄弟节点的不可序列化值继承已完成子树的路径——`StateStore`/router 元数据校验把 `{ nested: {x:1}, bad: fn }` 报成 `value for key "a".nested.bad` 而非 `"a".bad`。修复让每个栈帧记录其对象并按当前序列化对象回弹，路径始终相对真实父级。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 35 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>livekit/agents</b> · <a href="https://github.com/livekit/agents/pull/7929">fix(cli): apply connect credentials to the agent server</a></summary>
