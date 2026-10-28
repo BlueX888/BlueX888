@@ -103,7 +103,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <!--START_SECTION:contributions-->
 <table align="center">
 <tr>
-<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐84k · 合并 18</sub></td>
+<td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐85k · 合并 18</sub></td>
 <td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 7</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
@@ -115,7 +115,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
-<td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐34k · 合并 1</sub></td>
+<td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐35k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=80" width="40" height="40" alt="openai"/><br/><b>openai-agents-js</b></a><br/><sub>⭐4k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=80" width="40" height="40" alt="modelcontextprotocol"/><br/><b>servers</b></a><br/><sub>⭐92k · 修补 1</sub></td>
