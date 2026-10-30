@@ -104,7 +104,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 <table align="center">
 <tr>
 <td align="center"><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=80" width="40" height="40" alt="bytedance"/><br/><b>deer-flow</b></a><br/><sub>⭐85k · 合并 18</sub></td>
-<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 7</sub></td>
+<td align="center"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=80" width="40" height="40" alt="PrefectHQ"/><br/><b>fastmcp</b></a><br/><sub>⭐28k · 合并 8</sub></td>
 <td align="center"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=80" width="40" height="40" alt="livekit"/><br/><b>agents</b></a><br/><sub>⭐15k · 合并 5</sub></td>
 <td align="center"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=80" width="40" height="40" alt="agno-agi"/><br/><b>agno</b></a><br/><sub>⭐43k · 合并 3</sub></td>
 <td align="center"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=80" width="40" height="40" alt="strands-agents"/><br/><b>harness-sdk</b></a><br/><sub>⭐9k · 合并 3</sub></td>
@@ -123,7 +123,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>43</b> 个 PR 合并进 <b>11</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>44</b> 个 PR 合并进 <b>11</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-30</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>PrefectHQ/fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5847">fix(openapi): preserve timeouts so the server maps them to the actionable message</a></summary>
+
+> [PrefectHQ/fastmcp#5847](https://github.com/PrefectHQ/fastmcp/pull/5847)
+
+</details>
 
 <details>
 <summary><code>2026-10-30</code> <img src="https://github.com/langgenius.png?size=40" width="16" height="16" alt="langgenius"/> <b>langgenius/dify</b> · <a href="https://github.com/langgenius/dify/pull/45088">fix(api): fall back to the raw reference for non-object file reference payloads</a></summary>
@@ -161,17 +168,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 38 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-19</code> <img src="https://github.com/mcp-use.png?size=40" width="16" height="16" alt="mcp-use"/> <b>mcp-use/mcp-use</b> · <a href="https://github.com/mcp-use/mcp-use/pull/2651">fix(agent): treat missing error field as success in RemoteAgent.run</a></summary>
 
 > [mcp-use/mcp-use#2651](https://github.com/mcp-use/mcp-use/pull/2651)：`RemoteAgent.run` 用 `result.status === "error" || result.error !== null` 判定失败，200 成功响应只要缺 `error` 键就被拒（`undefined !== null`），与注释和下方成功分支相悖；错误插值还把对象错误值渲染成 `[object Object]`。修复改为 `result.error != null`（缺失/`null` 都算成功，真实错误与 `status:"error"` 仍拒绝），对象错误用 `JSON.stringify` 展示，并删掉永远匹配不上的 `String(result).includes(...)` 死代码。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 37 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/mcp-use.png?size=40" width="16" height="16" alt="mcp-use"/> <b>mcp-use/mcp-use</b> · <a href="https://github.com/mcp-use/mcp-use/pull/2551">fix(agent): emit OpenAI Responses tool-call args events keyed by item_id</a></summary>
