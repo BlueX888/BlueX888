@@ -114,6 +114,7 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 
 <table align="center">
 <tr>
+<td align="center"><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=80" width="40" height="40" alt="langgenius"/><br/><b>dify</b></a><br/><sub>⭐160k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=80" width="40" height="40" alt="crewAIInc"/><br/><b>crewAI</b></a><br/><sub>⭐60k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=80" width="40" height="40" alt="agentscope-ai"/><br/><b>agentscope</b></a><br/><sub>⭐35k · 合并 1</sub></td>
 <td align="center"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=80" width="40" height="40" alt="Arize-ai"/><br/><b>phoenix</b></a><br/><sub>⭐12k · 合并 1</sub></td>
@@ -122,7 +123,14 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </tr>
 </table>
 
-<p align="center"><b>42</b> 个 PR 合并进 <b>10</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+<p align="center"><b>43</b> 个 PR 合并进 <b>11</b> 个上游仓库 · 按合并时间倒序 · 点 ▸ 看修了什么</p>
+
+<details>
+<summary><code>2026-10-30</code> <img src="https://github.com/langgenius.png?size=40" width="16" height="16" alt="langgenius"/> <b>langgenius/dify</b> · <a href="https://github.com/langgenius/dify/pull/45088">fix(api): fall back to the raw reference for non-object file reference payloads</a></summary>
+
+> [langgenius/dify#45088](https://github.com/langgenius/dify/pull/45088)
+
+</details>
 
 <details>
 <summary><code>2026-10-22</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>bytedance/deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7088">fix(skills): treat only top-level scripts/ paths as executable in skill_manage</a></summary>
@@ -160,17 +168,17 @@ deep-research 多智能体团队，174 行核心代码、CI 卡死 1000 行上�
 </details>
 
 <details>
+
+<summary><b>📦 更早的 37 个 PR</b></summary>
+
+<br/>
+
+<details>
 <summary><code>2026-10-19</code> <img src="https://github.com/mcp-use.png?size=40" width="16" height="16" alt="mcp-use"/> <b>mcp-use/mcp-use</b> · <a href="https://github.com/mcp-use/mcp-use/pull/2551">fix(agent): emit OpenAI Responses tool-call args events keyed by item_id</a></summary>
 
 > [mcp-use/mcp-use#2551](https://github.com/mcp-use/mcp-use/pull/2551)：OpenAI Responses 驱动的流式工具调用缓冲按 `call_id` 索引，而 `response.function_call_arguments.delta/done` 携带的是 output item id（`fc_...`），查不到缓冲就永不发出 `tool-call-args-delta`/`tool-call-ready`——工具照常执行但 `agent.stream()`/`streamEvents()` 对工具调用产出零 AgentStep，缺陷是静默的。修复按 `item.id` 索引缓冲并在事件里继续使用 MCP 侧的 `call_id`，两种 id 都保存以保持 `toolCallId` 与 `tool-result` 对齐。
 
 </details>
-
-<details>
-
-<summary><b>📦 更早的 36 个 PR</b></summary>
-
-<br/>
 
 <details>
 <summary><code>2026-10-19</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>strands-agents/harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4981">fix(ts): report correct paths for values after nested objects in deepCopyWithValidation</a></summary>
