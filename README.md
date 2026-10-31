@@ -44,13 +44,6 @@
 </tr>
 </table>
 
-## 🔬 Current Work
-
-- ⚙️ **SwarmCore** 冲刺 M5（v1 候选基线）：Temporal 持久化编排 · PostgreSQL 单一事实源 · OPA/Vault 治理
-- 💼 **面壁智能**：参与 OpenBMB 的 Agent 产品 ChatDev / StaffDeck / PilotDeck
-- 🔍 **上游审计**：读 Agent 框架的 provider 适配、streaming 聚合、tool 调用层找缺陷，写无网络最小复现，按仓库规则报 issue 或当天带回归测试提 PR
-- 📖 **nanoteam**：把多智能体的最小可用形态写成一本能跑的教科书
-
 ## 📘 Projects
 
 <p align="center"><i>一条多智能体谱系：<b>看得懂 → 用得上 → 跑得稳</b></i></p>
