@@ -23,16 +23,14 @@
 
 <table border="0">
 <tr>
-<td width="62%" valign="top">
+<td width="62%" valign="middle">
 
-我是 **哈基米**，做多智能体系统。从 174 行核心代码的 deep-research 团队，到跑在 Temporal 上的企业级执行内核，想回答的是同一个问题：**让一群模型可靠地协作，需要什么样的工程。**
-
-> 模型负责判断，代码负责兜底——安全边界、状态机、可审计性交给确定性代码，而不是 prompt。
+📬 **欢迎来信**：[li_chaoran8888@163.com](mailto:li_chaoran8888@163.com)<br/>技术交流、项目合作，或者只是随便聊聊，都很欢迎。
 
 <table>
   <tr><td>🎓 <b>硕士</b></td><td>北京工业大学 · 计算机科学与技术 · 2025 – 2028</td></tr>
   <tr><td>🎓 <b>本科</b></td><td>河南大学 · 计算机科学与技术 · 2021 – 2025</td></tr>
-  <tr><td>💼 <b>实习</b></td><td>面壁智能（<a href="https://www.modelbest.cn">ModelBest</a> / <a href="https://www.openbmb.cn">OpenBMB</a>）· Agent 方向 · 2026.08 –</td></tr>
+  <tr><td>💼 <b>实习</b></td><td>面壁智能（<a href="https://www.modelbest.cn">ModelBest</a> / <a href="https://www.openbmb.cn">OpenBMB</a>）· Agent 方向 · 2026.08 – 至今</td></tr>
 </table>
 
 </td>
