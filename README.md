@@ -21,28 +21,25 @@
 
 ## 🎯 About Me
 
-<table border="0">
-<tr>
-<td width="62%" valign="middle">
-
 📬 **[li_chaoran8888@163.com](mailto:li_chaoran8888@163.com)** — 技术交流、项目合作，或者随便聊聊，都欢迎来信。
 
-<table>
-  <tr><td><b>硕士</b></td><td><img src="assets/logos/bjut.png" height="20" align="absmiddle" alt="BJUT"/> <a href="https://www.bjut.edu.cn">北京工业大学</a> · 计算机科学与技术 · 2025 – 2028</td></tr>
-  <tr><td><b>本科</b></td><td><img src="assets/logos/henu.png" height="20" align="absmiddle" alt="HENU"/> <a href="https://www.henu.edu.cn">河南大学</a> · 计算机科学与技术 · 2021 – 2025</td></tr>
-  <tr><td><b>实习</b></td><td><img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="ModelBest"/> <a href="https://www.modelbest.cn">面壁智能</a> · Agent 算法实习生 · 2026.08 – 至今</td></tr>
-  <tr><td><b>实习</b></td><td><img src="assets/logos/ontomind.png" height="20" align="absmiddle" alt="OntoMind"/> <a href="https://ontomind.ai/">北京语义智能软件</a> · Agent 开发实习生 · 2026.04 – 2026.08</td></tr>
-  <tr><td><b>实习</b></td><td><img src="assets/logos/liangjianghu.png" height="20" align="absmiddle" alt="量江湖"/> <a href="https://www.liangjianghu.com">量江湖</a> · 大模型算法实习生 · 2025.10 – 2026.02</td></tr>
-</table>
+<img align="right" width="30%" src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" alt="coding"/>
 
-</td>
-<td width="38%" align="center" valign="middle">
+<img src="https://img.shields.io/badge/Education-8E2DE2?style=for-the-badge" alt="Education"/>
 
-<img src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" width="100%" alt="coding"/>
+<img src="assets/logos/bjut.png" height="20" align="absmiddle" alt="BJUT"/>&nbsp; <a href="https://www.bjut.edu.cn"><b>北京工业大学</b></a> · 计算机科学与技术 · 硕士 · 2025 – 2028
 
-</td>
-</tr>
-</table>
+<img src="assets/logos/henu.png" height="20" align="absmiddle" alt="HENU"/>&nbsp; <a href="https://www.henu.edu.cn"><b>河南大学</b></a> · 计算机科学与技术 · 本科 · 2021 – 2025
+
+<img src="https://img.shields.io/badge/Experience-8E2DE2?style=for-the-badge" alt="Experience"/>
+
+<img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="ModelBest"/>&nbsp; <a href="https://www.modelbest.cn"><b>面壁智能</b></a> · Agent 算法实习生 · 2026.08 – 至今
+
+<img src="assets/logos/ontomind.png" height="20" align="absmiddle" alt="OntoMind"/>&nbsp; <a href="https://ontomind.ai/"><b>北京语义智能软件</b></a> · Agent 开发实习生 · 2026.04 – 2026.08
+
+<img src="assets/logos/liangjianghu.png" height="20" align="absmiddle" alt="量江湖"/>&nbsp; <a href="https://www.liangjianghu.com"><b>量江湖</b></a> · 大模型算法实习生 · 2025.10 – 2026.02
+
+<br clear="right"/>
 
 ## 📘 Projects
 
