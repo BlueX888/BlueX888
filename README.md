@@ -28,9 +28,9 @@
 📬 **欢迎来信**：[li_chaoran8888@163.com](mailto:li_chaoran8888@163.com)<br/>技术交流、项目合作，或者只是随便聊聊，都很欢迎。
 
 <table>
-  <tr><td>🎓 <b>硕士</b></td><td>北京工业大学 · 计算机科学与技术 · 2025 – 2028</td></tr>
-  <tr><td>🎓 <b>本科</b></td><td>河南大学 · 计算机科学与技术 · 2021 – 2025</td></tr>
-  <tr><td>💼 <b>实习</b></td><td>面壁智能（<a href="https://www.modelbest.cn">ModelBest</a> / <a href="https://www.openbmb.cn">OpenBMB</a>）· Agent 方向 · 2026.08 – 至今</td></tr>
+  <tr><td><img src="assets/logos/bjut.png" height="20" align="absmiddle" alt="BJUT"/> <b>硕士</b></td><td>北京工业大学 · 计算机科学与技术 · 2025 – 2028</td></tr>
+  <tr><td><img src="assets/logos/henu.png" height="20" align="absmiddle" alt="HENU"/> <b>本科</b></td><td>河南大学 · 计算机科学与技术 · 2021 – 2025</td></tr>
+  <tr><td><img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="ModelBest"/> <b>实习</b></td><td>面壁智能（<a href="https://www.modelbest.cn">ModelBest</a> / <a href="https://www.openbmb.cn">OpenBMB</a>）· Agent 方向 · 2026.08 – 至今</td></tr>
 </table>
 
 </td>
