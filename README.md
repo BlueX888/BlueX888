@@ -25,12 +25,14 @@
 <tr>
 <td width="62%" valign="middle">
 
-📬 **欢迎来信**：[li_chaoran8888@163.com](mailto:li_chaoran8888@163.com)<br/>技术交流、项目合作，或者只是随便聊聊，都很欢迎。
+📬 **[li_chaoran8888@163.com](mailto:li_chaoran8888@163.com)** — 技术交流、项目合作，或者随便聊聊，都欢迎来信。
 
 <table>
-  <tr><td><img src="assets/logos/bjut.png" height="20" align="absmiddle" alt="BJUT"/> <b>硕士</b></td><td>北京工业大学 · 计算机科学与技术 · 2025 – 2028</td></tr>
-  <tr><td><img src="assets/logos/henu.png" height="20" align="absmiddle" alt="HENU"/> <b>本科</b></td><td>河南大学 · 计算机科学与技术 · 2021 – 2025</td></tr>
-  <tr><td><img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="ModelBest"/> <b>实习</b></td><td>面壁智能（<a href="https://www.modelbest.cn">ModelBest</a> / <a href="https://www.openbmb.cn">OpenBMB</a>）· Agent 方向 · 2026.08 – 至今</td></tr>
+  <tr><td><b>硕士</b></td><td><img src="assets/logos/bjut.png" height="20" align="absmiddle" alt="BJUT"/> <a href="https://www.bjut.edu.cn">北京工业大学</a> · 计算机科学与技术 · 2025 – 2028</td></tr>
+  <tr><td><b>本科</b></td><td><img src="assets/logos/henu.png" height="20" align="absmiddle" alt="HENU"/> <a href="https://www.henu.edu.cn">河南大学</a> · 计算机科学与技术 · 2021 – 2025</td></tr>
+  <tr><td><b>实习</b></td><td><img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="ModelBest"/> <a href="https://www.modelbest.cn">面壁智能</a> · Agent 算法实习生 · 2026.08 – 至今</td></tr>
+  <tr><td><b>实习</b></td><td><img src="assets/logos/ontomind.png" height="20" align="absmiddle" alt="OntoMind"/> <a href="https://ontomind.ai/">北京语义智能软件</a> · Agent 开发实习生 · 2026.04 – 2026.08</td></tr>
+  <tr><td><b>实习</b></td><td><img src="assets/logos/liangjianghu.png" height="20" align="absmiddle" alt="量江湖"/> <a href="https://www.liangjianghu.com">量江湖</a> · 大模型算法实习生 · 2025.10 – 2026.02</td></tr>
 </table>
 
 </td>
@@ -43,8 +45,6 @@
 </table>
 
 ## 📘 Projects
-
-<p align="center"><i>一条多智能体谱系：<b>看得懂 → 用得上 → 跑得稳</b></i></p>
 
 <table>
 <tr>
