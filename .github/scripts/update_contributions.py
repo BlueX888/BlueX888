@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """刷新 README 里两个自动生成的区块。
 
-- contributions：已合并到他人仓库的 PR（GraphQL search 抓取）——上游仓库头像墙 + 每个 PR 一条可折叠说明；
+- contributions：代码合并（GraphQL search 抓取已合并到他人仓库的 PR）与问题获修（ISSUES_FIXED）——
+  上游仓库头像墙 + 每个 PR、每个获修问题一条可折叠说明；
 - bug-stats：缺陷表上方的数字条，逐行统计手工维护的 `## 🔍` 缺陷表，改完表跑一次本脚本即可跟上。
 
 用法: GITHUB_TOKEN=xxx python3 update_contributions.py README.md
@@ -19,14 +20,13 @@ USER = "BlueX888"
 START, END = "<!--START_SECTION:contributions-->", "<!--END_SECTION:contributions-->"
 BUG_START, BUG_END = "<!--START_SECTION:bug-stats-->", "<!--END_SECTION:bug-stats-->"
 # 头像墙每行最多几个仓库，再多就均分成几行，免得在主页上被挤扁
-WALL_PER_ROW = 6
-# 区块里直接列出最近几个 PR，更早的收进一个外层折叠，免得主页被一长串 summary 撑开
-RECENT_SHOWN = 6
+WALL_PER_ROW = 5
 # 与 pr-tracker 的 homepage_sync.py 同一口径：区块里每个 PR 至少要有一个 markdown 形式的 `(…/pull/N)` 链接
+# （render_entry 把它写在 HTML 注释里，页面上不显示）
 PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
-# 新 PR 合并后在这里补一行即可；没有说明的 PR 展开后只有链接。
+# 目前主页只列标题、不展示这些说明；pr-tracker 仍按这里检查新合并的 PR 有没有补说明。
 NOTES = {
     "PrefectHQ/fastmcp#5672": (
         "`Tool.from_tool` 的 `TransformedTool.run` 只认协程函数与普通同步 callable 两条派发路径，生成器结果"
@@ -331,19 +331,79 @@ NOTES = {
     ),
 }
 
-# 修复被上游采纳、但没有以「我们的 PR 被合并」形式落地的贡献（cherry-pick / 沿用修复）。
-# 这些 PR 不会出现在上面的 merged 查询里，头像墙与摘要要单独算；键为 owner/repo。
-ADOPTED = {
-    "modelcontextprotocol/servers": [
-        {
-            "pr": 5013,
-            "our_pr": 4828,
-            "title": "fix(memory): preserve memory file permissions across atomic save",
-            "commit": "1b01ea6dac",
-            "merged_at": "2026-10-05",
-        },
-    ],
-}
+# 问题获修：自己发现、报告或提供补丁的问题，由上游修好，但不是以「我们的 PR 被合并」的方式纳入。
+# 按独立问题计数，与合并 PR 不重复计入；每条都有已合并的修复 PR 或修复 commit 作证。
+# 数据与核实过程见 docs/github-contribution-stats.md 第三、五节；新问题获修后在这里补一行。
+# fixed_at：修复 PR 合并（多个取最晚）或修复 commit 的日期，详情列表与合并 PR 一起按它倒序；
+# patch：我们提交过、被上游采纳的补丁 PR；fixed_by：(修复 PR 编号, 作者)；fixed_by_commit：(commit, 作者)。
+ISSUES_FIXED = [
+    {"repo": "Arize-ai/phoenix", "issue": 17398, "fixed_at": "2026-10-31", "fixed_by": [(17433, "pcbeingused333")],
+     "title": "[BUG]: Span annotation DataFrame logging skips required-column validation that the document path enforces"},
+    {"repo": "agentscope-ai/agentscope", "issue": 3291, "fixed_at": "2026-10-30", "fixed_by": [(3297, "SSK988I")],
+     "title": "[Bug]: Read tool accepts offset <= 0, negative-slicing the file and returning its tail labeled with line numbers 0 or negative"},
+    {"repo": "PrefectHQ/fastmcp", "issue": 6155, "fixed_at": "2026-10-29", "fixed_by": [(6156, "HootRock")],
+     "title": "[Bug] A kept-alive stdio transport keeps the first client's session and silently ignores a second client's timeout"},
+    {"repo": "PrefectHQ/fastmcp", "issue": 6117, "fixed_at": "2026-10-28", "fixed_by": [(6119, "KashifManzer")],
+     "title": "[Bug] FastMCPStdioTransport silently drops its args parameter"},
+    {"repo": "PrefectHQ/fastmcp", "issue": 5866, "fixed_at": "2026-10-27", "patch": 5867, "fixed_by": [(6100, "jlowin")],
+     "title": "[Bug] FastMCPApp treats hash-shaped tool names as pre-addressed, breaking Prefab callbacks after composition"},
+    {"repo": "openai/openai-agents-python", "issue": 5348, "fixed_at": "2026-10-26", "fixed_by": [(5423, "jbeckwith-oai")],
+     "title": "ShellTool: empty ShellResult(output=[]) fabricates stdout \"(no output)\" in the model-visible shell_call_output and persisted shell_output"},
+    {"repo": "bytedance/deer-flow", "issue": 7086, "fixed_at": "2026-10-24", "fixed_by": [(7092, "Hugo-DDT")],
+     "title": "[Bug] DeerFlowClient(config_path=...) silently uses the default config, and explicit reloads can be discarded"},
+    {"repo": "bytedance/deer-flow", "issue": 7077, "fixed_at": "2026-10-23", "fixed_by": [(7115, "gmll-star")],
+     "title": "[Bug] POST /threads/{id}/state silently ignores the checkpoint object and mutates the thread head"},
+    {"repo": "bytedance/deer-flow", "issue": 7072, "fixed_at": "2026-10-20", "fixed_by": [(7076, "LuckVd")],
+     "title": "[Bug] Unreadable memory.json is silently overwritten instead of quarantined (data loss)"},
+    {"repo": "PrefectHQ/fastmcp", "issue": 5816, "fixed_at": "2026-10-19", "fixed_by": [(5817, "HootRock")],
+     "title": "[Bug] Shared() dependencies become request-scoped without pydocket, and direct call_tool crashes with pydocket"},
+    {"repo": "bytedance/deer-flow", "issue": 5846, "fixed_at": "2026-10-18", "fixed_by": [(7020, "Totoro-qaq")],
+     "title": "[bug] skill_manage: parallel tool calls for the same (user, skill) deadlock forever on the sync client path (shared asyncio.Lock across per-call event loops)"},
+    {"repo": "mastra-ai/mastra", "issue": 26481, "fixed_at": "2026-10-16", "fixed_by": [(26662, "mastra-platform")],
+     "title": "[BUG] MCP image/audio tool results emitted as spec-v3 `image-data`/`file-data` in the v5 tool-result output — dropped by spec-v2 providers, rejected by spec-v4 (Bedrock throws)"},
+    {"repo": "Arize-ai/phoenix", "issue": 16950, "fixed_at": "2026-10-15", "fixed_by": [(16951, "lx3133584")],
+     "title": "[BUG]: [playground] AWS Bedrock run crashes with JSONDecodeError when a tool result message contains plain text"},
+    {"repo": "Fei2411/DS-Bot", "issue": 58, "fixed_at": "2026-10-12", "fixed_by_commit": ("d9af38d", "Fei2411"),
+     "title": "Node 22 下 web-search 慢端点超时永不触发（`AbortSignal.timeout` 的 unref 定时器）"},
+    {"repo": "Fei2411/DS-Bot", "issue": 57, "fixed_at": "2026-10-12", "fixed_by_commit": ("2ceba39", "Fei2411"),
+     "title": "删除 Bot / 群聊后其定时任务成为孤儿：仍在 DSH 中待命，设置页不可见也无法删除"},
+    {"repo": "Fei2411/DS-Bot", "issue": 56, "fixed_at": "2026-10-12", "fixed_by_commit": ("7018a8b", "Fei2411"),
+     "title": "`state.lock` 被另一台 host 接管后，写端点仍返回 ok:true 但 `save()` 静默失败"},
+    {"repo": "Fei2411/DS-Bot", "issue": 55, "fixed_at": "2026-10-12", "fixed_by_commit": ("d9af38d", "Fei2411"),
+     "title": "dev/mock-llm.mjs 的 `长任务 N` 省略 K 时每一步都不产出文本块（`.map(Number)` 把缺失的 K 变成 NaN）"},
+    {"repo": "bytedance/deer-flow", "issue": 6471, "fixed_at": "2026-10-08", "fixed_by": [(6477, "yu1128-L")],
+     "title": "[bug] DbRunEventStore: delete_by_run lowers the thread's max-seq watermark, so later puts reissue already-used seq values and become invisible to after_seq cursors"},
+    {"repo": "PrefectHQ/fastmcp", "issue": 5265, "fixed_at": "2026-10-05", "fixed_by": [(5270, "lzyruc")],
+     "title": "CallToolResult.data is None when output_schema has uniqueItems on an array of objects"},
+    {"repo": "modelcontextprotocol/servers", "issue": 4827, "fixed_at": "2026-10-05", "patch": 4828, "fixed_by": [(5013, "cliffhall")],
+     "title": "server-memory: saveGraph rewrites memory.jsonl via temp-file + rename, dropping an existing file's permission bits (0600 -> 0644) and silently overwriting read-only files"},
+    {"repo": "modelcontextprotocol/servers", "issue": 4813, "fixed_at": "2026-10-05", "patch": 4814, "fixed_by": [(5036, "cliffhall")],
+     "title": "sequentialthinking: a branchId that collides with an Object.prototype key throws instead of creating the branch, and the failed call still extends thoughtHistory"},
+    {"repo": "modelcontextprotocol/servers", "issue": 4808, "fixed_at": "2026-10-05", "fixed_by": [(5032, "cliffhall")],
+     "title": "everything: session resources evict another session's resource when two sessions use the same file name"},
+    {"repo": "e2b-dev/E2B", "issue": 1895, "fixed_at": "2026-10-01", "fixed_by": [(1912, "harshitgavita-07"), (1923, "devin-ai-integration")],
+     "title": "[Bug]: JS SDK: filesystem watch handle.stop() always fires onExit with a TimeoutError blaming 'requestTimeoutMs'"},
+    {"repo": "mastra-ai/mastra", "issue": 25208, "fixed_at": "2026-09-28", "fixed_by": [(25278, "mastra-platform")],
+     "title": "[BUG] Array structured output textStream/elementStream keep the stale partial element when a later chunk completes it in place"},
+    {"repo": "mastra-ai/mastra", "issue": 24516, "fixed_at": "2026-09-25", "fixed_by": [(25086, "breken-ai")],
+     "title": "[BUG] schema-compat/zodToJsonSchema: nullable zod v4 enum/literal widens to type:[X,\"null\"] but keeps enum/const, so exported schema rejects null"},
+    {"repo": "Arize-ai/phoenix", "issue": 16228, "fixed_at": "2026-09-25", "fixed_by": [(16316, "Anurag-M1")],
+     "title": "[BUG]: Anthropic prompt adapter ignores `{{ variables }}` in str system messages, sending the literal template as the `system` kwarg"},
+    {"repo": "openai/openai-agents-js", "issue": 1976, "fixed_at": "2026-09-24", "fixed_by": [(1977, "jbeckwith-oai")],
+     "title": "MCP tool cache: invalidating server 'X' deletes the cached tools of an unrelated server named 'X:suffix' via the unscoped prefix-scan fallback"},
+    {"repo": "agentscope-ai/agentscope", "issue": 2709, "fixed_at": "2026-09-21", "fixed_by": [(2726, "DavdGao")],
+     "title": "[Bug]: Grep: offset/head_limit pagination silently drops and duplicates matches because ripgrep output order is non-deterministic across invocations"},
+    {"repo": "livekit/agents", "issue": 7324, "fixed_at": "2026-09-18", "fixed_by": [(7330, "longcw")],
+     "title": "ChatContext.copy(tools=...) drops FunctionCallOutput with a default (empty) name, silently removing the whole function call + result pair from provider requests"},
+    {"repo": "bytedance/deer-flow", "issue": 5473, "fixed_at": "2026-09-17", "fixed_by": [(5494, "cyberspace-cs")],
+     "title": "[bug] Claude credential loader raises AttributeError when ~/.claude/.credentials.json has a non-object claudeAiOauth container"},
+    {"repo": "mastra-ai/mastra", "issue": 23980, "fixed_at": "2026-09-15", "fixed_by": [(24055, "DanielSLew")],
+     "title": "[BUG] Top-level array structured output silently returns [] for arrays of primitives"},
+    {"repo": "agentscope-ai/agentscope", "issue": 2494, "fixed_at": "2026-09-15", "fixed_by": [(2495, "RICARDO51167")],
+     "title": "[Bug]: AnthropicChatModel streaming merges all `thinking` blocks of one response into a single block, keeping only the last `signature`"},
+    {"repo": "bytedance/deer-flow", "issue": 5192, "fixed_at": "2026-09-05", "fixed_by": [(5195, "Coder-xiaosuo")],
+     "title": "[bug] MindIE tool-enabled async streaming drops token usage"},
+]
 
 QUERY = """
 {
@@ -392,7 +452,7 @@ def fetch_once():
 
 
 def fetch_repo(full):
-    """只被采纳、没有已合并 PR 的仓库不在 search 结果里，单独取头像墙需要的信息。"""
+    """只有问题获修、没有已合并 PR 的仓库不在 search 结果里，单独取头像墙需要的信息。"""
     owner, name = full.split("/", 1)
     return graphql(REPO_QUERY, {"owner": owner, "name": name})["repository"]
 
@@ -426,77 +486,87 @@ def avatar(owner, size):
     return f"https://github.com/{owner}.png?size={size}"
 
 
-def render_wall(repos):
-    """repos: [(repository, 合并数, 修补数)]，按贡献数、star 数排成一面上游仓库头像墙。"""
-    repos = sorted(repos, key=lambda e: (-(e[1] + e[2]), -e[1], -e[0]["stargazerCount"],
-                                         e[0]["nameWithOwner"].lower()))
-    per_row = math.ceil(len(repos) / math.ceil(len(repos) / WALL_PER_ROW))
-    tables = []
-    for i in range(0, len(repos), per_row):
+def wall_order(repos):
+    """repos: {owner/repo: [repository, 合并数, 问题获修数]}；按 star 数降序排。"""
+    return sorted(repos.values(), key=lambda e: (-e[0]["stargazerCount"], e[0]["nameWithOwner"].lower()))
+
+
+def render_wall(ordered):
+    per_row = math.ceil(len(ordered) / math.ceil(len(ordered) / WALL_PER_ROW))
+    rows = []
+    for i in range(0, len(ordered), per_row):
         cells = []
-        for repo, merged, adopted in repos[i:i + per_row]:
+        for repo, merged, fixed in ordered[i:i + per_row]:
             owner, name = repo["nameWithOwner"].split("/", 1)
             url, stars = repo["url"], fmt_stars(repo["stargazerCount"])
-            bits = [f"⭐{stars}"]
+            bits = []
             if merged:
-                bits.append(f"合并 {merged}")
-            if adopted:
-                bits.append(f"修补 {adopted}")
+                bits.append(f"代码合并&nbsp;<b>{merged}</b>")
+            if fixed:
+                bits.append(f"问题获修&nbsp;<b>{fixed}</b>")
+            # 头像单独一行：浏览器总能在行内图片后折行，和名字放一行时长名字会把头像挤上去。
+            # 名字一行用 &nbsp; 与不换行连字符（U+2011），不会被挤折；单元格给百分比宽度表格才占满整行
+            # （GitHub 会剥掉 style，table 自身的 width 也不生效），名字长的列会自动分得宽一些。
             cells.append(
-                f'<td align="center"><a href="{url}"><img src="{avatar(owner, 80)}" width="40" height="40" '
-                f'alt="{owner}"/><br/><b>{name}</b></a><br/><sub>{" · ".join(bits)}</sub></td>'
+                f'<td align="center" width="{100 // per_row}%"><a href="{url}"><img src="{avatar(owner, 48)}" '
+                f'width="24" height="24" alt="{owner}"/><br/><b>{name.replace("-", "‑")}</b></a>&nbsp;·&nbsp;⭐{stars}'
+                f'<br/><sub>{"&nbsp;·&nbsp;".join(bits)}</sub></td>'
             )
-        tables.append('<table align="center">\n<tr>\n' + "\n".join(cells) + "\n</tr>\n</table>")
-    return "\n\n".join(tables)
+        rows.append("<tr>\n" + "\n".join(cells) + "\n</tr>")
+    # 一张表、多行，各列上下对齐
+    return "<table>\n" + "\n".join(rows) + "\n</table>"
+
+
+def summary_title(text):
+    # <summary> 里不解析 markdown，标题只能写成 HTML；反引号照旧渲染成代码
+    return re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(text, quote=False))
+
+
+def entry_head(date, full, url, title):
+    owner, name = full.split("/", 1)
+    # 日期放行首：放行尾时长标题会把它从连字符处折断（GitHub 会剥掉 style，没法 nowrap）
+    return (f'<code>{date}</code> <img src="{avatar(owner, 40)}" width="16" height="16" alt="{owner}"/> '
+            f'<b>{name}</b> · <a href="{url}">{summary_title(title)}</a>')
 
 
 def render_entry(p):
-    full, url, date = p["repository"]["nameWithOwner"], p["url"], p["mergedAt"][:10]
-    key = f"{full}#{p['number']}"
-    owner = full.split("/", 1)[0]
-    # <summary> 里不解析 markdown，标题只能写成 HTML；反引号照旧渲染成代码
-    title = re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(p["title"], quote=False))
-    note = NOTES.get(key)
-    return "\n".join([
-        "<details>",
-        # 日期放行首：放行尾时长标题会把它从连字符处折断（GitHub 会剥掉 style，没法 nowrap）
-        f'<summary><code>{date}</code> <img src="{avatar(owner, 40)}" width="16" height="16" alt="{owner}"/> '
-        f'<b>{full}</b> · <a href="{url}">{title}</a></summary>',
-        "",
-        # 展开后的正文必须保留 markdown 链接，见 PR_LINK
-        f"> [{key}]({url})" + (f"：{note}" if note else ""),
-        "",
-        "</details>",
-    ])
+    full, url = p["repository"]["nameWithOwner"], p["url"]
+    # 页面上只露标题链接；PR_LINK 要的 markdown 形式链接放进注释，pr-tracker 与条数检查照样认得
+    return f"<p>{entry_head(p['mergedAt'][:10], full, url, p['title'])}</p>\n<!-- ({url}) -->"
+
+
+def render_fixed_entry(item):
+    # 标题直接链到 issue
+    url = f"https://github.com/{item['repo']}/issues/{item['issue']}"
+    return f"<p>{entry_head(item['fixed_at'], item['repo'], url, item['title'])}</p>"
 
 
 def render(prs):
     if not prs:
         return "_暂无_"
-    prs.sort(key=lambda p: p["mergedAt"], reverse=True)
     repos = {}
     for p in prs:
         repos.setdefault(p["repository"]["nameWithOwner"], [p["repository"], 0, 0])[1] += 1
-    # 摘要里的「上游仓库」只数真有合并 PR 的仓库；只被采纳的仓库不算。
-    merged_repos = len(repos)
-    for full, entries in ADOPTED.items():
-        if full in repos:
-            repos[full][2] = len(entries)
-        else:
-            repos[full] = [fetch_repo(full), 0, len(entries)]
+    for item in ISSUES_FIXED:
+        full = item["repo"]
+        if full not in repos:
+            repos[full] = [fetch_repo(full), 0, 0]
+        repos[full][2] += 1
     summary = (
-        f'<p align="center"><b>{len(prs)}</b> 个 PR 合并进 <b>{merged_repos}</b> 个上游仓库'
-        " · 按合并时间倒序 · 点 ▸ 看修了什么</p>"
+        f'<p align="center">代码合并 <b>{len(prs)}</b> · 问题获修 <b>{len(ISSUES_FIXED)}</b>'
+        f" · 覆盖 <b>{len(repos)}</b> 个上游仓库</p>"
     )
-    recent, older = prs[:RECENT_SHOWN], prs[RECENT_SHOWN:]
-    parts = [render_wall(repos.values()), summary] + [render_entry(p) for p in recent]
-    if older:
-        parts.append("\n\n".join(
-            ["<details>", f"<summary><b>📦 更早的 {len(older)} 个 PR</b></summary>", "<br/>"]
-            + [render_entry(p) for p in older]
-            + ["</details>"]
-        ))
-    return "\n\n".join(parts)
+    # 两类贡献合成一个列表，按合并／修复日期倒序；同一天里合并 PR 按时间戳排、排在获修问题前面
+    entries = [((p["mergedAt"][:10], 1, p["mergedAt"]), render_entry(p)) for p in prs]
+    entries += [((it["fixed_at"], 0, f'{it["repo"].lower()}#{it["issue"]:08d}'),
+                 render_fixed_entry(it)) for it in ISSUES_FIXED]
+    entries = [e for _, e in sorted(entries, key=lambda e: e[0], reverse=True)]
+    detail = "\n\n".join(
+        ["<details>", "<summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，"
+         "未合并本人 PR · 成果不重复计数</summary>", "<br/>"]
+        + entries + ["</details>"]
+    )
+    return "\n\n".join([render_wall(wall_order(repos)), summary, detail])
 
 
 def count_entries(section):
