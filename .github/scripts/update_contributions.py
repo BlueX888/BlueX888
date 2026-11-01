@@ -493,6 +493,10 @@ def wall_order(repos):
 
 def render_wall(ordered):
     per_row = math.ceil(len(ordered) / math.ceil(len(ordered) / WALL_PER_ROW))
+    # GitHub 上 table 是 width:max-content，单元格的百分比宽度撑不开表格；
+    # 第一行每格垫一张 1000×1 的透明图（width=100%、左浮动不占行），按它的原始宽度把表格撑满整行，
+    # 再按百分比分列——同页 About Me 表格靠插画 width=100% 铺满也是这个机制
+    spacer = '<img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/>'
     rows = []
     for i in range(0, len(ordered), per_row):
         cells = []
@@ -505,10 +509,9 @@ def render_wall(ordered):
             if fixed:
                 bits.append(f"问题获修&nbsp;<b>{fixed}</b>")
             # 头像单独一行：浏览器总能在行内图片后折行，和名字放一行时长名字会把头像挤上去。
-            # 名字一行用 &nbsp; 与不换行连字符（U+2011），不会被挤折；单元格给百分比宽度表格才占满整行
-            # （GitHub 会剥掉 style，table 自身的 width 也不生效），名字长的列会自动分得宽一些。
+            # 名字一行用 &nbsp; 与不换行连字符（U+2011），不会被挤折。
             cells.append(
-                f'<td align="center" width="{100 // per_row}%"><a href="{url}"><img src="{avatar(owner, 48)}" '
+                f'<td align="center" width="{100 // per_row}%">{spacer if i == 0 else ""}<a href="{url}"><img src="{avatar(owner, 48)}" '
                 f'width="24" height="24" alt="{owner}"/><br/><b>{name.replace("-", "‑")}</b></a>&nbsp;·&nbsp;⭐{stars}'
                 f'<br/><sub>{"&nbsp;·&nbsp;".join(bits)}</sub></td>'
             )
