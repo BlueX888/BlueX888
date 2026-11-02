@@ -96,7 +96,7 @@
 </tr>
 <tr>
 <td align="center" width="25%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐28k<br/><sub>代码合并&nbsp;<b>8</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
-<td align="center" width="25%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>5</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
+<td align="center" width="25%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>6</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="25%"><a href="https://github.com/e2b-dev/E2B"><img src="https://github.com/e2b-dev.png?size=48" width="24" height="24" alt="e2b-dev"/><br/><b>E2B</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="25%"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=48" width="24" height="24" alt="Arize-ai"/><br/><b>phoenix</b></a>&nbsp;·&nbsp;⭐12k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 </tr>
@@ -108,13 +108,16 @@
 </tr>
 </table>
 
-<p align="center">代码合并 <b>44</b> · 问题获修 <b>33</b> · 覆盖 <b>16</b> 个上游仓库</p>
+<p align="center">代码合并 <b>45</b> · 问题获修 <b>33</b> · 覆盖 <b>16</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-02</code> <img src="https://github.com/livekit.png?size=40" width="16" height="16" alt="livekit"/> <b>agents</b> · <a href="https://github.com/livekit/agents/pull/7942">fix(worker): close resources when startup fails before run() completes</a></p>
+<!-- (https://github.com/livekit/agents/pull/7942) -->
 
 <p><code>2026-10-31</code> <img src="https://github.com/Arize-ai.png?size=40" width="16" height="16" alt="Arize-ai"/> <b>phoenix</b> · <a href="https://github.com/Arize-ai/phoenix/issues/17398">[BUG]: Span annotation DataFrame logging skips required-column validation that the document path enforces</a></p>
 
