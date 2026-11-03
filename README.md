@@ -108,7 +108,7 @@
 <td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐403<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐405<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
