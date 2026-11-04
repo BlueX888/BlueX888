@@ -90,7 +90,7 @@
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=48" width="24" height="24" alt="agno-agi"/><br/><b>agno</b></a>&nbsp;·&nbsp;⭐43k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="agentscope-ai"/><br/><b>agentscope</b></a>&nbsp;·&nbsp;⭐35k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="agentscope-ai"/><br/><b>agentscope</b></a>&nbsp;·&nbsp;⭐35k<br/><sub>代码合并&nbsp;<b>2</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-python"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑python</b></a>&nbsp;·&nbsp;⭐30k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mastra-ai/mastra"><img src="https://github.com/mastra-ai.png?size=48" width="24" height="24" alt="mastra-ai"/><br/><b>mastra</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/microsoft/semantic-kernel"><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="microsoft"/><br/><b>semantic‑kernel</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
@@ -104,11 +104,11 @@
 <td align="center" width="20%"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=48" width="24" height="24" alt="mcp-use"/><br/><b>mcp‑use</b></a>&nbsp;·&nbsp;⭐11k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="strands-agents"/><br/><b>harness‑sdk</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="strands-agents"/><br/><b>harness‑sdk</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐405<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐410<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
@@ -119,6 +119,9 @@
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-04</code> <img src="https://github.com/agentscope-ai.png?size=40" width="16" height="16" alt="agentscope-ai"/> <b>agentscope</b> · <a href="https://github.com/agentscope-ai/agentscope/pull/3292">fix(model): derive anthropic thinking budget from per-call max_tokens</a></p>
+<!-- (https://github.com/agentscope-ai/agentscope/pull/3292) -->
 
 <p><code>2026-11-02</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5671">fix: name root self-references after the generated root class</a></p>
 <!-- (https://github.com/PrefectHQ/fastmcp/pull/5671) -->
@@ -332,9 +335,6 @@
 <!-- (https://github.com/bytedance/deer-flow/pull/5426) -->
 
 <p><code>2026-09-05</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/issues/5192">[bug] MindIE tool-enabled async streaming drops token usage</a></p>
-
-<p><code>2026-09-03</code> <img src="https://github.com/strands-agents.png?size=40" width="16" height="16" alt="strands-agents"/> <b>harness-sdk</b> · <a href="https://github.com/strands-agents/harness-sdk/pull/4139">fix(openai): report max_tokens when a Responses function call is cut off</a></p>
-<!-- (https://github.com/strands-agents/harness-sdk/pull/4139) -->
 
 </details>
 <!--END_SECTION:contributions-->
