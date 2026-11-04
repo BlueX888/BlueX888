@@ -406,8 +406,9 @@ ISSUES_FIXED = [
 ]
 
 QUERY = """
-{
-  search(query: "author:%s is:pr is:merged -user:%s", type: ISSUE, first: 50) {
+query($cursor: String) {
+  search(query: "author:%s is:pr is:merged -user:%s", type: ISSUE, first: 100, after: $cursor) {
+    pageInfo { hasNextPage endCursor }
     nodes {
       ... on PullRequest {
         repository { nameWithOwner url stargazerCount }
@@ -448,7 +449,14 @@ def graphql(query, variables=None):
 
 
 def fetch_once():
-    return [n for n in graphql(QUERY)["search"]["nodes"] if n]
+    nodes = []
+    cursor = None
+    while True:
+        page = graphql(QUERY, {"cursor": cursor})["search"]
+        nodes.extend(n for n in page["nodes"] if n)
+        if not page["pageInfo"]["hasNextPage"]:
+            return nodes
+        cursor = page["pageInfo"]["endCursor"]
 
 
 def fetch_repo(full):
@@ -469,8 +477,6 @@ def fetch(attempts=4):
             continue
         if len(got) > len(best):
             best = got
-        if len(got) == len(best) and len(best) >= 50:
-            break
     if not best:
         raise SystemExit("search 连续 %d 次都没返回结果，拒绝覆盖" % attempts)
     return best
