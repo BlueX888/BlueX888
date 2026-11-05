@@ -99,7 +99,7 @@
 <tr>
 <td align="center" width="20%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>6</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/e2b-dev/E2B"><img src="https://github.com/e2b-dev.png?size=48" width="24" height="24" alt="e2b-dev"/><br/><b>E2B</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/redis/redis-py"><img src="https://github.com/redis.png?size=48" width="24" height="24" alt="redis"/><br/><b>redis‑py</b></a>&nbsp;·&nbsp;⭐14k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/redis/redis-py"><img src="https://github.com/redis.png?size=48" width="24" height="24" alt="redis"/><br/><b>redis‑py</b></a>&nbsp;·&nbsp;⭐14k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=48" width="24" height="24" alt="Arize-ai"/><br/><b>phoenix</b></a>&nbsp;·&nbsp;⭐12k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=48" width="24" height="24" alt="mcp-use"/><br/><b>mcp‑use</b></a>&nbsp;·&nbsp;⭐11k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 </tr>
@@ -111,17 +111,20 @@
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐416<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐417<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>56</b> · 问题获修 <b>33</b> · 覆盖 <b>21</b> 个上游仓库</p>
+<p align="center">代码合并 <b>57</b> · 问题获修 <b>33</b> · 覆盖 <b>21</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-05</code> <img src="https://github.com/redis.png?size=40" width="16" height="16" alt="redis"/> <b>redis-py</b> · <a href="https://github.com/redis/redis-py/pull/4558">fix(connection): opt-in fast-fail on missing Unix socket (ENOENT)</a></p>
+<!-- (https://github.com/redis/redis-py/pull/4558) -->
 
 <p><code>2026-11-05</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7898">fix(channels): ignore non-finite WeChat server longpoll timeouts</a></p>
 <!-- (https://github.com/bytedance/deer-flow/pull/7898) -->
