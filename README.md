@@ -90,7 +90,7 @@
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=48" width="24" height="24" alt="agno-agi"/><br/><b>agno</b></a>&nbsp;·&nbsp;⭐43k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="agentscope-ai"/><br/><b>agentscope</b></a>&nbsp;·&nbsp;⭐35k<br/><sub>代码合并&nbsp;<b>2</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="agentscope-ai"/><br/><b>agentscope</b></a>&nbsp;·&nbsp;⭐36k<br/><sub>代码合并&nbsp;<b>2</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-python"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑python</b></a>&nbsp;·&nbsp;⭐31k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mastra-ai/mastra"><img src="https://github.com/mastra-ai.png?size=48" width="24" height="24" alt="mastra-ai"/><br/><b>mastra</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/microsoft/semantic-kernel"><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="microsoft"/><br/><b>semantic‑kernel</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
@@ -111,7 +111,7 @@
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐417<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐420<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
