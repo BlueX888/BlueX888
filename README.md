@@ -83,9 +83,9 @@
 <!--START_SECTION:contributions-->
 <table>
 <tr>
-<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=48" width="24" height="24" alt="langgenius"/><br/><b>dify</b></a>&nbsp;·&nbsp;⭐160k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=48" width="24" height="24" alt="langgenius"/><br/><b>dify</b></a>&nbsp;·&nbsp;⭐161k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>servers</b></a>&nbsp;·&nbsp;⭐92k<br/><sub>问题获修&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="bytedance"/><br/><b>deer‑flow</b></a>&nbsp;·&nbsp;⭐85k<br/><sub>代码合并&nbsp;<b>19</b>&nbsp;·&nbsp;问题获修&nbsp;<b>7</b></sub></td>
+<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="bytedance"/><br/><b>deer‑flow</b></a>&nbsp;·&nbsp;⭐85k<br/><sub>代码合并&nbsp;<b>20</b>&nbsp;·&nbsp;问题获修&nbsp;<b>7</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=48" width="24" height="24" alt="crewAIInc"/><br/><b>crewAI</b></a>&nbsp;·&nbsp;⭐61k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=48" width="24" height="24" alt="agno-agi"/><br/><b>agno</b></a>&nbsp;·&nbsp;⭐43k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 </tr>
@@ -115,13 +115,16 @@
 </tr>
 </table>
 
-<p align="center">代码合并 <b>57</b> · 问题获修 <b>33</b> · 覆盖 <b>21</b> 个上游仓库</p>
+<p align="center">代码合并 <b>58</b> · 问题获修 <b>33</b> · 覆盖 <b>21</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-06</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7899">fix(community): initialize InfoQuest TLS clients off the event loop</a></p>
+<!-- (https://github.com/bytedance/deer-flow/pull/7899) -->
 
 <p><code>2026-11-05</code> <img src="https://github.com/redis.png?size=40" width="16" height="16" alt="redis"/> <b>redis-py</b> · <a href="https://github.com/redis/redis-py/pull/4558">fix(connection): opt-in fast-fail on missing Unix socket (ENOENT)</a></p>
 <!-- (https://github.com/redis/redis-py/pull/4558) -->
