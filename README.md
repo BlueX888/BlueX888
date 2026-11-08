@@ -108,20 +108,24 @@
 <td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐6k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐422<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐423<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>58</b> · 问题获修 <b>33</b> · 覆盖 <b>21</b> 个上游仓库</p>
+<p align="center">代码合并 <b>59</b> · 问题获修 <b>33</b> · 覆盖 <b>22</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-08</code> <img src="https://github.com/agronholm.png?size=40" width="16" height="16" alt="agronholm"/> <b>anyio</b> · <a href="https://github.com/agronholm/anyio/pull/1467">Bump the minimum Hypothesis version to 4.57.1</a></p>
+<!-- (https://github.com/agronholm/anyio/pull/1467) -->
 
 <p><code>2026-11-06</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/7899">fix(community): initialize InfoQuest TLS clients off the event loop</a></p>
 <!-- (https://github.com/bytedance/deer-flow/pull/7899) -->
