@@ -28,6 +28,60 @@ PR_LINK = re.compile(r"\((https://github\.com/[^)\s]+/pull/\d+)\)")
 # 每个已合并 PR 的一句话说明（问题 → 影响 → 修法），键为 owner/repo#number。
 # 目前主页只列标题、不展示这些说明；pr-tracker 仍按这里检查新合并的 PR 有没有补说明。
 NOTES = {
+    "agronholm/anyio#1467": (
+        "`oldest dependencies` CI 在 Python 3.11 安装 `hypothesis == 4.18.2` 时收集 Hypothesis 插件测试崩溃（`TypeError: code() argument 13 must be str, not int`）：4.18.2 早于当前 Python 3.11 的 code object 布局，4.25.0 起才改用可用的 `code.replace()`。修复把测试依赖下限抬到 4.57.1（最后一个 4.x），并用最老依赖钉（pytest 9.0.0、trio 0.32.0、hypothesis 4.57.1）跑全量通过。"
+    ),
+    "bytedance/deer-flow#7933": (
+        "InfoQuest 之外的 jsonify、SearXNG、Jina 三个 search client 仍在协程里直接构造 `httpx.AsyncClient`，`AsyncClient.__init__` 会同步加载 TLS trust store（本地探测约 125 ms/次），阻塞整个 agent 事件循环——请求本身早已异步，只有客户端初始化在阻塞。#7899 之后 `backend/AGENTS.md` 的 provider 列表仍点名这三家。修复三处都改为 `asyncio.to_thread` 构造客户端，请求与 `async with` 清理留在事件循环，更新 AGENTS.md，并补 TLS 上下文在线程外创建、send 在循环上执行的参数化回归。"
+    ),
+    "bytedance/deer-flow#7899": (
+        "InfoQuest 的 `fetch`、`web_search_raw_results`、`image_search_raw_results` 在协程内联构造 `httpx.AsyncClient`，而 `AsyncClient.__init__` 会同步加载 TLS trust store（本地探测约 125 ms/次），阻塞 agent 事件循环。RAGFlow/LightRAG（#7738）与 You.com/GroundRoute/Webz（#7889）已经用 `asyncio.to_thread` 构造，InfoQuest 是 #7738 复核时点名遗漏的客户端。修复三处统一改用 `async with await asyncio.to_thread(httpx.AsyncClient, follow_redirects=True)`，端点、头部、payload、超时、重定向与错误路径不变，补三个方法的 blocking-io 回归并更新 `backend/AGENTS.md`。"
+    ),
+    "bytedance/deer-flow#7898": (
+        "WeChat iLink `getupdates` 响应里的 `longpolling_timeout_ms` 被 `float()` 解析但只捕获 `TypeError`/`ValueError`；Python 的 JSON 解码接受 `1e400`、`Infinity`、`NaN` 与 309+ 位整数。巨大整数在 `_poll_loop` 调用点抛 `OverflowError`，宽泛的处理器只记日志并用同一 cursor 重新轮询，整批更新被丢、`get_updates_buf` 永不前进；非有限值被存下后下一次请求用 `timeout=inf/nan`，读超时被实质关闭。修复捕获 `OverflowError` 并忽略非有限值，保留上一个有效超时；合法值行为不变。"
+    ),
+    "redis/redis-py#4561": (
+        "异步 pipeline 在事件循环上打包大 batch 会阻塞事件循环；修复仅在批大小达到 `_PIPELINE_PACK_OFFLOAD_MIN_COMMANDS = 1000` 时用 `asyncio.to_thread` 打包——实测 1000 条时 dispatch 约 0.07–0.10 ms、打包约 0.95 ms，低于阈值走内联更便宜。小 pipeline 保持 master 的完全同步行为，HIMPORT 预检命令仍在打包 batch 内，事务/pipeline 回复语义不变（事务路径改为传物化列表而非共享迭代器）。"
+    ),
+    "redis/redis-py#4558": (
+        "连接缺失 Unix socket（ENOENT）时同步/异步栈仍把它当 `ConnectionError` 重试，白白重试并延迟失败；修复给 `AbstractRetry` 增加可选的 `is_retryable` 检查器（默认 `None` 行为不变），与 `supported_errors` 及 per-call 谓词 AND 组合，并在 `_to_async_retry`/`deepcopy`/相等比较中保留（`__hash__` 仍刻意不纳入可调用 checker）；`is_retryable_connect_error` 仅在 `__cause__` 是 `errno == ENOENT` 的 `OSError` 时返回 `False`，作为 helper 提供而非默认开启；两个栈仍在原位置把 `OSError` 包装为 `ConnectionError`（保留 cause），行为不变。"
+    ),
+    "redis/redis-py#4549": (
+        "`KeyNotification.try_parse` 的 keyspace/subkeyspace 正则用 `(.+)` 匹配 key，Redis 允许空 key（`SET \"\" value`，频道 `__keyspace@0__:`），空 key 通知解析失败返回 `None` 被静默丢弃。修复两个 keyspace 模式改为 `(.*)`；keyevent 模式保持 `(.+)`，因为事件名不会为空。补 str/bytes × keyspace/subkeyspace 的参数化回归，既有换行与 key 前缀用例不变。"
+    ),
+    "rsi-gear/gear#100": (
+        "全局安装 `rsi-gear` 因 DSH 依赖线混用而 `ERESOLVE`：七个依赖写 `^0.1.0-rc.8 || ^0.1.1-rc.2`（解析到 0.1.1-rc.2），`@deepseek-ai/dsh-token-meter` 精确钉 0.1.0-rc.8，其非可选 peer 链（dsh-compaction → dsh-commands → dsh-agent，均 `^0.1.0-rc.8`）需要 0.1.0 线，semver 预发布规则让两条线互斥。两个既有 package gate 都只做本地安装（npm 仅警告，42 条 override），测不出全局安装才硬失败。修复把七个宽范围钉到 0.1.0-rc.8（peerDependencies 保持宽以维持宿主兼容），新增 `scripts/check-global-install.mjs` 与 CI 步骤覆盖全局安装。"
+    ),
+    "microsoft/semantic-kernel#14697": (
+        "SQL Server vector store 的 `_python_type_to_sql` 对未映射的 Python 类型（`datetime.date`、`Optional[str]`、`UUID` 等）返回 `None`，CREATE TABLE builder 把 `None` 直接插进 DDL，`ensure_collection_exists` 抛晦涩的 pyodbc 语法错误，用户看不出哪个字段不支持。修复在纯类型映射阶段（建连接、拼 SQL 之前）抛 `VectorStoreModelValidationError`，错误点名字段与不支持类型并提示先手动建表或换受支持类型，与 Postgres #14611 的处理一致；不新增类型映射。"
+    ),
+    "OpenHands/software-agent-sdk#6342": (
+        "glob 工具的 ripgrep 后端在 100 条匹配处停止收集，然后用 `len(file_paths) >= 100` 判定 truncated：恰好 100 个文件也被告诉模型结果被截断，而 Python fallback 与 grep 工具用严格 `> 100`，两个 glob 后端在该边界不一致（#3976 曾修过但被作者自行关闭，bug 仍在 main）。修复解析 ripgrep 已捕获的输出、统计全部非空行并以 `> 100` 判定，仍只解析前 100 条路径，补恰好 100（完整）与 101（截断）的边界回归。"
+    ),
+    "langgenius/dify#45088": (
+        "`parse_file_reference()` 承诺对畸形 canonical reference 做宽松回退，但只捕获 base64/JSON 解码错误：payload 解码成合法的非对象 JSON（`[]`、`null`、`\"abc\"`、`3`）时走到 `payload.get(\"record_id\")` 抛 `AttributeError`，从 `RequestDownloadFileMapping` 校验器逃逸成 500、在 Agent-v2 输出检查器里直接崩溃。修复把非对象 payload 视为 malformed，按既有非法编码回退返回原始 reference 作为 record id，补有效往返、原始 id、畸形编码与非对象 payload 的回归。"
+    ),
+    "PrefectHQ/fastmcp#5847": (
+        "`mask_error_details=True` 时 OpenAPI 工具/资源的上游超时只返回通用脱敏消息，而不是 `Upstream request timed out, please retry`：`_send_request` 把所有异常重包成 `ValueError`，server 级 `is_timeout_error()` 映射永远匹配不上，组件级超时处理器成了死代码。修复让 `_send_request` 原样重抛 `httpx2.RequestError`（含 `TimeoutException`），旧 httpx 异常仍归一为 `ValueError`（弃用桥接仍接受），并删除 `OpenAPITool.run`/`OpenAPIResource.read` 里已死的重包分支。"
+    ),
+    "livekit/agents#7942": (
+        "`AgentServer.run()` 在启动 inference executor、把 `_closed = False` 之后才创建 `_close_future`；若在这段窗口启动失败（例如默认 8081 端口已被占用），`run()` 抛错时 `_close_future is None`，CLI 清理调用的 `aclose()` 把「future 为 None」当成「什么都没启动」直接返回——inference 子进程与它的非 daemon `proc_join_thread` 永不关闭，CLI 进程无法退出（`timeout 10s` 得到 124）而不是干净失败。修复在启动第一个资源前就随 `_closed = False` 创建 `_close_future`，移除该早退；各资源本就有 null 检查，正常 shutdown/drain 语义不变。"
+    ),
+    "bytedance/deer-flow#7088": (
+        "`skill_manage` 的 `write_file` 只要路径含子串 `\"scripts/\"` 就把支持文件当可执行内容送审——`references/scripts/overview.md`、`templates/my-scripts/setup.md` 这类普通静态文件也中招。可执行内容的审核严格得多：必须精确 `\"allow\"`（`warn` 直接拒绝）、moderation 提示按可执行内容构造、审核模型不可用时硬阻断（即使部署对普通技能内容配置了 fail-open）；写入本身仍受审核，只是被错误地送进更严的档。根因是裸子串判断；修复改用共享的 `is_code_file` 规则：任意目录下代码后缀或无后缀 shebang 文件都按可执行内容处理，同时不再把仅含 `scripts/` 子串的静态文件误判，普通 support path 回到静态内容档。"
+    ),
+    "PrefectHQ/fastmcp#5732": (
+        "`Middleware` 的四个 typed list hook 把 `context.message` 声明为请求模型（`MiddlewareContext[mt.ListToolsRequest]` 等），运行时却只有 `tools/list` 传了 typed model，`list_resources`、`list_resource_templates`、`list_prompts` 给 middleware 传的都是裸 `{}`——按声明类型写的 middleware 在 tools 路径能读 `context.message.method`，其余三条路径直接 `AttributeError`。修复为三条路径分别构造 `ListResourcesRequest(method=\"resources/list\")`、`ListResourceTemplatesRequest(method=\"resources/templates/list\")`、`ListPromptsRequest(method=\"prompts/list\")`，镜像 tools 路径并补四个 hook 的回归。"
+    ),
+    "agentscope-ai/agentscope#3292": (
+        "手动 thinking 模式下省略 budget 时，AgentScope 从默认输出上限 8192 计算，`await model(msgs, max_tokens=4096)` 仍发 4096 token 的 thinking budget，答案没有剩余空间；实际 `max_tokens` 应按 `extra_body.max_tokens` > per-call `max_tokens` > 模型参数 > 默认 8192 的顺序取。修复用本次调用的有效上限计算 `max(1024, max_tokens // 2)`，上限 ≤1024 时在请求前报 `ValueError`；显式 budget 原样转发给 provider 校验，只有省略输出上限时才按 `budget + 1024` 扩展默认值，provider 原生 thinking 配置跳过生成。"
+    ),
+    "PrefectHQ/fastmcp#5709": (
+        "OpenAPI 3.1 的 media-type schema 可自带 `$defs` 并以 `#/$defs/...` 引用；`components/schemas` 非空时生成的工具 schema 把这些内联定义丢掉——input schema 的 `$defs` 只来自 `route.request_schemas`，output schema 的 `$defs` 被组件派生定义直接覆盖，`#/$defs/...` 引用悬空，返回合法 body 的工具调用在按通告的 output schema 校验时抛 jsonschema `PointerToNowhere`。修复在 input/output 两条路径都把 media-type schema 自带的 `$defs` 与组件定义合并，并像其它定义一样把内部 ref 改写成 `#/$defs/...`。"
+    ),
+    "PrefectHQ/fastmcp#5671": (
+        "`json_schema_to_type` 对带根 `title` 的递归对象 schema 生成不可用类型：`{\"$ref\": \"#\"}` 指向根 schema、其生成类按根 title 命名（回退 `Root`），而 `_convert_schema` 的 `ref == \"#\"` 分支却从无 title 的裸 ref 节点构造 ForwardRef——引用恒名 `Root`、类名却是如 `Node`，`TypeAdapter` 校验抛 `PydanticUserError: ... is not fully defined`；无 title 的递归 schema 本来正常，带 title 恰是多数 schema 生产方的默认形态。修复在 `_Conversion` 跟踪 `root_class_name`（显式 `name` 覆盖 → 根 title → `Root`），让 `ref == \"#\"` 指向实际生成的类，覆盖 anyOf/array items/properties 等所有通用引用位置。"
+    ),
     "PrefectHQ/fastmcp#5672": (
         "`Tool.from_tool` 的 `TransformedTool.run` 只认协程函数与普通同步 callable 两条派发路径，生成器结果"
         "被原样交给 `convert_result`——生成器体在迭代时才执行：同步生成器在文本序列化时被消费、构建 "
