@@ -94,7 +94,7 @@
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-python"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑python</b></a>&nbsp;·&nbsp;⭐31k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mastra-ai/mastra"><img src="https://github.com/mastra-ai.png?size=48" width="24" height="24" alt="mastra-ai"/><br/><b>mastra</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/microsoft/semantic-kernel"><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="microsoft"/><br/><b>semantic‑kernel</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐28k<br/><sub>代码合并&nbsp;<b>13</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐28k<br/><sub>代码合并&nbsp;<b>16</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
 </tr>
 <tr>
 <td align="center" width="20%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>6</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
@@ -117,13 +117,22 @@
 </tr>
 </table>
 
-<p align="center">代码合并 <b>65</b> · 问题获修 <b>33</b> · 覆盖 <b>23</b> 个上游仓库</p>
+<p align="center">代码合并 <b>68</b> · 问题获修 <b>33</b> · 覆盖 <b>23</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-10</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5851">fix(openapi): JSON-encode object form fields in urlencoded request bodies</a></p>
+<!-- (https://github.com/PrefectHQ/fastmcp/pull/5851) -->
+
+<p><code>2026-11-10</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5836">fix(prompts): honor field aliases when rendering prompts</a></p>
+<!-- (https://github.com/PrefectHQ/fastmcp/pull/5836) -->
+
+<p><code>2026-11-10</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5841">fix(auth): authorize hashed app-tool names and synthesized Prefab resources</a></p>
+<!-- (https://github.com/PrefectHQ/fastmcp/pull/5841) -->
 
 <p><code>2026-11-10</code> <img src="https://github.com/agronholm.png?size=40" width="16" height="16" alt="agronholm"/> <b>anyio</b> · <a href="https://github.com/agronholm/anyio/pull/1463">Fixed inspecting a finished task handle outside an event loop</a></p>
 <!-- (https://github.com/agronholm/anyio/pull/1463) -->
