@@ -112,7 +112,7 @@
 </tr>
 <tr>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐443<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐450<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
