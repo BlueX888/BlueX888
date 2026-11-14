@@ -107,23 +107,27 @@
 <td align="center" width="20%"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="strands-agents"/><br/><b>harness‑sdk</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐8k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/modelcontextprotocol/rust-sdk"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>rust‑sdk</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐457<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐458<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>69</b> · 问题获修 <b>33</b> · 覆盖 <b>23</b> 个上游仓库</p>
+<p align="center">代码合并 <b>70</b> · 问题获修 <b>33</b> · 覆盖 <b>24</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-13</code> <img src="https://github.com/modelcontextprotocol.png?size=40" width="16" height="16" alt="modelcontextprotocol"/> <b>rust-sdk</b> · <a href="https://github.com/modelcontextprotocol/rust-sdk/pull/1424">fix(transport): accept any 2xx reply for notification-only POSTs</a></p>
+<!-- (https://github.com/modelcontextprotocol/rust-sdk/pull/1424) -->
 
 <p><code>2026-11-13</code> <img src="https://github.com/langgenius.png?size=40" width="16" height="16" alt="langgenius"/> <b>dify</b> · <a href="https://github.com/langgenius/dify/pull/45093">fix(agent): resolve refs under schema-keyword property names</a></p>
 <!-- (https://github.com/langgenius/dify/pull/45093) -->
