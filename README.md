@@ -83,7 +83,7 @@
 <!--START_SECTION:contributions-->
 <table>
 <tr>
-<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=48" width="24" height="24" alt="langgenius"/><br/><b>dify</b></a>&nbsp;·&nbsp;⭐161k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
+<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=48" width="24" height="24" alt="langgenius"/><br/><b>dify</b></a>&nbsp;·&nbsp;⭐161k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/infiniflow/ragflow"><img src="https://github.com/infiniflow.png?size=48" width="24" height="24" alt="infiniflow"/><br/><b>ragflow</b></a>&nbsp;·&nbsp;⭐94k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>servers</b></a>&nbsp;·&nbsp;⭐92k<br/><sub>问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="bytedance"/><br/><b>deer‑flow</b></a>&nbsp;·&nbsp;⭐85k<br/><sub>代码合并&nbsp;<b>23</b>&nbsp;·&nbsp;问题获修&nbsp;<b>7</b></sub></td>
@@ -124,13 +124,16 @@
 </tr>
 </table>
 
-<p align="center">代码合并 <b>76</b> · 问题获修 <b>33</b> · 覆盖 <b>28</b> 个上游仓库</p>
+<p align="center">代码合并 <b>77</b> · 问题获修 <b>33</b> · 覆盖 <b>28</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-18</code> <img src="https://github.com/langgenius.png?size=40" width="16" height="16" alt="langgenius"/> <b>dify</b> · <a href="https://github.com/langgenius/dify/pull/46701">fix(web): keep focus on pending device authorization actions</a></p>
+<!-- (https://github.com/langgenius/dify/pull/46701) -->
 
 <p><code>2026-11-18</code> <img src="https://github.com/infiniflow.png?size=40" width="16" height="16" alt="infiniflow"/> <b>ragflow</b> · <a href="https://github.com/infiniflow/ragflow/pull/21777">fix(agent): use the keyword weight in the agentic search tools</a></p>
 <!-- (https://github.com/infiniflow/ragflow/pull/21777) -->
