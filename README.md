@@ -105,39 +105,47 @@
 </tr>
 <tr>
 <td align="center" width="20%"><a href="https://github.com/tornadoweb/tornado"><img src="https://github.com/tornadoweb.png?size=48" width="24" height="24" alt="tornadoweb"/><br/><b>tornado</b></a>&nbsp;·&nbsp;⭐22k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/bokeh/bokeh"><img src="https://github.com/bokeh.png?size=48" width="24" height="24" alt="bokeh"/><br/><b>bokeh</b></a>&nbsp;·&nbsp;⭐20k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>6</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/e2b-dev/E2B"><img src="https://github.com/e2b-dev.png?size=48" width="24" height="24" alt="e2b-dev"/><br/><b>E2B</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/redis/redis-py"><img src="https://github.com/redis.png?size=48" width="24" height="24" alt="redis"/><br/><b>redis‑py</b></a>&nbsp;·&nbsp;⭐14k<br/><sub>代码合并&nbsp;<b>4</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=48" width="24" height="24" alt="Arize-ai"/><br/><b>phoenix</b></a>&nbsp;·&nbsp;⭐12k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=48" width="24" height="24" alt="Arize-ai"/><br/><b>phoenix</b></a>&nbsp;·&nbsp;⭐12k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=48" width="24" height="24" alt="mcp-use"/><br/><b>mcp‑use</b></a>&nbsp;·&nbsp;⭐11k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="strands-agents"/><br/><b>harness‑sdk</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/napi-rs/napi-rs"><img src="https://github.com/napi-rs.png?size=48" width="24" height="24" alt="napi-rs"/><br/><b>napi‑rs</b></a>&nbsp;·&nbsp;⭐8k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/modelcontextprotocol/rust-sdk"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>rust‑sdk</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/agavra/tuicr"><img src="https://github.com/agavra.png?size=48" width="24" height="24" alt="agavra"/><br/><b>tuicr</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/UKGovernmentBEIS/inspect_ai"><img src="https://github.com/UKGovernmentBEIS.png?size=48" width="24" height="24" alt="UKGovernmentBEIS"/><br/><b>inspect_ai</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/aksiksi/compose2nix"><img src="https://github.com/aksiksi.png?size=48" width="24" height="24" alt="aksiksi"/><br/><b>compose2nix</b></a>&nbsp;·&nbsp;⭐917<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐509<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>89</b> · 问题获修 <b>33</b> · 覆盖 <b>33</b> 个上游仓库</p>
+<p align="center">代码合并 <b>91</b> · 问题获修 <b>33</b> · 覆盖 <b>35</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-21</code> <img src="https://github.com/UKGovernmentBEIS.png?size=40" width="16" height="16" alt="UKGovernmentBEIS"/> <b>inspect_ai</b> · <a href="https://github.com/UKGovernmentBEIS/inspect_ai/pull/6518">fix: replay Codex subagent messages that carry an id through the agent bridge</a></p>
+<!-- (https://github.com/UKGovernmentBEIS/inspect_ai/pull/6518) -->
+
+<p><code>2026-11-21</code> <img src="https://github.com/bokeh.png?size=40" width="16" height="16" alt="bokeh"/> <b>bokeh</b> · <a href="https://github.com/bokeh/bokeh/pull/15813">fix: validate patch slice bounds and value counts</a></p>
+<!-- (https://github.com/bokeh/bokeh/pull/15813) -->
 
 <p><code>2026-11-21</code> <img src="https://github.com/trpc.png?size=40" width="16" height="16" alt="trpc"/> <b>trpc</b> · <a href="https://github.com/trpc/trpc/pull/8145">fix(react-query): keep a null subscription input on the wire</a></p>
 <!-- (https://github.com/trpc/trpc/pull/8145) -->
