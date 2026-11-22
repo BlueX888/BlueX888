@@ -100,7 +100,7 @@
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-python"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑python</b></a>&nbsp;·&nbsp;⭐31k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mastra-ai/mastra"><img src="https://github.com/mastra-ai.png?size=48" width="24" height="24" alt="mastra-ai"/><br/><b>mastra</b></a>&nbsp;·&nbsp;⭐30k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/microsoft/semantic-kernel"><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="microsoft"/><br/><b>semantic‑kernel</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>16</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>17</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/comet-ml/opik"><img src="https://github.com/comet-ml.png?size=48" width="24" height="24" alt="comet-ml"/><br/><b>opik</b></a>&nbsp;·&nbsp;⭐23k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
@@ -133,13 +133,16 @@
 </tr>
 </table>
 
-<p align="center">代码合并 <b>92</b> · 问题获修 <b>33</b> · 覆盖 <b>35</b> 个上游仓库</p>
+<p align="center">代码合并 <b>93</b> · 问题获修 <b>33</b> · 覆盖 <b>35</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-22</code> <img src="https://github.com/PrefectHQ.png?size=40" width="16" height="16" alt="PrefectHQ"/> <b>fastmcp</b> · <a href="https://github.com/PrefectHQ/fastmcp/pull/5829">fix: enforce valid_scopes for CIMD clients</a></p>
+<!-- (https://github.com/PrefectHQ/fastmcp/pull/5829) -->
 
 <p><code>2026-11-22</code> <img src="https://github.com/agavra.png?size=40" width="16" height="16" alt="agavra"/> <b>tuicr</b> · <a href="https://github.com/agavra/tuicr/pull/963">fix(forge): avoid lazy promisor fetches when probing local objects</a></p>
 <!-- (https://github.com/agavra/tuicr/pull/963) -->
