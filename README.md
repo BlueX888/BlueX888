@@ -121,25 +121,28 @@
 <td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/modelcontextprotocol/rust-sdk"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>rust‑sdk</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/agavra/tuicr"><img src="https://github.com/agavra.png?size=48" width="24" height="24" alt="agavra"/><br/><b>tuicr</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/agavra/tuicr"><img src="https://github.com/agavra.png?size=48" width="24" height="24" alt="agavra"/><br/><b>tuicr</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/UKGovernmentBEIS/inspect_ai"><img src="https://github.com/UKGovernmentBEIS.png?size=48" width="24" height="24" alt="UKGovernmentBEIS"/><br/><b>inspect_ai</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
 <td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/aksiksi/compose2nix"><img src="https://github.com/aksiksi.png?size=48" width="24" height="24" alt="aksiksi"/><br/><b>compose2nix</b></a>&nbsp;·&nbsp;⭐917<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐512<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐513<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>91</b> · 问题获修 <b>33</b> · 覆盖 <b>35</b> 个上游仓库</p>
+<p align="center">代码合并 <b>92</b> · 问题获修 <b>33</b> · 覆盖 <b>35</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-22</code> <img src="https://github.com/agavra.png?size=40" width="16" height="16" alt="agavra"/> <b>tuicr</b> · <a href="https://github.com/agavra/tuicr/pull/963">fix(forge): avoid lazy promisor fetches when probing local objects</a></p>
+<!-- (https://github.com/agavra/tuicr/pull/963) -->
 
 <p><code>2026-11-21</code> <img src="https://github.com/UKGovernmentBEIS.png?size=40" width="16" height="16" alt="UKGovernmentBEIS"/> <b>inspect_ai</b> · <a href="https://github.com/UKGovernmentBEIS/inspect_ai/pull/6518">fix: replay Codex subagent messages that carry an id through the agent bridge</a></p>
 <!-- (https://github.com/UKGovernmentBEIS/inspect_ai/pull/6518) -->
