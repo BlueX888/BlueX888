@@ -86,63 +86,83 @@
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/langgenius/dify"><img src="https://github.com/langgenius.png?size=48" width="24" height="24" alt="langgenius"/><br/><b>dify</b></a>&nbsp;·&nbsp;⭐162k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/infiniflow/ragflow"><img src="https://github.com/infiniflow.png?size=48" width="24" height="24" alt="infiniflow"/><br/><b>ragflow</b></a>&nbsp;·&nbsp;⭐95k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/modelcontextprotocol/servers"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>servers</b></a>&nbsp;·&nbsp;⭐92k<br/><sub>问题获修&nbsp;<b>3</b></sub></td>
+<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/sveltejs/svelte"><img src="https://github.com/sveltejs.png?size=48" width="24" height="24" alt="sveltejs"/><br/><b>svelte</b></a>&nbsp;·&nbsp;⭐90k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="bytedance"/><br/><b>deer‑flow</b></a>&nbsp;·&nbsp;⭐86k<br/><sub>代码合并&nbsp;<b>26</b>&nbsp;·&nbsp;问题获修&nbsp;<b>7</b></sub></td>
-<td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/sharkdp/bat"><img src="https://github.com/sharkdp.png?size=48" width="24" height="24" alt="sharkdp"/><br/><b>bat</b></a>&nbsp;·&nbsp;⭐61k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/sharkdp/bat"><img src="https://github.com/sharkdp.png?size=48" width="24" height="24" alt="sharkdp"/><br/><b>bat</b></a>&nbsp;·&nbsp;⭐61k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=48" width="24" height="24" alt="crewAIInc"/><br/><b>crewAI</b></a>&nbsp;·&nbsp;⭐61k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/vuejs/core"><img src="https://github.com/vuejs.png?size=48" width="24" height="24" alt="vuejs"/><br/><b>core</b></a>&nbsp;·&nbsp;⭐55k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=48" width="24" height="24" alt="agno-agi"/><br/><b>agno</b></a>&nbsp;·&nbsp;⭐43k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/trpc/trpc"><img src="https://github.com/trpc.png?size=48" width="24" height="24" alt="trpc"/><br/><b>trpc</b></a>&nbsp;·&nbsp;⭐41k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/pnpm/pnpm"><img src="https://github.com/pnpm.png?size=48" width="24" height="24" alt="pnpm"/><br/><b>pnpm</b></a>&nbsp;·&nbsp;⭐37k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/trpc/trpc"><img src="https://github.com/trpc.png?size=48" width="24" height="24" alt="trpc"/><br/><b>trpc</b></a>&nbsp;·&nbsp;⭐41k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/pnpm/pnpm"><img src="https://github.com/pnpm.png?size=48" width="24" height="24" alt="pnpm"/><br/><b>pnpm</b></a>&nbsp;·&nbsp;⭐37k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/agentscope-ai/agentscope"><img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="agentscope-ai"/><br/><b>agentscope</b></a>&nbsp;·&nbsp;⭐37k<br/><sub>代码合并&nbsp;<b>2</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-python"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑python</b></a>&nbsp;·&nbsp;⭐31k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mastra-ai/mastra"><img src="https://github.com/mastra-ai.png?size=48" width="24" height="24" alt="mastra-ai"/><br/><b>mastra</b></a>&nbsp;·&nbsp;⭐30k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/microsoft/semantic-kernel"><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="microsoft"/><br/><b>semantic‑kernel</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>17</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/PrefectHQ/fastmcp"><img src="https://github.com/PrefectHQ.png?size=48" width="24" height="24" alt="PrefectHQ"/><br/><b>fastmcp</b></a>&nbsp;·&nbsp;⭐29k<br/><sub>代码合并&nbsp;<b>17</b>&nbsp;·&nbsp;问题获修&nbsp;<b>5</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/comet-ml/opik"><img src="https://github.com/comet-ml.png?size=48" width="24" height="24" alt="comet-ml"/><br/><b>opik</b></a>&nbsp;·&nbsp;⭐23k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/tornadoweb/tornado"><img src="https://github.com/tornadoweb.png?size=48" width="24" height="24" alt="tornadoweb"/><br/><b>tornado</b></a>&nbsp;·&nbsp;⭐22k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/bokeh/bokeh"><img src="https://github.com/bokeh.png?size=48" width="24" height="24" alt="bokeh"/><br/><b>bokeh</b></a>&nbsp;·&nbsp;⭐20k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/livekit/agents"><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="livekit"/><br/><b>agents</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>代码合并&nbsp;<b>6</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/e2b-dev/E2B"><img src="https://github.com/e2b-dev.png?size=48" width="24" height="24" alt="e2b-dev"/><br/><b>E2B</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/e2b-dev/E2B"><img src="https://github.com/e2b-dev.png?size=48" width="24" height="24" alt="e2b-dev"/><br/><b>E2B</b></a>&nbsp;·&nbsp;⭐15k<br/><sub>问题获修&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/redis/redis-py"><img src="https://github.com/redis.png?size=48" width="24" height="24" alt="redis"/><br/><b>redis‑py</b></a>&nbsp;·&nbsp;⭐14k<br/><sub>代码合并&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/Arize-ai/phoenix"><img src="https://github.com/Arize-ai.png?size=48" width="24" height="24" alt="Arize-ai"/><br/><b>phoenix</b></a>&nbsp;·&nbsp;⭐12k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>3</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/mcp-use/mcp-use"><img src="https://github.com/mcp-use.png?size=48" width="24" height="24" alt="mcp-use"/><br/><b>mcp‑use</b></a>&nbsp;·&nbsp;⭐11k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/strands-agents/harness-sdk"><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="strands-agents"/><br/><b>harness‑sdk</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/Fei2411/DS-Bot"><img src="https://github.com/Fei2411.png?size=48" width="24" height="24" alt="Fei2411"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/Fei-Craft/DS-Bot"><img src="https://github.com/Fei-Craft.png?size=48" width="24" height="24" alt="Fei-Craft"/><br/><b>DS‑Bot</b></a>&nbsp;·&nbsp;⭐9k<br/><sub>问题获修&nbsp;<b>4</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/napi-rs/napi-rs"><img src="https://github.com/napi-rs.png?size=48" width="24" height="24" alt="napi-rs"/><br/><b>napi‑rs</b></a>&nbsp;·&nbsp;⭐8k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenBMB/PilotDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>PilotDeck</b></a>&nbsp;·&nbsp;⭐5k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/modelcontextprotocol/rust-sdk"><img src="https://github.com/modelcontextprotocol.png?size=48" width="24" height="24" alt="modelcontextprotocol"/><br/><b>rust‑sdk</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/openai/openai-agents-js"><img src="https://github.com/openai.png?size=48" width="24" height="24" alt="openai"/><br/><b>openai‑agents‑js</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>1</b>&nbsp;·&nbsp;问题获修&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/agavra/tuicr"><img src="https://github.com/agavra.png?size=48" width="24" height="24" alt="agavra"/><br/><b>tuicr</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>5</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/agavra/tuicr"><img src="https://github.com/agavra.png?size=48" width="24" height="24" alt="agavra"/><br/><b>tuicr</b></a>&nbsp;·&nbsp;⭐4k<br/><sub>代码合并&nbsp;<b>5</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/UKGovernmentBEIS/inspect_ai"><img src="https://github.com/UKGovernmentBEIS.png?size=48" width="24" height="24" alt="UKGovernmentBEIS"/><br/><b>inspect_ai</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/agronholm/anyio"><img src="https://github.com/agronholm.png?size=48" width="24" height="24" alt="agronholm"/><br/><b>anyio</b></a>&nbsp;·&nbsp;⭐3k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/OpenBMB/StaffDeck"><img src="https://github.com/OpenBMB.png?size=48" width="24" height="24" alt="OpenBMB"/><br/><b>StaffDeck</b></a>&nbsp;·&nbsp;⭐2k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/OpenHands/software-agent-sdk"><img src="https://github.com/OpenHands.png?size=48" width="24" height="24" alt="OpenHands"/><br/><b>software‑agent‑sdk</b></a>&nbsp;·&nbsp;⭐1k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/aksiksi/compose2nix"><img src="https://github.com/aksiksi.png?size=48" width="24" height="24" alt="aksiksi"/><br/><b>compose2nix</b></a>&nbsp;·&nbsp;⭐917<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐516<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 <tr>
+<td align="center" width="20%"><a href="https://github.com/aksiksi/compose2nix"><img src="https://github.com/aksiksi.png?size=48" width="24" height="24" alt="aksiksi"/><br/><b>compose2nix</b></a>&nbsp;·&nbsp;⭐918<br/><sub>代码合并&nbsp;<b>4</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐518<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>96</b> · 问题获修 <b>33</b> · 覆盖 <b>36</b> 个上游仓库</p>
+<p align="center">代码合并 <b>102</b> · 问题获修 <b>33</b> · 覆盖 <b>38</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-23</code> <img src="https://github.com/aksiksi.png?size=40" width="16" height="16" alt="aksiksi"/> <b>compose2nix</b> · <a href="https://github.com/aksiksi/compose2nix/pull/147">fix: escape systemd label values once, not twice</a></p>
+<!-- (https://github.com/aksiksi/compose2nix/pull/147) -->
+
+<p><code>2026-11-23</code> <img src="https://github.com/sveltejs.png?size=40" width="16" height="16" alt="sveltejs"/> <b>svelte</b> · <a href="https://github.com/sveltejs/svelte/pull/19365">fix: escape quotes in printed attribute values</a></p>
+<!-- (https://github.com/sveltejs/svelte/pull/19365) -->
+
+<p><code>2026-11-23</code> <img src="https://github.com/trpc.png?size=40" width="16" height="16" alt="trpc"/> <b>trpc</b> · <a href="https://github.com/trpc/trpc/pull/8152">fix(openapi): describe tuple rest elements as repeated items</a></p>
+<!-- (https://github.com/trpc/trpc/pull/8152) -->
+
+<p><code>2026-11-23</code> <img src="https://github.com/pnpm.png?size=40" width="16" height="16" alt="pnpm"/> <b>pnpm</b> · <a href="https://github.com/pnpm/pnpm/pull/18374">fix(config): keep Unicode line separators in workspace yaml values</a></p>
+<!-- (https://github.com/pnpm/pnpm/pull/18374) -->
+
+<p><code>2026-11-23</code> <img src="https://github.com/OpenBMB.png?size=40" width="16" height="16" alt="OpenBMB"/> <b>StaffDeck</b> · <a href="https://github.com/OpenBMB/StaffDeck/pull/256">fix(teams): clamp bid award scores to 0-10</a></p>
+<!-- (https://github.com/OpenBMB/StaffDeck/pull/256) -->
+
+<p><code>2026-11-23</code> <img src="https://github.com/OpenBMB.png?size=40" width="16" height="16" alt="OpenBMB"/> <b>StaffDeck</b> · <a href="https://github.com/OpenBMB/StaffDeck/pull/254">docs: add upgrade guide for existing deployments</a></p>
+<!-- (https://github.com/OpenBMB/StaffDeck/pull/254) -->
 
 <p><code>2026-11-23</code> <img src="https://github.com/agavra.png?size=40" width="16" height="16" alt="agavra"/> <b>tuicr</b> · <a href="https://github.com/agavra/tuicr/pull/984">fix(sbs): keep visual selection on its anchored side</a></p>
 <!-- (https://github.com/agavra/tuicr/pull/984) -->
