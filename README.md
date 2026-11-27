@@ -90,7 +90,7 @@
 <td align="center" width="20%"><img src="assets/spacer.png" width="100%" height="1" align="left" alt=""/><a href="https://github.com/bytedance/deer-flow"><img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="bytedance"/><br/><b>deer‑flow</b></a>&nbsp;·&nbsp;⭐86k<br/><sub>代码合并&nbsp;<b>27</b>&nbsp;·&nbsp;问题获修&nbsp;<b>7</b></sub></td>
 </tr>
 <tr>
-<td align="center" width="20%"><a href="https://github.com/sharkdp/bat"><img src="https://github.com/sharkdp.png?size=48" width="24" height="24" alt="sharkdp"/><br/><b>bat</b></a>&nbsp;·&nbsp;⭐62k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/sharkdp/bat"><img src="https://github.com/sharkdp.png?size=48" width="24" height="24" alt="sharkdp"/><br/><b>bat</b></a>&nbsp;·&nbsp;⭐62k<br/><sub>代码合并&nbsp;<b>2</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/crewAIInc/crewAI"><img src="https://github.com/crewAIInc.png?size=48" width="24" height="24" alt="crewAIInc"/><br/><b>crewAI</b></a>&nbsp;·&nbsp;⭐61k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/vuejs/core"><img src="https://github.com/vuejs.png?size=48" width="24" height="24" alt="vuejs"/><br/><b>core</b></a>&nbsp;·&nbsp;⭐55k<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/agno-agi/agno"><img src="https://github.com/agno-agi.png?size=48" width="24" height="24" alt="agno-agi"/><br/><b>agno</b></a>&nbsp;·&nbsp;⭐43k<br/><sub>代码合并&nbsp;<b>3</b></sub></td>
@@ -133,18 +133,21 @@
 </tr>
 <tr>
 <td align="center" width="20%"><a href="https://github.com/aksiksi/compose2nix"><img src="https://github.com/aksiksi.png?size=48" width="24" height="24" alt="aksiksi"/><br/><b>compose2nix</b></a>&nbsp;·&nbsp;⭐919<br/><sub>代码合并&nbsp;<b>4</b></sub></td>
-<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐537<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
+<td align="center" width="20%"><a href="https://github.com/rsi-gear/gear"><img src="https://github.com/rsi-gear.png?size=48" width="24" height="24" alt="rsi-gear"/><br/><b>gear</b></a>&nbsp;·&nbsp;⭐546<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 <td align="center" width="20%"><a href="https://github.com/reportportal/client-Python"><img src="https://github.com/reportportal.png?size=48" width="24" height="24" alt="reportportal"/><br/><b>client‑Python</b></a>&nbsp;·&nbsp;⭐46<br/><sub>代码合并&nbsp;<b>1</b></sub></td>
 </tr>
 </table>
 
-<p align="center">代码合并 <b>110</b> · 问题获修 <b>33</b> · 覆盖 <b>38</b> 个上游仓库</p>
+<p align="center">代码合并 <b>111</b> · 问题获修 <b>33</b> · 覆盖 <b>38</b> 个上游仓库</p>
 
 <details>
 
 <summary><b>全部贡献</b>：代码合并：本人 PR 获合并 · 问题获修：本人报告或补丁获修复，未合并本人 PR · 成果不重复计数</summary>
 
 <br/>
+
+<p><code>2026-11-27</code> <img src="https://github.com/sharkdp.png?size=40" width="16" height="16" alt="sharkdp"/> <b>bat</b> · <a href="https://github.com/sharkdp/bat/pull/4144">fix: keep ANSI reverse video on wrapped lines</a></p>
+<!-- (https://github.com/sharkdp/bat/pull/4144) -->
 
 <p><code>2026-11-25</code> <img src="https://github.com/bytedance.png?size=40" width="16" height="16" alt="bytedance"/> <b>deer-flow</b> · <a href="https://github.com/bytedance/deer-flow/pull/8521">fix(projects): keep shelf index entries line-atomic</a></p>
 <!-- (https://github.com/bytedance/deer-flow/pull/8521) -->
